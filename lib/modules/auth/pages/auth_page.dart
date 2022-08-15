@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/modules/auth/pages/login_page.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_page.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_sign_up_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
@@ -19,11 +20,15 @@ class _AuthPageState extends State<AuthPage> {
     // final size = MediaQuery.of(context).size;
     // final heighOfScreen = size.height;
     return Scaffold(
-      backgroundColor: AppColors.dark,
+      // backgroundColor: AppColors.dark,
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.dark,
-        // title: const Text('Auth Page'),
+        // elevation: 0,
+        // backgroundColor: AppColors.dark,
+        title: Text(
+          'YOPE',
+          style: AppTextStyle.appName
+              .copyWith(fontStyle: FontStyle.italic, fontSize: 30),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,16 +37,15 @@ class _AuthPageState extends State<AuthPage> {
             padding: const EdgeInsets.only(bottom: 60, top: 50),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Text(
-                    'Yope',
-                    style: AppTextStyle.appName
-                        .copyWith(fontStyle: FontStyle.italic),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(right: 20),
+                //   child: Text(
+                //     'Yope',
+                //     style: AppTextStyle.appName
+                //         .copyWith(fontStyle: FontStyle.italic),
+                //   ),
+                // ),
                 Image.asset(
                   'assets/images/logo.png',
                   height: 100,
@@ -67,7 +71,7 @@ class _AuthPageState extends State<AuthPage> {
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 5),
             child: LongButton(
-              nameOfButton: 'Log in',
+              nameOfButton: 'Log In',
               onTap: () {
                 // ignore: avoid_print
                 print('press log in');
@@ -84,6 +88,12 @@ class _AuthPageState extends State<AuthPage> {
             onTap: () {
               // ignore: avoid_print
               print('Press sign up');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const SignUpPage()),
+                ),
+              );
             },
           ),
           const SizedBox(

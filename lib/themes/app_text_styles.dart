@@ -6,7 +6,6 @@ class AppTextStyle {
   static const h1 = TextStyle(
     fontFamily: AppFonts.avenir,
     fontSize: 40,
-    color: AppTextColor.pink,
     fontWeight: FontWeight.bold,
   );
 
@@ -39,7 +38,7 @@ class AppTextStyle {
   static const body17 = TextStyle(
     fontFamily: AppFonts.avenir,
     fontSize: 17,
-    color: AppTextColor.light,
+    // color: AppTextColor.light,
   );
   static const caption11 = TextStyle(
     fontFamily: AppFonts.avenir,

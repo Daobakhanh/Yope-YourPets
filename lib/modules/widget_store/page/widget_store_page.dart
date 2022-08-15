@@ -14,12 +14,11 @@ class WidgetStorePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Widgets Store'),
       ),
-      body: Container(
-          child: ListView(
+      body: ListView(
         children: [
           //Card screen
-          Padding(
-            padding: const EdgeInsets.only(left: 20, top: 10),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, top: 10),
             child: Text(
               'Card Screen',
               style: AppTextStyle.h1,
@@ -30,8 +29,8 @@ class WidgetStorePage extends StatelessWidget {
             pageWidget: WidgetStorePage(),
           ),
           //Button Widgets
-          Padding(
-            padding: const EdgeInsets.only(left: 20, top: 10),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, top: 10),
             child: Text(
               'Button Widgets',
               style: AppTextStyle.h1,
@@ -46,7 +45,7 @@ class WidgetStorePage extends StatelessWidget {
             },
           )
         ],
-      )),
+      ),
     );
   }
 }

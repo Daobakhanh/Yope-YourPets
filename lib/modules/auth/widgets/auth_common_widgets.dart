@@ -47,29 +47,33 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: const TextStyle(color: Colors.white),
-      controller: _controller,
-      obscureText: _isObscure,
-      decoration: InputDecoration(
-        // focusColor: AppColors.light,
-        filled: true,
-        fillColor: AppColors.inputTextDarkMode,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(50.0),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextField(
+        style: const TextStyle(color: Colors.white),
+        controller: _controller,
+        obscureText: _isObscure,
+        decoration: InputDecoration(
+          // focusColor: AppColors.light,
+          filled: true,
+          fillColor: AppColors.inputTextDarkMode,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50.0),
+            ),
           ),
-        ),
-        // labelText: 'Password',
-        hintText: 'Password',
-        suffixIcon: IconButton(
-          color: AppColors.light,
-          icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
-          onPressed: () {
-            setState(() {
-              _isObscure = !_isObscure;
-            });
-          },
+          // labelText: 'Password',
+          hintText: 'Password',
+          hintStyle: const TextStyle(color: AppTextColor.grey),
+          suffixIcon: IconButton(
+            color: AppColors.light,
+            icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+            onPressed: () {
+              setState(() {
+                _isObscure = !_isObscure;
+              });
+            },
+          ),
         ),
       ),
     );
@@ -101,20 +105,25 @@ class _TextInputAuthState extends State<TextInputAuth> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      style: const TextStyle(color: Colors.white),
-      controller: _controller,
-      decoration: InputDecoration(
-        // focusColor: AppColors.light,
-        filled: true,
-        fillColor: AppColors.inputTextDarkMode,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(50.0),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextField(
+        style: const TextStyle(color: Colors.white),
+        controller: _controller,
+        decoration: InputDecoration(
+          // focusColor: AppColors.light,
+
+          filled: true,
+          fillColor: AppColors.inputTextDarkMode,
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(50.0),
+            ),
           ),
+          // labelText: 'Password',
+          hintText: widget.label,
+          hintStyle: const TextStyle(color: AppTextColor.grey),
         ),
-        // labelText: 'Password',
-        hintText: widget.label,
       ),
     );
   }

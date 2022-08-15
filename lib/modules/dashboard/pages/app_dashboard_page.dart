@@ -21,38 +21,30 @@ class DashBoardPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('All Screen'),
       ),
-      body: Container(
-          // height: size.height,
-          color: Colors.black,
-          // child: ListView.builder(
-          //     itemCount: 4,
-          //     itemBuilder: (context, index) {
-          //       return CardScreen(title: listScreen[index]);
-          //     }),
-          child: ListView(
-            children: [
-              CardScreen(
-                title: listDashBoardScreen[0],
-                pageWidget: const DashBoardAuthPage(),
-              ),
-              CardScreen(
-                title: listDashBoardScreen[1],
-                pageWidget: const DashBoardHomePage(),
-              ),
-              const CardScreen(
-                title: 'WidgetStorePage',
-                pageWidget: WidgetStorePage(),
-              ),
-              // CardScreen(
-              //   title: listScreen[3],
-              //   pageWidget: const ListPostsPage(),
-              // ),
-              // const CardScreen(
-              //   title: 'Login Page',
-              //   pageWidget: LoginPage(),
-              // )
-            ],
-          )),
+      body: ListView(
+        children: [
+          CardScreen(
+            title: listDashBoardScreen[0],
+            pageWidget: const DashBoardAuthPage(),
+          ),
+          CardScreen(
+            title: listDashBoardScreen[1],
+            pageWidget: const DashBoardHomePage(),
+          ),
+          const CardScreen(
+            title: 'WidgetStorePage',
+            pageWidget: WidgetStorePage(),
+          ),
+          // CardScreen(
+          //   title: listScreen[3],
+          //   pageWidget: const ListPostsPage(),
+          // ),
+          // const CardScreen(
+          //   title: 'Login Page',
+          //   pageWidget: LoginPage(),
+          // )
+        ],
+      ),
     );
   }
 }
