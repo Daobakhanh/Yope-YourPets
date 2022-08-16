@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/home/common/home_list_screen.dart';
+import 'package:yope_yourpet_social_networking/modules/home/pages/navigation.dart';
 import 'package:yope_yourpet_social_networking/modules/home/pages/newsfeed_page.dart';
+import 'package:yope_yourpet_social_networking/modules/navigation/pages/app_navigation.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/card_screen.dart';
 // import 'package:social_network_newsfeed/common/data_type/list_screen.dart';
 // import 'package:social_network_newsfeed/modules/auth/pages/login_page.dart';
@@ -22,11 +24,15 @@ class DashBoardHomePage extends StatelessWidget {
         children: [
           CardScreen(
             title: listHomeDashBoardScreen[0],
-            pageWidget: const NewsFeedPage(),
+            pageWidget: const AppNavigationConfig(),
           ),
           CardScreen(
             title: listHomeDashBoardScreen[1],
-            pageWidget: const NewsFeedPage(),
+            pageWidget: const AppNavigationConfig(),
+          ),
+          const CardScreen(
+            title: 'Search Page',
+            pageWidget: NewsFeedPage(),
           ),
         ],
       ),
