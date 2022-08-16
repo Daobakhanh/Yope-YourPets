@@ -36,7 +36,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             const SizedBox(
               height: 40,
             ),
-            LongButton(
+            LongStadiumButton(
                 color: AppColors.pinkAccent,
                 nameOfButton: 'SEND',
                 onTap: () {

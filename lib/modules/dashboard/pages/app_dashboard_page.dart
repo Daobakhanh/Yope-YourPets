@@ -31,9 +31,9 @@ class DashBoardPage extends StatelessWidget {
             title: listDashBoardScreen[1],
             pageWidget: const DashBoardHomePage(),
           ),
-          const CardScreen(
-            title: 'WidgetStorePage',
-            pageWidget: WidgetStorePage(),
+          CardScreen(
+            title: listDashBoardScreen[2],
+            pageWidget: const WidgetStorePage(),
           ),
           // CardScreen(
           //   title: listScreen[3],

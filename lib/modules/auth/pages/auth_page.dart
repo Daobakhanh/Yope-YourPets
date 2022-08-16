@@ -70,7 +70,7 @@ class _AuthPageState extends State<AuthPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 20, bottom: 5),
-            child: LongButton(
+            child: LongStadiumButton(
               nameOfButton: 'Log In',
               onTap: () {
                 // ignore: avoid_print
@@ -82,7 +82,7 @@ class _AuthPageState extends State<AuthPage> {
               },
             ),
           ),
-          LongButton(
+          LongStadiumButton(
             color: AppColors.pinkAccent,
             nameOfButton: 'Sign Up',
             onTap: () {

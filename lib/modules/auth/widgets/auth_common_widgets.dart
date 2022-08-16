@@ -15,7 +15,7 @@ class IconLoginOptional extends StatelessWidget {
         onTap: onTap,
         child: Icon(
           icon,
-          color: AppColors.light,
+          // color: AppColors.light,
         ),
       ),
     );
@@ -47,6 +47,7 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
+    final thememode = Theme.of(context).brightness;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
@@ -55,8 +56,12 @@ class _PasswordInputState extends State<PasswordInput> {
         obscureText: _isObscure,
         decoration: InputDecoration(
           // focusColor: AppColors.light,
-          filled: true,
-          fillColor: AppColors.inputTextDarkMode,
+
+          //set custom color of text field with theme
+          // filled: true,
+          // fillColor: thememode == ThemeMode.dark
+          //     ? AppColors.inputTextDarkMode
+          //     : AppColors.keyboardLightGray,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(10.0),
@@ -67,7 +72,7 @@ class _PasswordInputState extends State<PasswordInput> {
           hintStyle: const TextStyle(color: AppTextColor.grey),
           prefixIcon: const Icon(Icons.lock_open),
           suffixIcon: IconButton(
-            color: AppColors.light,
+            // color: thememode == ThemeMode.dark ? AppColors.light : ,
             icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
             onPressed: () {
               setState(() {
@@ -108,16 +113,18 @@ class _TextInputAuthState extends State<TextInputAuth> {
 
   @override
   Widget build(BuildContext context) {
+    final thememode = Theme.of(context).brightness;
+    // final darkTheme = ThemeMode.dark;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
         style: const TextStyle(color: Colors.white),
         controller: _controller,
         decoration: InputDecoration(
-          // focusColor: AppColors.light,
-
-          filled: true,
-          fillColor: AppColors.inputTextDarkMode,
+          // filled: true,
+          // fillColor: thememode == ThemeMode.dark
+          //     ? AppColors.inputTextDarkMode
+          //     : AppColors.keyboardLightGray,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(10.0),

@@ -51,7 +51,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 20,
               ),
-              LongButton(
+              LongStadiumButton(
                   color: AppColors.pinkAccent,
                   nameOfButton: 'SIGN UP',
                   onTap: () {

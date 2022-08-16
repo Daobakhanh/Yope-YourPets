@@ -22,9 +22,13 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Yope',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          color: AppColors.grey,
+          centerTitle: true,
+        ),
         brightness: Brightness.dark,
         fontFamily: "Avenir",
-        // primaryColor: darkMode ? AppTextColor.light : AppTextColor.dark,
+        // primaryColor: AppColors.grey,
       ),
       home: const DashBoardPage(),
     );

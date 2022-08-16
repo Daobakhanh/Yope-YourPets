@@ -10,7 +10,6 @@ class WidgetStorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.black,
       appBar: AppBar(
         title: const Text('Widgets Store'),
       ),
@@ -37,13 +36,49 @@ class WidgetStorePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          LongButton(
+          LongStadiumButton(
             color: AppColors.pinkAccent,
             nameOfButton: 'Log in',
             onTap: () {
               debugPrint('object');
             },
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ShortStadiumButton(
+                nameOfButton: 'Follow',
+                onTap: () {
+                  debugPrint('Press short Btn');
+                },
+              ),
+              CircleButton(
+                icon: const Icon(Icons.message),
+                buttonColor: AppColors.activeStateBlue,
+                onTap: () {
+                  debugPrint('hello');
+                },
+              ),
+              CircleButton(
+                icon: const Icon(Icons.phone),
+                buttonColor: AppColors.activeStateGreen,
+                onTap: () {},
+              ),
+              CircleButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: AppColors.grey,
+                ),
+                buttonColor: AppColors.light,
+                size: const Size(28, 28),
+                onTap: () {},
+              )
+            ],
+          ),
         ],
       ),
     );

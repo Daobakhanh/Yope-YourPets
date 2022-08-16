@@ -15,10 +15,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
+    final thememode = Theme.of(context).brightness;
     return Scaffold(
-      // backgroundColor: AppColors.dark,
       appBar: AppBar(
-        // backgroundColor: AppColors.dark,
         title: const Text('Login'),
       ),
       body: Padding(
@@ -66,8 +65,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   'Forgot your password?',
                   style: AppTextStyle.body15.copyWith(
-                    color: AppTextColor.light,
-                    fontWeight: FontWeight.w200,
+                    color: thememode == Brightness.dark
+                        ? AppTextColor.light
+                        : AppTextColor.grey,
+                    fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
                   ),
                 ),
@@ -76,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 30,
             ),
-            LongButton(
+            LongStadiumButton(
               color: AppColors.pinkAccent,
               nameOfButton: "LOGIN",
               onTap: () {
