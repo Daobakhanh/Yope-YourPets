@@ -45,9 +45,10 @@ class AppTextStyle {
     fontSize: 13,
   );
   static const appName = TextStyle(
-    fontFamily: AppFonts.silkscreen,
-    fontSize: 50,
-    color: AppTextColor.pink,
-    // fontWeight: FontWeight.bold,
-  );
+      fontFamily: AppFonts.silkscreen,
+      fontSize: 50,
+      color: AppTextColor.pink,
+      fontStyle: FontStyle.italic
+      // fontWeight: FontWeight.bold,
+      );
 }

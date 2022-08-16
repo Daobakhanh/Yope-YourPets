@@ -15,8 +15,8 @@ class AppColors {
   static const Color dark = Color(0xff1D1D26);
   static const Color light = Color(0xffFFFFFF);
   static const Color grey = Color(0xff4E586E);
+  static const Color lightGray = Color(0xffEFEFF4);
   static const Color keyboardGray = Color(0xffD2D5DB);
-  static const Color keyboardLightGray = Color(0xffEFEFF4);
   static const Color pinkAccent = Color(0xffF54B64);
   static const Color inputTextDarkMode = Color(0xff2d2b2e);
 }

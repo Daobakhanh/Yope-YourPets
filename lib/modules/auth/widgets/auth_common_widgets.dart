@@ -47,7 +47,7 @@ class _PasswordInputState extends State<PasswordInput> {
 
   @override
   Widget build(BuildContext context) {
-    final thememode = Theme.of(context).brightness;
+    // final thememode = Theme.of(context).brightness;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
@@ -113,8 +113,7 @@ class _TextInputAuthState extends State<TextInputAuth> {
 
   @override
   Widget build(BuildContext context) {
-    final thememode = Theme.of(context).brightness;
-    // final darkTheme = ThemeMode.dark;
+    // final thememode = Theme.of(context).brightness;
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(

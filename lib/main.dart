@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
-// import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +15,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final darkMode = true;
   @override
   Widget build(BuildContext context) {
+    // SystemChrome.setSystemUIOverlayStyle();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Yope',
@@ -28,7 +28,8 @@ class _MyAppState extends State<MyApp> {
         ),
         brightness: Brightness.dark,
         fontFamily: "Avenir",
-        // primaryColor: AppColors.grey,
+        // primarySwatch: Colors.yellow,
+        // bottomAppBarColor: Colors.yellow,
       ),
       home: const DashBoardPage(),
     );

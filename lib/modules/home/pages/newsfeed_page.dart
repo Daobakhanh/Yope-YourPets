@@ -1,5 +1,9 @@
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:unicons/unicons.dart';
+import 'package:yope_yourpet_social_networking/modules/home/pages/seach_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
 
 class NewsFeedPage extends StatefulWidget {
   const NewsFeedPage({Key? key}) : super(key: key);
@@ -9,31 +13,73 @@ class NewsFeedPage extends StatefulWidget {
 }
 
 class _NewsFeedPageState extends State<NewsFeedPage> {
-  bool _isObscure = true;
+  int _currentIndex = 0;
+  final pages = [const NewsFeedPage(), const SearchPage()];
   @override
   Widget build(BuildContext context) {
+    final themeData = Theme.of(context).brightness;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('News feed page')),
-      body: Padding(
-        padding: const EdgeInsets.all(25),
-        child: Center(
-          child: TextField(
-            style: const TextStyle(color: AppTextColor.light),
-            obscureText: _isObscure,
-            decoration: InputDecoration(
-                labelText: 'Password',
-                // this button is used to toggle the password visibility
-                suffixIcon: IconButton(
-                    icon: Icon(
-                        _isObscure ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () {
-                      setState(() {
-                        _isObscure = !_isObscure;
-                      });
-                    })),
+        appBar: AppBar(
+          centerTitle: false,
+          actions: [
+            InkWell(
+              child: const Icon(
+                Icons.add_to_photos_rounded,
+                size: 30,
+              ),
+              onTap: () {
+                debugPrint('Home: Newfeed - press add');
+              },
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10, left: 20),
+              child: InkWell(
+                child: const Icon(
+                  UniconsLine.facebook_messenger,
+                  size: 30,
+                ),
+                onTap: () {
+                  debugPrint('Home: Newfeed - press message');
+                },
+              ),
+            ),
+          ],
+          title: Text(
+            'Yope',
+            style: AppTextStyle.appName.copyWith(fontSize: 35),
           ),
         ),
-      ),
-    );
+        // body: pages[_currentIndex],
+        bottomNavigationBar: CustomNavigationBar(
+          iconSize: 30.0,
+          selectedColor: AppColors.pinkAccent,
+          strokeColor: AppColors.pinkAccent,
+          unSelectedColor:
+              themeData == Brightness.dark ? AppColors.grey : AppColors.dark,
+          backgroundColor: themeData == Brightness.dark
+              ? AppColors.dark
+              : AppColors.lightGray,
+          items: [
+            CustomNavigationBarItem(
+              icon: const Icon(Icons.pets),
+            ),
+            CustomNavigationBarItem(
+              icon: const Icon(Icons.search),
+            ),
+            CustomNavigationBarItem(
+              icon: const Icon(UniconsLine.heart),
+            ),
+            CustomNavigationBarItem(
+              icon: const Icon(Icons.person),
+            ),
+          ],
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+        ));
   }
 }

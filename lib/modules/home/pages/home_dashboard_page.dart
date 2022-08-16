@@ -14,46 +14,22 @@ class DashBoardHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final size = MediaQuery.of(context).size;
-    // final paddingSafeAreaSize = MediaQuery.of(context).padding.top +
-    MediaQuery.of(context).padding.bottom;
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Auth Dashboard'),
+        title: const Text('Home Dashboard'),
       ),
-      body: Container(
-          // height: size.height,
-          color: Colors.black,
-          // child: ListView.builder(
-          //     itemCount: 4,
-          //     itemBuilder: (context, index) {
-          //       return CardScreen(title: listScreen[index]);
-          //     }),
-          child: ListView(
-            children: [
-              CardScreen(
-                title: listHomeDashBoardScreen[0],
-                pageWidget: const NewsFeedPage(),
-              ),
-              CardScreen(
-                title: listHomeDashBoardScreen[1],
-                pageWidget: const NewsFeedPage(),
-              ),
-              // CardScreen(
-              //   title: listScreen[2],
-              //   pageWidget: const MessagePage(),
-              // ),
-              // CardScreen(
-              //   title: listScreen[3],
-              //   pageWidget: const ListPostsPage(),
-              // ),
-              // const CardScreen(
-              //   title: 'Login Page',
-              //   pageWidget: LoginPage(),
-              // )
-            ],
-          )),
+      body: ListView(
+        children: [
+          CardScreen(
+            title: listHomeDashBoardScreen[0],
+            pageWidget: const NewsFeedPage(),
+          ),
+          CardScreen(
+            title: listHomeDashBoardScreen[1],
+            pageWidget: const NewsFeedPage(),
+          ),
+        ],
+      ),
     );
   }
 }
