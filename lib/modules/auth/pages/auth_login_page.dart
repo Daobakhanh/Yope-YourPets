@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const TextInputAuth(
+              icon: Icon(Icons.person),
               label: 'Username',
             ),
             const PasswordInput(),
@@ -65,6 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   'Forgot your password?',
                   style: AppTextStyle.body15.copyWith(
+                    color: AppTextColor.light,
                     fontWeight: FontWeight.w200,
                     fontStyle: FontStyle.italic,
                   ),

@@ -59,12 +59,13 @@ class _PasswordInputState extends State<PasswordInput> {
           fillColor: AppColors.inputTextDarkMode,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(50.0),
+              Radius.circular(10.0),
             ),
           ),
-          // labelText: 'Password',
-          hintText: 'Password',
+          labelText: 'Password',
+          hintText: 'Enter Password',
           hintStyle: const TextStyle(color: AppTextColor.grey),
+          prefixIcon: const Icon(Icons.lock_open),
           suffixIcon: IconButton(
             color: AppColors.light,
             icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
@@ -82,7 +83,9 @@ class _PasswordInputState extends State<PasswordInput> {
 
 class TextInputAuth extends StatefulWidget {
   final String? label;
-  const TextInputAuth({Key? key, required this.label}) : super(key: key);
+  final Icon? icon;
+  const TextInputAuth({Key? key, required this.label, required this.icon})
+      : super(key: key);
 
   @override
   State<TextInputAuth> createState() => _TextInputAuthState();
@@ -117,11 +120,12 @@ class _TextInputAuthState extends State<TextInputAuth> {
           fillColor: AppColors.inputTextDarkMode,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(50.0),
+              Radius.circular(10.0),
             ),
           ),
-          // labelText: 'Password',
-          hintText: widget.label,
+          prefixIcon: widget.icon,
+          labelText: widget.label,
+          hintText: 'Enter ${widget.label}',
           hintStyle: const TextStyle(color: AppTextColor.grey),
         ),
       ),

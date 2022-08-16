@@ -30,7 +30,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
             const TextInputAuth(
-              label: 'Your email',
+              icon: Icon(Icons.email),
+              label: 'Your Email',
             ),
             const SizedBox(
               height: 40,

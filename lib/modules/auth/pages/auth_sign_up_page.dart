@@ -21,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: SingleChildScrollView(
+          // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           child: Column(
             children: [
               const Padding(
@@ -31,15 +32,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               const TextInputAuth(
+                icon: Icon(Icons.person),
                 label: 'Username',
               ),
               const TextInputAuth(
+                icon: Icon(Icons.email),
                 label: 'Email',
               ),
               const TextInputAuth(
+                icon: Icon(Icons.phone),
                 label: 'Phone',
               ),
               const TextInputAuth(
+                icon: Icon(Icons.calendar_month),
                 label: 'Date of birth',
               ),
               const PasswordInput(),
