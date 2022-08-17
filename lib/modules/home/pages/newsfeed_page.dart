@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:unicons/unicons.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
 
 class NewsFeedPage extends StatefulWidget {
   const NewsFeedPage({Key? key}) : super(key: key);
@@ -12,7 +14,34 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Search Page'),
+        centerTitle: false,
+        actions: [
+          InkWell(
+            child: const Icon(
+              Icons.add_to_photos_rounded,
+              size: 25,
+            ),
+            onTap: () {
+              debugPrint('Home: Newfeed - press add');
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10, left: 20),
+            child: InkWell(
+              child: const Icon(
+                UniconsLine.facebook_messenger,
+                size: 25,
+              ),
+              onTap: () {
+                debugPrint('Home: Newfeed - press message');
+              },
+            ),
+          ),
+        ],
+        title: Text(
+          'Yope',
+          style: AppTextStyle.appName.copyWith(fontSize: 35),
+        ),
       ),
       body: const Text('hello'),
     );

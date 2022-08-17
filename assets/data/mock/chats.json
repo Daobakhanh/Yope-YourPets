@@ -1,0 +1,215 @@
+{
+  "results": [
+    {
+      "id": "582fc99e-a955-446c-9d74-38574a75838b",
+      "text": "People keep telling me \"orange\" but I still prefer \"pink\".",
+      "user": {
+        "gender": "male",
+        "name": "Joseph Gordon",
+        "email": "joseph.gordon@example.com",
+        "dob": "1997-03-04T06:52:36.093Z",
+        "registered": "2006-08-06T20:03:28.582Z",
+        "phone": "061-796-7504",
+        "status": "online",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/24.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/24.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/24.jpg"
+        }
+      },
+      "reply_count": 75,
+      "unread_count": 2,
+      "created_at": "2021-10-27T08:13:47.646Z"
+    },
+    {
+      "id": "ce3daf67-85c6-4633-9fa2-f764b93363ad",
+      "text": "As she walked along the street and looked in the gutter, she realized facemasks had become the new cigarette butts.",
+      "user": {
+        "gender": "female",
+        "name": "Megan Ennis",
+        "email": "megan.ennis@example.com",
+        "dob": "1957-02-01T20:23:35.800Z",
+        "registered": "2011-09-12T01:21:48.989Z",
+        "phone": "280-604-8152",
+        "status": "online",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/13.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/13.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/13.jpg"
+        }
+      },
+      "reply_count": 31,
+      "unread_count": 1,
+      "created_at": "2021-10-27T08:13:47.242Z"
+    },
+    {
+      "id": "bfc53690-b1b8-4151-a9b1-b5fa9a1ff0bb",
+      "text": "He picked up trash in his spare time to dump in his neighbor's yard.",
+      "user": {
+        "gender": "male",
+        "name": "Brad Gibson",
+        "email": "brad.gibson@example.com",
+        "dob": "1993-07-20T09:44:18.674Z",
+        "registered": "2002-05-21T10:59:49.966Z",
+        "phone": "011-962-7516",
+        "status": "offline",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/75.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+        }
+      },
+      "reply_count": 35,
+      "unread_count": 3,
+      "created_at": "2021-10-27T08:13:46.924Z"
+    },
+    {
+      "id": "78b0066f-e6b9-422b-8727-3625aefde8c4",
+      "text": "If you spin around three times, you'll start to feel melancholy.",
+      "user": {
+        "gender": "male",
+        "name": "Andrew Brun",
+        "email": "andrew.brun@example.com",
+        "dob": "1981-09-03T05:13:08.410Z",
+        "registered": "2014-07-10T11:40:44.555Z",
+        "phone": "078 279 32 34",
+        "status": "online",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/54.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/54.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/54.jpg"
+        }
+      },
+      "reply_count": 46,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:46.639Z"
+    },
+    {
+      "id": "cb2df210-81e6-42a6-be9d-8e30efba9a09",
+      "text": "This building is really high!",
+      "user": {
+        "gender": "male",
+        "name": "Noah Kristensen",
+        "email": "noah.kristensen@example.com",
+        "dob": "1975-12-15T23:01:06.265Z",
+        "registered": "2019-01-08T08:49:37.018Z",
+        "phone": "57181808",
+        "status": "offline",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/75.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+        }
+      },
+      "reply_count": 72,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:46.293Z"
+    },
+    {
+      "id": "8493c273-1f85-4ec0-a062-755d283adadd",
+      "text": "She saw the brake lights, but not in time.",
+      "user": {
+        "gender": "male",
+        "name": "Veeti Neva",
+        "email": "veeti.neva@example.com",
+        "dob": "1961-07-07T06:21:31.798Z",
+        "registered": "2017-12-17T03:10:13.992Z",
+        "phone": "07-670-151",
+        "status": "private",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/48.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/48.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/48.jpg"
+        }
+      },
+      "reply_count": 95,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:45.998Z"
+    },
+    {
+      "id": "8ae44570-7b22-4072-a944-e3783c00d0b6",
+      "text": "She used her own hair in the soup to give it more flavor.",
+      "user": {
+        "gender": "male",
+        "name": "Vincent Côté",
+        "email": "vincent.cote@example.com",
+        "dob": "1962-10-18T07:59:41.221Z",
+        "registered": "2006-05-21T12:51:55.034Z",
+        "phone": "996-314-7424",
+        "status": "online",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/19.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/19.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/19.jpg"
+        }
+      },
+      "reply_count": 91,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:45.705Z"
+    },
+    {
+      "id": "9acaef03-783c-48ea-8bed-c49c67467c10",
+      "text": "They got there early, and they got really good seats.",
+      "user": {
+        "gender": "male",
+        "name": "Albert Alvarez",
+        "email": "albert.alvarez@example.com",
+        "dob": "1964-05-15T00:03:44.397Z",
+        "registered": "2009-10-24T12:39:48.877Z",
+        "phone": "963-348-062",
+        "status": "private",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/0.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/0.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/0.jpg"
+        }
+      },
+      "reply_count": 65,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:45.421Z"
+    },
+    {
+      "id": "6a23007b-13d8-4f70-a871-44403795e1b6",
+      "text": "I'll never do that again.",
+      "user": {
+        "gender": "male",
+        "name": "Warren Stephens",
+        "email": "warren.stephens@example.com",
+        "dob": "1982-01-15T18:33:00.987Z",
+        "registered": "2005-04-12T08:06:09.538Z",
+        "phone": "(538)-601-9121",
+        "status": "online",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/31.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/31.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/31.jpg"
+        }
+      },
+      "reply_count": 83,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:45.1Z"
+    },
+    {
+      "id": "e677058a-6fad-40ed-b9f6-defaf1fad732",
+      "text": "Who does this land belong to?",
+      "user": {
+        "gender": "female",
+        "name": "Manon Renaud",
+        "email": "manon.renaud@example.com",
+        "dob": "1978-05-12T12:21:10.623Z",
+        "registered": "2015-11-19T09:05:01.402Z",
+        "phone": "05-90-59-61-49",
+        "status": "private",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/68.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/68.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/68.jpg"
+        }
+      },
+      "reply_count": 21,
+      "unread_count": 0,
+      "created_at": "2021-10-27T08:13:44.796Z"
+    }
+  ]
+}
+

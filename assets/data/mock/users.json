@@ -1,0 +1,144 @@
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": "Brad Gibson",
+      "email": "brad.gibson@example.com",
+      "dob": "1993-07-20T09:44:18.674Z",
+      "registered": "2002-05-21T10:59:49.966Z",
+      "phone": "011-962-7516",
+      "status": "offline",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/75.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+      }
+    },
+    {
+      "gender": "female",
+      "name": "Manon Renaud",
+      "email": "manon.renaud@example.com",
+      "dob": "1978-05-12T12:21:10.623Z",
+      "registered": "2015-11-19T09:05:01.402Z",
+      "phone": "05-90-59-61-49",
+      "status": "private",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/68.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/68.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/68.jpg"
+      }
+    },
+    {
+      "gender": "female",
+      "name": "Megan Ennis",
+      "email": "megan.ennis@example.com",
+      "dob": "1957-02-01T20:23:35.800Z",
+      "registered": "2011-09-12T01:21:48.989Z",
+      "phone": "280-604-8152",
+      "status": "online",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/13.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/13.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/13.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Warren Stephens",
+      "email": "warren.stephens@example.com",
+      "dob": "1982-01-15T18:33:00.987Z",
+      "registered": "2005-04-12T08:06:09.538Z",
+      "phone": "(538)-601-9121",
+      "status": "online",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/31.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/31.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/31.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Vincent Côté",
+      "email": "vincent.cote@example.com",
+      "dob": "1962-10-18T07:59:41.221Z",
+      "registered": "2006-05-21T12:51:55.034Z",
+      "phone": "996-314-7424",
+      "status": "online",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/19.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/19.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/19.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Albert Alvarez",
+      "email": "albert.alvarez@example.com",
+      "dob": "1964-05-15T00:03:44.397Z",
+      "registered": "2009-10-24T12:39:48.877Z",
+      "phone": "963-348-062",
+      "status": "private",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/0.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/0.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/0.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Veeti Neva",
+      "email": "veeti.neva@example.com",
+      "dob": "1961-07-07T06:21:31.798Z",
+      "registered": "2017-12-17T03:10:13.992Z",
+      "phone": "07-670-151",
+      "status": "private",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/48.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/48.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/48.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Joseph Gordon",
+      "email": "joseph.gordon@example.com",
+      "dob": "1997-03-04T06:52:36.093Z",
+      "registered": "2006-08-06T20:03:28.582Z",
+      "phone": "061-796-7504",
+      "status": "online",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/24.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/24.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/24.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Noah Kristensen",
+      "email": "noah.kristensen@example.com",
+      "dob": "1975-12-15T23:01:06.265Z",
+      "registered": "2019-01-08T08:49:37.018Z",
+      "phone": "57181808",
+      "status": "offline",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/75.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+      }
+    },
+    {
+      "gender": "male",
+      "name": "Andrew Brun",
+      "email": "andrew.brun@example.com",
+      "dob": "1981-09-03T05:13:08.410Z",
+      "registered": "2014-07-10T11:40:44.555Z",
+      "phone": "078 279 32 34",
+      "status": "online",
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/54.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/54.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/54.jpg"
+      }
+    }
+  ]
+}
