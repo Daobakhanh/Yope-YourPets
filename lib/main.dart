@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Yope',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          color: AppColors.grey,
+          color: AppColor.grey,
           centerTitle: true,
         ),
         brightness: Brightness.dark,

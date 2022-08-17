@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/card_screen.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class WidgetStorePage extends StatelessWidget {
   const WidgetStorePage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class WidgetStorePage extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           LongStadiumButton(
-            color: AppColors.pinkAccent,
+            color: AppColor.pinkAccent,
             nameOfButton: 'Log in',
             onTap: () {
               debugPrint('object');
@@ -58,22 +58,22 @@ class WidgetStorePage extends StatelessWidget {
               ),
               CircleButton(
                 icon: const Icon(Icons.message),
-                buttonColor: AppColors.activeStateBlue,
+                buttonColor: AppColor.activeStateBlue,
                 onTap: () {
                   debugPrint('hello');
                 },
               ),
               CircleButton(
                 icon: const Icon(Icons.phone),
-                buttonColor: AppColors.activeStateGreen,
+                buttonColor: AppColor.activeStateGreen,
                 onTap: () {},
               ),
               CircleButton(
                 icon: const Icon(
                   Icons.close,
-                  color: AppColors.grey,
+                  color: AppColor.grey,
                 ),
-                buttonColor: AppColors.light,
+                buttonColor: AppColor.light,
                 size: const Size(28, 28),
                 onTap: () {},
               )

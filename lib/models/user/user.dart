@@ -33,8 +33,8 @@ class User {
 
 @JsonSerializable()
 class Users {
-  final List<User> users;
-  Users({required this.users});
+  final List<User> results;
+  Users({required this.results});
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
   Map<String, dynamic> toJson() => _$UsersToJson(this);
 }

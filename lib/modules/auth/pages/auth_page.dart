@@ -4,8 +4,8 @@ import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_pag
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_sign_up_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -83,7 +83,7 @@ class _AuthPageState extends State<AuthPage> {
             ),
           ),
           LongStadiumButton(
-            color: AppColors.pinkAccent,
+            color: AppColor.pinkAccent,
             nameOfButton: 'Sign Up',
             onTap: () {
               // ignore: avoid_print

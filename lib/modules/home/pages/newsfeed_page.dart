@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
+import 'package:yope_yourpet_social_networking/modules/notifications/pages/notification_page.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class NewsFeedPage extends StatefulWidget {
   const NewsFeedPage({Key? key}) : super(key: key);
@@ -13,6 +15,10 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // endDrawer: const Drawer(
+      //   elevation: 16.0,
+      //   child: MessagePage(),
+      // ),
       appBar: AppBar(
         centerTitle: false,
         actions: [
@@ -34,6 +40,10 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
               ),
               onTap: () {
                 debugPrint('Home: Newfeed - press message');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MessagePage()),
+                );
               },
             ),
           ),

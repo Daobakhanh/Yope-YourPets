@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class LongStadiumButton extends StatelessWidget {
   final Color? color;
@@ -26,7 +26,7 @@ class LongStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColors.light,
+          primary: color ?? AppColor.light,
           fixedSize: const Size(350, 44),
         ),
       ),
@@ -58,7 +58,7 @@ class ShortStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColors.light,
+          primary: color ?? AppColor.light,
           fixedSize: const Size(116, 32),
         ),
       ),

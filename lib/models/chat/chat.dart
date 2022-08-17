@@ -36,8 +36,8 @@ class Chat {
 
 @JsonSerializable()
 class Chats {
-  final List<Chat> chats;
-  Chats(this.chats);
+  final List<Chat> results;
+  Chats(this.results);
 
   factory Chats.fromJson(Map<String, dynamic> json) => _$ChatsFromJson(json);
   Map<String, dynamic> toJson() => _$ChatsToJson(this);
