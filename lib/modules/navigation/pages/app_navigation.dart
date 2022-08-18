@@ -1,13 +1,11 @@
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_forgot_password_page.dart';
-import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_page.dart';
-import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_page.dart';
 import 'package:yope_yourpet_social_networking/modules/home/pages/newsfeed_page.dart';
+import 'package:yope_yourpet_social_networking/modules/notifications/pages/notification_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/personal_profile.dart';
+import 'package:yope_yourpet_social_networking/modules/search/pages/search_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class AppNavigationConfig extends StatefulWidget {
   const AppNavigationConfig({Key? key}) : super(key: key);
@@ -56,7 +54,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             return CupertinoTabView(
               builder: (context) {
                 return const CupertinoPageScaffold(
-                  child: ForgotPasswordPage(),
+                  child: SearchPage(),
                 );
               },
             );
@@ -64,7 +62,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             return CupertinoTabView(
               builder: (context) {
                 return const CupertinoPageScaffold(
-                  child: AuthPage(),
+                  child: NotificationPage(),
                 );
               },
             );
@@ -72,7 +70,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             return CupertinoTabView(
               builder: (context) {
                 return const CupertinoPageScaffold(
-                  child: LoginPage(),
+                  child: PersonalProfile(),
                 );
               },
             );

@@ -72,10 +72,7 @@ class _MessagePageState extends State<MessagePage> {
                 (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
               if (snapshot.hasData) {
                 final dataUsers = snapshot.data![0];
-                // return AvatarWithNameAndActiveStatus(
-                //   picture: data![0][0].picture.large,
-                //   nameOfUser: data[0][0].name,
-                // );
+              
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: HorizontalListActiveUser(dataUsers: dataUsers),

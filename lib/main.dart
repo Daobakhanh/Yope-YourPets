@@ -28,8 +28,8 @@ class _MyAppState extends State<MyApp> {
         ),
         brightness: Brightness.dark,
         fontFamily: "Avenir",
-        // primarySwatch: Colors.yellow,
-        // bottomAppBarColor: Colors.yellow,
+        primarySwatch: Colors.yellow,
+        bottomAppBarColor: Colors.yellow,
       ),
       home: const DashBoardPage(),
     );
