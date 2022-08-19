@@ -29,12 +29,14 @@ class _MessagePageState extends State<MessagePage> {
   Widget build(BuildContext context) {
     // final test = data.;
     return Scaffold(
-      backgroundColor: AppColor.dark,
       appBar: AppBar(
-        backgroundColor: AppColor.dark,
+        title: const Text('Messages'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.add),
+            icon: const Icon(
+              Icons.add_box_rounded,
+              size: 30,
+            ),
             onPressed: () {},
           ),
           // add more IconButton
@@ -48,31 +50,26 @@ class _MessagePageState extends State<MessagePage> {
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(left: 15, top: 15, bottom: 24),
-                child: Text(
-                  'Messages',
-                  textAlign: TextAlign.start,
-                  style: AppTextStyle.largeTitle,
-                ),
-              ),
-            ],
-          ),
-          const Divider(
-            height: 1,
-            color: AppColor.black,
-            // thickness: 0.5,
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: const [
+          //     Padding(
+          //       padding: EdgeInsets.only(left: 15, top: 15, bottom: 10),
+          //       child: Text(
+          //         'Messages',
+          //         textAlign: TextAlign.start,
+          //         style: AppTextStyle.largeTitle,
+          //       ),
+          //     ),
+          //   ],
+          // ),
           FutureBuilder(
             future: Future.wait([users]),
             builder:
                 (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
               if (snapshot.hasData) {
                 final dataUsers = snapshot.data![0];
-              
+
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: HorizontalListActiveUser(dataUsers: dataUsers),
@@ -85,7 +82,7 @@ class _MessagePageState extends State<MessagePage> {
           ),
           const Divider(
             height: 1,
-            color: AppColor.black,
+            // color: AppColor.black,
             // thickness: 0.5,
           ),
           FutureBuilder(

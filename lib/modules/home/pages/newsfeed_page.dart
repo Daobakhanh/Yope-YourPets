@@ -19,7 +19,7 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
         actions: [
           InkWell(
             child: const Icon(
-              Icons.add_to_photos_rounded,
+              Icons.add_to_photos,
               size: 25,
             ),
             onTap: () {

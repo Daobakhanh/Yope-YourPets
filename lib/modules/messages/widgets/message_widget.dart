@@ -111,7 +111,7 @@ class _AvatarWithMessageCardState extends State<AvatarWithMessageCard> {
       // width: 344,
       child: Row(
         children: [
-          Avatar(picture: widget.picture),
+          CustomAvatar(picture: widget.picture),
           const SizedBox(
             width: 20,
           ),

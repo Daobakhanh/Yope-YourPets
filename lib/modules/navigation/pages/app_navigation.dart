@@ -44,6 +44,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
         switch (index) {
           case 0:
             return CupertinoTabView(
+              // onGenerateRoute: ,
               builder: (context) {
                 return const CupertinoPageScaffold(
                   child: NewsFeedPage(),
@@ -70,7 +71,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             return CupertinoTabView(
               builder: (context) {
                 return const CupertinoPageScaffold(
-                  child: PersonalProfile(),
+                  child: PersonalProfilePage(),
                 );
               },
             );

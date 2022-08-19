@@ -34,7 +34,7 @@ class _AvatarWithNameAndActiveStatusState
         children: [
           widget.userStatus == UserStatus.online
               ? AvatarWithActiveStatus(picture: widget.picture)
-              : Avatar(picture: widget.picture),
+              : CustomAvatar(picture: widget.picture),
           Text(
             widget.nameOfUser,
             style: AppTextStyle.caption11.copyWith(fontWeight: FontWeight.bold),
@@ -62,7 +62,7 @@ class _AvatarWithActiveStatus extends State<AvatarWithActiveStatus> {
       height: 60,
       width: 60,
       child: Stack(children: [
-        Avatar(picture: widget.picture),
+        CustomAvatar(picture: widget.picture),
         const Positioned(top: 48, left: 43, child: ActiveStatusGreen())
       ]),
     );
@@ -70,20 +70,26 @@ class _AvatarWithActiveStatus extends State<AvatarWithActiveStatus> {
 }
 
 //avatar just Image
-class Avatar extends StatefulWidget {
-  const Avatar({Key? key, required this.picture}) : super(key: key);
+class CustomAvatar extends StatefulWidget {
+  const CustomAvatar({Key? key, required this.picture, this.size, this.radius})
+      : super(key: key);
+  final Size? size;
   final String picture;
+  final double? radius;
   @override
-  State<Avatar> createState() => _AvatarState();
+  State<CustomAvatar> createState() => _CustomAvatarState();
 }
 
-class _AvatarState extends State<Avatar> {
+class _CustomAvatarState extends State<CustomAvatar> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
-      width: 60,
+      height: widget.size == null ? 60 : widget.size?.height,
+      width: widget.size == null ? 60 : widget.size?.width,
       child: CircleAvatar(
+        // radius: 1,
+        // radius: widget.radius!,
+        backgroundColor: const Color(0xffFDCF09),
         backgroundImage: NetworkImage(widget.picture),
       ),
     );

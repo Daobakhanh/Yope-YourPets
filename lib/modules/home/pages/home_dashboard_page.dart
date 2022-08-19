@@ -42,7 +42,7 @@ class DashBoardHomePage extends StatelessWidget {
           ),
           const CardScreen(
             title: 'Personal Profile',
-            pageWidget: PersonalProfile(),
+            pageWidget: PersonalProfilePage(),
           ),
         ],
       ),

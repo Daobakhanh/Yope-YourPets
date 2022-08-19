@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
 
 class PersonalProfileDrawerPage extends StatefulWidget {
@@ -36,35 +35,35 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
           //     'Saved',
           //   ),
           // )
-          IconButtonOptional(
+          TextIconButton(
             onTap: () {
               debugPrint('Drawer ontap');
             },
             title: 'Settings',
             icon: Icons.settings,
           ),
-          IconButtonOptional(
+          TextIconButton(
             onTap: () {
               debugPrint('Drawer ontap');
             },
             title: 'Saved',
             icon: Icons.save,
           ),
-          IconButtonOptional(
+          TextIconButton(
             onTap: () {
               debugPrint('Drawer ontap');
             },
             title: 'Your Activity',
             icon: Icons.timelapse,
           ),
-          IconButtonOptional(
+          TextIconButton(
             onTap: () {
               debugPrint('Drawer ontap');
             },
             title: 'Close Friends',
             icon: Icons.person_off,
           ),
-          IconButtonOptional(
+          TextIconButton(
             onTap: () {
               debugPrint('Drawer ontap');
             },

@@ -91,3 +91,38 @@ class CircleButton extends StatelessWidget {
     );
   }
 }
+
+class LongRectangleButton extends StatelessWidget {
+  final Color? color;
+  final String? nameOfButton;
+  final VoidCallback onTap;
+  const LongRectangleButton(
+      {Key? key, required this.nameOfButton, required this.onTap, this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context).brightness;
+    return Container(
+      // color: AppColors.activeStateGreen,
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: onTap,
+        child: Text(
+          nameOfButton!,
+          style: AppTextStyle.body15.copyWith(
+            color: themeData == Brightness.dark
+                ? AppTextColor.light
+                : AppTextColor.dark,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          // shape: const StadiumBorder(),
+          primary:
+              themeData == Brightness.dark ? AppColor.grey : AppColor.lightGray,
+          fixedSize: const Size(350, 32),
+        ),
+      ),
+    );
+  }
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,14 +23,16 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Yope',
       theme: ThemeData(
+        textTheme: const TextTheme(
+            titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15),
         appBarTheme: const AppBarTheme(
           color: AppColor.grey,
           centerTitle: true,
         ),
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         fontFamily: "Avenir",
-        primarySwatch: Colors.yellow,
-        bottomAppBarColor: Colors.yellow,
+        primarySwatch: Colors.pink,
+        // bottomAppBarColor: Colors.yellow,
       ),
       home: const DashBoardPage(),
     );
