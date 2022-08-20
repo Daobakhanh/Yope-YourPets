@@ -28,8 +28,8 @@ class _PostWidgetState extends State<PostWidget> {
     final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
-        String lengthOfTitle = widget.post.title.length.toString();
-        debugPrint('$lengthOfTitle');
+        // String lengthOfTitle = widget.post.title.length.toString();
+        // debugPrint('$lengthOfTitle');
         Navigator.push(
           context,
           MaterialPageRoute(

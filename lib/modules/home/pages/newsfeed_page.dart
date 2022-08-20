@@ -16,6 +16,8 @@ class NewsFeedPage extends StatefulWidget {
 
 class _NewsFeedPageState extends State<NewsFeedPage> {
   late Future<Posts> posts;
+
+  //logic scroll to top
   late ScrollController _scrollController;
   bool _showBackToTopButton = false;
   @override
@@ -115,7 +117,10 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
           : FloatingActionButton(
               backgroundColor: AppColor.grey,
               onPressed: _scrollToTop,
-              child: const Icon(Icons.arrow_upward, color: AppColor.light),
+              child: const Icon(
+                Icons.arrow_upward,
+                color: AppColor.light,
+              ),
             ),
     );
   }
