@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class IconLoginOptional extends StatelessWidget {
   final IconData? icon;

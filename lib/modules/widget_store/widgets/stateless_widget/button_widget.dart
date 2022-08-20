@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/themes/app_colors.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_styles.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class LongStadiumButton extends StatelessWidget {
   final Color? color;
@@ -26,7 +26,7 @@ class LongStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColors.light,
+          primary: color ?? AppColor.light,
           fixedSize: const Size(350, 44),
         ),
       ),
@@ -58,7 +58,7 @@ class ShortStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColors.light,
+          primary: color ?? AppColor.light,
           fixedSize: const Size(116, 32),
         ),
       ),
@@ -88,6 +88,41 @@ class CircleButton extends StatelessWidget {
           primary: buttonColor,
           shape: const CircleBorder(),
           fixedSize: size ?? const Size(45, 45)),
+    );
+  }
+}
+
+class LongRectangleButton extends StatelessWidget {
+  final Color? color;
+  final String? nameOfButton;
+  final VoidCallback onTap;
+  const LongRectangleButton(
+      {Key? key, required this.nameOfButton, required this.onTap, this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context).brightness;
+    return Container(
+      // color: AppColors.activeStateGreen,
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: onTap,
+        child: Text(
+          nameOfButton!,
+          style: AppTextStyle.body15.copyWith(
+            color: themeData == Brightness.dark
+                ? AppTextColor.light
+                : AppTextColor.dark,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          // shape: const StadiumBorder(),
+          primary:
+              themeData == Brightness.dark ? AppColor.grey : AppColor.lightGray,
+          fixedSize: const Size(350, 32),
+        ),
+      ),
     );
   }
 }

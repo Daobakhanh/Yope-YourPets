@@ -1,3 +1,1 @@
-enum AppInfor {
-  yope,
-}
+

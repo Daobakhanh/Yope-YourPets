@@ -36,6 +36,7 @@ dependencies:
   json_annotation: ^4.6.0
   unicons: ^2.1.0
   custom_navigation_bar: ^0.8.2
+  carousel_slider: ^4.1.1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
     - assets/fonts/Avenir/
     - assets/fonts/Silkscreen/
     - assets/data/
+    - assets/data/mock/
     - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
