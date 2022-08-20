@@ -15,19 +15,22 @@ class Post {
   final int commentCounts;
   final int likeCounts;
   final bool liked;
+  final User user; //user create post
 
   /// The generated code below handles if the corresponding JSON value doesn't
   /// exist or is empty.
 
-  Post(
-      {this.id,
-      this.status,
-      required this.title,
-      required this.description,
-      required this.photos,
-      required this.commentCounts,
-      required this.likeCounts,
-      required this.liked});
+  Post({
+    this.id,
+    this.status,
+    required this.title,
+    required this.description,
+    required this.photos,
+    required this.commentCounts,
+    required this.likeCounts,
+    required this.liked,
+    required this.user,
+  });
 
   /// factory.
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);

@@ -33,7 +33,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             icon: Icon(Icons.search),
           ),
           BottomNavigationBarItem(
-            icon: Icon(UniconsLine.heart),
+            icon: Icon(Icons.favorite),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

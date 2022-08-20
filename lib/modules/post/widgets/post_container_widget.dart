@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/like_comment_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_comment_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -25,10 +28,17 @@ class _PostWidgetState extends State<PostWidget> {
     final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
-        debugPrint('Tap to Post');
+        String lengthOfTitle = widget.post.title.length.toString();
+        debugPrint('$lengthOfTitle');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PostDetailPage(),
+          ),
+        );
       },
       child: Container(
-        height: 380,
+        // height: 400,
         padding: const EdgeInsets.all(15),
         margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         decoration: BoxDecoration(
@@ -47,58 +57,24 @@ class _PostWidgetState extends State<PostWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 20, bottom: 10),
-                  child: CustomAvatar(
-                    picture: widget.post.photos[0],
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Edward Kelly',
-                      style: AppTextStyle.body20.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      '2 hour ago',
-                      style: AppTextStyle.caption13.copyWith(
-                        color: AppTextColor.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            UserPostAndInteractiveWidget(post: widget.post),
             Text(
-              'As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If you think about it, you travel across her face, and She is the host to your journey; without Her we could not find the unfolding adventures that attract and feed',
+              widget.post.title,
               // maxLines: hideBio ? 1 : 2,
               maxLines: 2,
 
-              overflow: hideBio ? TextOverflow.ellipsis : TextOverflow.clip,
+              overflow: widget.post.title.length > 75
+                  ? TextOverflow.ellipsis
+                  : TextOverflow.clip,
               // style: AppTextStyle.body15,
             ),
             // TextButton(onPressed: () {}, child: Text("more")),
             // const SizedBox(
             //   height: 3,
             // ),
-            GestureDetector(
-              child: Text(
-                hideBio ? "more" : "hide",
-                style: const TextStyle(
-                    fontStyle: FontStyle.italic, color: AppTextColor.grey),
-              ),
-              onTap: () {
-                debugPrint('hello');
-                setState(() {
-                  hideBio = !hideBio;
-                });
-              },
-            ),
+            widget.post.title.length > 75
+                ? const TapMoreToSeeDetail()
+                : const SizeBox5H(),
             ImageSlider(
               pictures: widget.post.photos,
             ),
@@ -106,9 +82,126 @@ class _PostWidgetState extends State<PostWidget> {
             InteractivePostBar(
               post: widget.post,
             ),
+            const SizeBox5H(),
+            const LikedInforGeneralWidget(),
+            const SizeBox5H(),
+            const TapToSeeAllCommentWidget()
           ],
         ),
       ),
+    );
+  }
+}
+
+class UserPostAndInteractiveWidget extends StatelessWidget {
+  final Post post;
+  const UserPostAndInteractiveWidget({Key? key, required this.post})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20, bottom: 10),
+          child: CustomAvatar(
+            picture: post.photos[0],
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              post.user.name,
+              style: AppTextStyle.body20.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '2 hour ago',
+              style: AppTextStyle.caption13.copyWith(
+                color: AppTextColor.grey,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class LikedInforGeneralWidget extends StatelessWidget {
+  const LikedInforGeneralWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        style: DefaultTextStyle.of(context).style,
+        children: const [
+          TextSpan(text: 'Liked by '),
+          TextSpan(
+            text: 'day.21',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          TextSpan(text: ' and '),
+          TextSpan(
+            text: '23 others',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class TapToSeeAllCommentWidget extends StatelessWidget {
+  const TapToSeeAllCommentWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 20,
+      child: GestureDetector(
+        onTap: () {
+          debugPrint('Tap see all comment');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PostCommentPage()),
+          );
+        },
+        child: Text(
+          'View all comments',
+          style: AppTextStyle.caption13.copyWith(color: AppTextColor.grey),
+        ),
+      ),
+    );
+  }
+}
+
+class TapMoreToSeeDetail extends StatelessWidget {
+  const TapMoreToSeeDetail({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      child: const Text(
+        "more",
+        style: TextStyle(fontStyle: FontStyle.italic, color: AppTextColor.grey),
+      ),
+      onTap: () {
+        debugPrint('Tap more detail Post');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PostDetailPage(),
+          ),
+        );
+      },
     );
   }
 }
