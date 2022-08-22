@@ -20,11 +20,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle();
     return MaterialApp(
+      // routes: Ơ,
       debugShowCheckedModeBanner: false,
       title: 'Yope',
       theme: ThemeData(
         textTheme: const TextTheme(
-            titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15),
+            // titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15
+            ),
         appBarTheme: const AppBarTheme(
           color: AppColor.grey,
           centerTitle: true,

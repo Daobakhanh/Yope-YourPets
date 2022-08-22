@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/home/pages/newsfeed_page.dart';
 import 'package:yope_yourpet_social_networking/modules/notifications/pages/notification_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/personal_profile.dart';
 import 'package:yope_yourpet_social_networking/modules/search/pages/search_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -45,6 +46,10 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
           case 0:
             return CupertinoTabView(
               // onGenerateRoute: ,
+              // routes: {
+              //   '/postDetail': (context) => const PostDetailPage(),
+              // },
+
               builder: (context) {
                 return const CupertinoPageScaffold(
                   child: NewsFeedPage(),

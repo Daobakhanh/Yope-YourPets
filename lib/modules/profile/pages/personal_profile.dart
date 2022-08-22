@@ -385,16 +385,6 @@ class _PersonalProfileFutureBuilderState
         const Divider(
           height: 1,
         ),
-        // Expanded(
-        //   child: ListView.builder(
-        //     itemCount: widget.posts.length,
-        //     itemBuilder: (BuildContext context, int index) {
-        //       return PostWidget(
-        //         post: widget.posts[index],
-        //       );
-        //     },
-        //   ),
-        // ),
         Column(
           children: List<Widget>.generate(widget.posts.length, (index) {
             return PostWidget(

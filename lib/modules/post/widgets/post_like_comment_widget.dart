@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/pages/post_comment_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
@@ -52,7 +52,9 @@ class _InteractivePostBarState extends State<InteractivePostBar> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const PostCommentPage()),
+                        builder: (context) => PostDetailPage(
+                              post: widget.post,
+                            )),
                   );
                 },
                 child: Row(

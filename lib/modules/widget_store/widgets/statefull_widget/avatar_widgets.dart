@@ -87,9 +87,7 @@ class _CustomAvatarState extends State<CustomAvatar> {
       height: widget.size == null ? 60 : widget.size?.height,
       width: widget.size == null ? 60 : widget.size?.width,
       child: CircleAvatar(
-        // radius: 1,
-        // radius: widget.radius!,
-        backgroundColor: const Color(0xffFDCF09),
+        backgroundColor: AppColor.pinkAccent,
         backgroundImage: NetworkImage(widget.picture),
       ),
     );

@@ -51,7 +51,7 @@ class _PasswordInputState extends State<PasswordInput> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
-        style: const TextStyle(color: Colors.white),
+        // style: const TextStyle(color: Colors.white),
         controller: _controller,
         obscureText: _isObscure,
         decoration: InputDecoration(
@@ -117,7 +117,7 @@ class _TextInputAuthState extends State<TextInputAuth> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: TextField(
-        style: const TextStyle(color: Colors.white),
+        // style: const TextStyle(color: Colors.white),
         controller: _controller,
         decoration: InputDecoration(
           // filled: true,
