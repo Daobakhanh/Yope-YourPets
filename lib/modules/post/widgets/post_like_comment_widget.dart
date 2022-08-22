@@ -7,8 +7,11 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class InteractivePostInfor extends StatefulWidget {
+  final bool? isInPostDetail;
   final Post post;
-  const InteractivePostInfor({Key? key, required this.post}) : super(key: key);
+  const InteractivePostInfor(
+      {Key? key, required this.post, this.isInPostDetail})
+      : super(key: key);
 
   @override
   State<InteractivePostInfor> createState() => _InteractivePostInforState();
@@ -50,13 +53,14 @@ class _InteractivePostInforState extends State<InteractivePostInfor> {
               InkWell(
                 onTap: () {
                   debugPrint('Tap to comment');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => PostDetailPage(
-                              post: widget.post,
-                            )),
-                  );
+                  widget.isInPostDetail ??
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PostDetailPage(
+                                  post: widget.post,
+                                )),
+                      );
                 },
                 child: Row(
                   children: [
@@ -91,24 +95,35 @@ class CommentBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
     final Size size = MediaQuery.of(context).size;
-    final padding = MediaQuery.of(context).padding.left;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-          width: size.width - 100 - padding * 2,
-          child: const TextInput(
-            label: 'Comment...',
-            // height: 50,
+    return Container(
+      color: scaffoldBackgroundColor,
+      // color: AppColor.pinkAccent,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      width: size.width,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: size.width - 80,
+            child: const TextInput(
+              label: 'Comment...',
+              // height: 50,
+            ),
           ),
-        ),
-        const InkWell(
-          child: Icon(Icons.send),
-        )
-      ],
+          const SizeBox10W(),
+          InkWell(
+            onTap: () {
+              debugPrint('Tap send comment');
+              FocusScope.of(context).unfocus();
+            },
+            child: const Icon(Icons.send),
+          )
+        ],
+      ),
     );
   }
 }

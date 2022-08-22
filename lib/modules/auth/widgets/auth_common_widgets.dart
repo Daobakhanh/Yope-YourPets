@@ -120,12 +120,11 @@ class _TextInputState extends State<TextInput> {
   Widget build(BuildContext context) {
     // final thememode = Theme.of(context).brightness;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 0),
       child: SizedBox(
         // ignore: unnecessary_null_in_if_null_operators
         height: widget.height ?? null,
         child: TextField(
-          // style: const TextStyle(color: Colors.white),
           controller: _controller,
           decoration: InputDecoration(
             // filled: true,
