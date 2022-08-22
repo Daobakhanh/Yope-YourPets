@@ -31,19 +31,19 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: AppTextStyle.largeTitle,
                 ),
               ),
-              const TextInputAuth(
+              const TextInput(
                 icon: Icon(Icons.person),
                 label: 'Username',
               ),
-              const TextInputAuth(
+              const TextInput(
                 icon: Icon(Icons.email),
                 label: 'Email',
               ),
-              const TextInputAuth(
+              const TextInput(
                 icon: Icon(Icons.phone),
                 label: 'Phone',
               ),
-              const TextInputAuth(
+              const TextInput(
                 icon: Icon(Icons.calendar_month),
                 label: 'Date of birth',
               ),

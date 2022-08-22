@@ -84,7 +84,7 @@ class _PostWidgetState extends State<PostWidget> {
               pictures: widget.post.photos,
             ),
             // InteractivePostBar(post: widget.post)
-            InteractivePostBar(
+            InteractivePostInfor(
               post: widget.post,
             ),
             const SizeBox5H(),

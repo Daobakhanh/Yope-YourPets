@@ -20,32 +20,43 @@ class _PostDetailPageState extends State<PostDetailPage> {
       appBar: AppBar(
         title: const Text('Post detail'),
       ),
-      body: ListView(children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      body: Stack(
+        children: [
+          ListView(
             children: [
-              UserPostAndInteractiveWidget(post: widget.post),
-              const SizeBox10H(),
-              Text(
-                widget.post.title,
-                // style: AppTextStyle.body15,
-              ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: (Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    UserPostAndInteractiveWidget(post: widget.post),
+                    const SizeBox10H(),
+                    Text(
+                      widget.post.title,
+                      // style: AppTextStyle.body15,
+                    ),
 
-              ImageSlider(
-                pictures: widget.post.photos,
+                    ImageSlider(
+                      pictures: widget.post.photos,
+                    ),
+                    // InteractivePostBar(post: widget.post)
+                    InteractivePostInfor(
+                      post: widget.post,
+                    ),
+                    const SizeBox5H(),
+                    const LikedInforGeneralWidget(),
+                    const SizeBox20H(),
+                  ],
+                )),
               ),
-              // InteractivePostBar(post: widget.post)
-              InteractivePostBar(
-                post: widget.post,
-              ),
-              const SizeBox5H(),
-              const LikedInforGeneralWidget(),
             ],
           ),
-        ),
-      ]),
+          const Positioned(
+            child: CommentBar(),
+            bottom: 0,
+          ),
+        ],
+      ),
     );
   }
 }

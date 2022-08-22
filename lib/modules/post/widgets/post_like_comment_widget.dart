@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
-class InteractivePostBar extends StatefulWidget {
+class InteractivePostInfor extends StatefulWidget {
   final Post post;
-  const InteractivePostBar({Key? key, required this.post}) : super(key: key);
+  const InteractivePostInfor({Key? key, required this.post}) : super(key: key);
 
   @override
-  State<InteractivePostBar> createState() => _InteractivePostBarState();
+  State<InteractivePostInfor> createState() => _InteractivePostInforState();
 }
 
-class _InteractivePostBarState extends State<InteractivePostBar> {
+class _InteractivePostInforState extends State<InteractivePostInfor> {
   bool saved = false;
   @override
   Widget build(BuildContext context) {
@@ -81,6 +82,33 @@ class _InteractivePostBarState extends State<InteractivePostBar> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class CommentBar extends StatelessWidget {
+  const CommentBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
+    final padding = MediaQuery.of(context).padding.left;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          width: size.width - 100 - padding * 2,
+          child: const TextInput(
+            label: 'Comment...',
+            // height: 50,
+          ),
+        ),
+        const InkWell(
+          child: Icon(Icons.send),
+        )
+      ],
     );
   }
 }
