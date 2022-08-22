@@ -49,7 +49,7 @@ class _PasswordInputState extends State<PasswordInput> {
   Widget build(BuildContext context) {
     // final thememode = Theme.of(context).brightness;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextField(
         // style: const TextStyle(color: Colors.white),
         controller: _controller,
@@ -120,7 +120,7 @@ class _TextInputState extends State<TextInput> {
   Widget build(BuildContext context) {
     // final thememode = Theme.of(context).brightness;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 0),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: SizedBox(
         // ignore: unnecessary_null_in_if_null_operators
         height: widget.height ?? null,

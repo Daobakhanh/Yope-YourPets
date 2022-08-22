@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
+import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class InteractivePostInfor extends StatefulWidget {
   final bool? isInPostDetail;
@@ -121,6 +124,157 @@ class CommentBar extends StatelessWidget {
               FocusScope.of(context).unfocus();
             },
             child: const Icon(Icons.send),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+// class CommentWidget extends StatelessWidget {
+//   const CommentWidget({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [],
+//     );
+//   }
+// }
+
+// class UserCommentWidget extends StatelessWidget {
+//   final Comment comment;
+//   const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 15),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: CustomAvatar(
+//                       size: const Size(40, 40),
+//                       picture: comment.user!.picture!.medium,
+//                     ),
+//                   ),
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(
+//                         comment.user!.name,
+//                         style: AppTextStyle.body17.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                       Text(
+//                         '2 hour ago',
+//                         style: AppTextStyle.caption13.copyWith(
+//                           color: AppTextColor.grey,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//               InkWell(
+//                 onTap: () {
+//                   debugPrint('Tap to like comment');
+//                 },
+//                 child: const Icon(Icons.favorite),
+//               )
+//             ],
+//           ),
+//           const SizeBox10H(),
+//           Text('${comment.content}'),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class UserCommentWidget extends StatefulWidget {
+  final Comment comment;
+  const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
+
+  @override
+  State<UserCommentWidget> createState() => _UserCommentWidgetState();
+}
+
+class _UserCommentWidgetState extends State<UserCommentWidget> {
+  bool isLikedComment = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: CustomAvatar(
+                          size: const Size(40, 40),
+                          picture: widget.comment.user!.picture!.medium,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.comment.user!.name,
+                            style: AppTextStyle.body17.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '2 hour ago',
+                            style: AppTextStyle.caption13.copyWith(
+                              color: AppTextColor.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizeBox10H(),
+              SizedBox(
+                width: size.width - 100,
+                child: Text('${widget.comment.content}'),
+              )
+            ],
+          ),
+          InkWell(
+            onTap: () {
+              debugPrint('Tap to like comment');
+              setState(() {
+                isLikedComment = !isLikedComment;
+              });
+            },
+            child: Icon(
+              Icons.favorite,
+              // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
+              color: isLikedComment == true ? AppColor.pinkAccent : null,
+            ),
           )
         ],
       ),

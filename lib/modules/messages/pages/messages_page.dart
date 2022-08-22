@@ -3,8 +3,6 @@ import 'package:yope_yourpet_social_networking/models/chat/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/repos/message_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/widgets/message_widget.dart';
-import 'package:yope_yourpet_social_networking/themes/app_color.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class MessagePage extends StatefulWidget {
   const MessagePage({Key? key}) : super(key: key);

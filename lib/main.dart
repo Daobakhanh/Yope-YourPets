@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
-import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 void main() {
   runApp(const MyApp());
