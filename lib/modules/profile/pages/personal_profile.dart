@@ -28,7 +28,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
   void initState() {
     super.initState();
     posts = readJsonFromAssetPost();
-    users = readJsonFromAssetUser();
+    users = readJsonFromUserById(); //get user by id when call real API
 
     _scrollController = ScrollController()
       ..addListener(() {

@@ -5,16 +5,17 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class HorizontalListActiveUser extends StatefulWidget {
-  const HorizontalListActiveUser({Key? key, required this.dataUsers})
+class ListActiveUserHorizontalScroll extends StatefulWidget {
+  const ListActiveUserHorizontalScroll({Key? key, required this.dataUsers})
       : super(key: key);
   final Users dataUsers;
   @override
-  State<HorizontalListActiveUser> createState() =>
-      _HorizontalListActiveUserState();
+  State<ListActiveUserHorizontalScroll> createState() =>
+      _ListActiveUserHorizontalScrollState();
 }
 
-class _HorizontalListActiveUserState extends State<HorizontalListActiveUser> {
+class _ListActiveUserHorizontalScrollState
+    extends State<ListActiveUserHorizontalScroll> {
   @override
   Widget build(BuildContext context) {
     final List<User> users = widget.dataUsers.results;
