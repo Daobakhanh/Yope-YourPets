@@ -37,7 +37,7 @@ class AvatarHaveStory extends StatelessWidget {
                 radius: sizeOfAvatar / 2 - 2,
                 backgroundColor: backGroundScaffold,
                 child: CircleAvatar(
-                  radius: (sizeOfAvatar / 2) - 4,
+                  radius: (sizeOfAvatar / 2) - 6,
                   backgroundImage: NetworkImage(user!.picture!.medium),
                 ),
               ),
