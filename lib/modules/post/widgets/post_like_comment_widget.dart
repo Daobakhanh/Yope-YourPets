@@ -131,75 +131,6 @@ class CommentBar extends StatelessWidget {
   }
 }
 
-// class CommentWidget extends StatelessWidget {
-//   const CommentWidget({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [],
-//     );
-//   }
-// }
-
-// class UserCommentWidget extends StatelessWidget {
-//   final Comment comment;
-//   const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(vertical: 15),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//             children: [
-//               Row(
-//                 children: [
-//                   Padding(
-//                     padding: const EdgeInsets.only(right: 20),
-//                     child: CustomAvatar(
-//                       size: const Size(40, 40),
-//                       picture: comment.user!.picture!.medium,
-//                     ),
-//                   ),
-//                   Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text(
-//                         comment.user!.name,
-//                         style: AppTextStyle.body17.copyWith(
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                       ),
-//                       Text(
-//                         '2 hour ago',
-//                         style: AppTextStyle.caption13.copyWith(
-//                           color: AppTextColor.grey,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                 ],
-//               ),
-//               InkWell(
-//                 onTap: () {
-//                   debugPrint('Tap to like comment');
-//                 },
-//                 child: const Icon(Icons.favorite),
-//               )
-//             ],
-//           ),
-//           const SizeBox10H(),
-//           Text('${comment.content}'),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 class UserCommentWidget extends StatefulWidget {
   final Comment comment;
   const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
@@ -271,7 +202,7 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
               });
             },
             child: Icon(
-              Icons.favorite,
+              isLikedComment ? Icons.favorite : Icons.favorite_border,
               // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
               color: isLikedComment == true ? AppColor.pinkAccent : null,
             ),
