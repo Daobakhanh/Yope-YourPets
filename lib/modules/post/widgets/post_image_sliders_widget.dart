@@ -28,7 +28,7 @@ class _ImageSliderState extends State<ImageSlider> {
                   enableInfiniteScroll: false,
                   autoPlay: true,
                   enlargeCenterPage: true,
-                  aspectRatio: 2.0,
+                  aspectRatio: 1.0,
                   onPageChanged: (index, reason) {
                     setState(
                       () {
@@ -41,9 +41,9 @@ class _ImageSliderState extends State<ImageSlider> {
             ),
           ],
         ),
-        // const SizedBox(
-        //   height: 5,
-        // ),
+        const SizedBox(
+          height: 3,
+        ),
         //indicator
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,18 +59,23 @@ List<Widget> imageSliders(List<String> pictures) {
       .map(
         (item) => Container(
           margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(5),
-              ),
-              // child:
-              child: Image.network(item, fit: BoxFit.cover, width: 1000.0)),
+          // child: ClipRRect(
+          //   borderRadius: const BorderRadius.all(
+          //     Radius.circular(5),
+          //   ),
+          //   // child:
+          //   child: Image.network(item, fit: BoxFit.contain, width: 1000.0),
+          // ),
+          child: GestureDetector(
+            child: Image.network(item, fit: BoxFit.contain, width: 1000.0),
+          ),
         ),
       )
       .toList();
   return imageSlidesList;
 }
 
+//indicator
 List<Widget> indicators(imagesLength, currentIndex, BuildContext context) {
   final brightness = Theme.of(context).brightness;
   return List<Widget>.generate(imagesLength, (index) {

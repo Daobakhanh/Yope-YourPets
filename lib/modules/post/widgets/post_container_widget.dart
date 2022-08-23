@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/pages/post_comment_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -28,14 +26,17 @@ class _PostWidgetState extends State<PostWidget> {
     final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
-        // String lengthOfTitle = widget.post.title.length.toString();
-        // debugPrint('$lengthOfTitle');
+        String lengthOfTitle = widget.post.title.length.toString();
+        debugPrint(lengthOfTitle);
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PostDetailPage(),
+            builder: (context) => PostDetailPage(
+              post: widget.post,
+            ),
           ),
         );
+        // Navigator.of(context, rootNavigator: true).pushNamed('/postDetail');
       },
       child: Container(
         // height: 400,
@@ -58,6 +59,7 @@ class _PostWidgetState extends State<PostWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             UserPostAndInteractiveWidget(post: widget.post),
+            const SizeBox10H(),
             Text(
               widget.post.title,
               // maxLines: hideBio ? 1 : 2,
@@ -73,19 +75,23 @@ class _PostWidgetState extends State<PostWidget> {
             //   height: 3,
             // ),
             widget.post.title.length > 75
-                ? const TapMoreToSeeDetail()
+                ? TapMoreToSeeDetail(
+                    post: widget.post,
+                  )
                 : const SizeBox5H(),
             ImageSlider(
               pictures: widget.post.photos,
             ),
             // InteractivePostBar(post: widget.post)
-            InteractivePostBar(
+            InteractivePostInfor(
               post: widget.post,
             ),
             const SizeBox5H(),
             const LikedInforGeneralWidget(),
             const SizeBox5H(),
-            const TapToSeeAllCommentWidget()
+            TapToSeeAllCommentWidget(
+              post: widget.post,
+            )
           ],
         ),
       ),
@@ -103,7 +109,7 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 20, bottom: 10),
+          padding: const EdgeInsets.only(right: 20),
           child: CustomAvatar(
             picture: post.photos[0],
           ),
@@ -160,7 +166,9 @@ class LikedInforGeneralWidget extends StatelessWidget {
 }
 
 class TapToSeeAllCommentWidget extends StatelessWidget {
-  const TapToSeeAllCommentWidget({Key? key}) : super(key: key);
+  final Post post;
+  const TapToSeeAllCommentWidget({Key? key, required this.post})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +179,10 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
           debugPrint('Tap see all comment');
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const PostCommentPage()),
+            MaterialPageRoute(
+                builder: (context) => PostDetailPage(
+                      post: post,
+                    )),
           );
         },
         child: Text(
@@ -184,7 +195,8 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
 }
 
 class TapMoreToSeeDetail extends StatelessWidget {
-  const TapMoreToSeeDetail({Key? key}) : super(key: key);
+  final Post post;
+  const TapMoreToSeeDetail({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +210,9 @@ class TapMoreToSeeDetail extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const PostDetailPage(),
+            builder: (context) => PostDetailPage(
+              post: post,
+            ),
           ),
         );
       },

@@ -49,9 +49,9 @@ class _PasswordInputState extends State<PasswordInput> {
   Widget build(BuildContext context) {
     // final thememode = Theme.of(context).brightness;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextField(
-        style: const TextStyle(color: Colors.white),
+        // style: const TextStyle(color: Colors.white),
         controller: _controller,
         obscureText: _isObscure,
         decoration: InputDecoration(
@@ -86,17 +86,22 @@ class _PasswordInputState extends State<PasswordInput> {
   }
 }
 
-class TextInputAuth extends StatefulWidget {
+class TextInput extends StatefulWidget {
   final String? label;
+  final double? height;
   final Icon? icon;
-  const TextInputAuth({Key? key, required this.label, required this.icon})
-      : super(key: key);
+  const TextInput({
+    Key? key,
+    required this.label,
+    this.icon,
+    this.height,
+  }) : super(key: key);
 
   @override
-  State<TextInputAuth> createState() => _TextInputAuthState();
+  State<TextInput> createState() => _TextInputState();
 }
 
-class _TextInputAuthState extends State<TextInputAuth> {
+class _TextInputState extends State<TextInput> {
   late TextEditingController _controller;
 
   @override
@@ -115,24 +120,27 @@ class _TextInputAuthState extends State<TextInputAuth> {
   Widget build(BuildContext context) {
     // final thememode = Theme.of(context).brightness;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: TextField(
-        style: const TextStyle(color: Colors.white),
-        controller: _controller,
-        decoration: InputDecoration(
-          // filled: true,
-          // fillColor: thememode == ThemeMode.dark
-          //     ? AppColors.inputTextDarkMode
-          //     : AppColors.keyboardLightGray,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: SizedBox(
+        // ignore: unnecessary_null_in_if_null_operators
+        height: widget.height ?? null,
+        child: TextField(
+          controller: _controller,
+          decoration: InputDecoration(
+            // filled: true,
+            // fillColor: thememode == ThemeMode.dark
+            //     ? AppColors.inputTextDarkMode
+            //     : AppColors.keyboardLightGray,
+            border: const OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10.0),
+              ),
             ),
+            prefixIcon: widget.icon,
+            labelText: widget.height == null ? widget.label : null,
+            hintText: 'Enter ${widget.label}',
+            hintStyle: const TextStyle(color: AppTextColor.grey),
           ),
-          prefixIcon: widget.icon,
-          labelText: widget.label,
-          hintText: 'Enter ${widget.label}',
-          hintStyle: const TextStyle(color: AppTextColor.grey),
         ),
       ),
     );

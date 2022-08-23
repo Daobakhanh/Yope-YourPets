@@ -29,7 +29,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 style: AppTextStyle.body17,
               ),
             ),
-            const TextInputAuth(
+            const TextInput(
               icon: Icon(Icons.email),
               label: 'Your Email',
             ),

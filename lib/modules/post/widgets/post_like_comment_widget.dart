@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/pages/post_comment_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
+import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
+import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class InteractivePostBar extends StatefulWidget {
+class InteractivePostInfor extends StatefulWidget {
+  final bool? isInPostDetail;
   final Post post;
-  const InteractivePostBar({Key? key, required this.post}) : super(key: key);
+  const InteractivePostInfor(
+      {Key? key, required this.post, this.isInPostDetail})
+      : super(key: key);
 
   @override
-  State<InteractivePostBar> createState() => _InteractivePostBarState();
+  State<InteractivePostInfor> createState() => _InteractivePostInforState();
 }
 
-class _InteractivePostBarState extends State<InteractivePostBar> {
+class _InteractivePostInforState extends State<InteractivePostInfor> {
   bool saved = false;
   @override
   Widget build(BuildContext context) {
@@ -49,11 +56,14 @@ class _InteractivePostBarState extends State<InteractivePostBar> {
               InkWell(
                 onTap: () {
                   debugPrint('Tap to comment');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PostCommentPage()),
-                  );
+                  widget.isInPostDetail ??
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PostDetailPage(
+                                  post: widget.post,
+                                )),
+                      );
                 },
                 child: Row(
                   children: [
@@ -77,6 +87,195 @@ class _InteractivePostBarState extends State<InteractivePostBar> {
               color: saved ? AppColor.grey : null,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class CommentBar extends StatelessWidget {
+  const CommentBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+    final Size size = MediaQuery.of(context).size;
+
+    return Container(
+      color: scaffoldBackgroundColor,
+      // color: AppColor.pinkAccent,
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      width: size.width,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: size.width - 80,
+            child: const TextInput(
+              label: 'Comment...',
+              // height: 50,
+            ),
+          ),
+          const SizeBox10W(),
+          InkWell(
+            onTap: () {
+              debugPrint('Tap send comment');
+              FocusScope.of(context).unfocus();
+            },
+            child: const Icon(Icons.send),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+// class CommentWidget extends StatelessWidget {
+//   const CommentWidget({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [],
+//     );
+//   }
+// }
+
+// class UserCommentWidget extends StatelessWidget {
+//   final Comment comment;
+//   const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Padding(
+//       padding: const EdgeInsets.symmetric(vertical: 15),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//             children: [
+//               Row(
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.only(right: 20),
+//                     child: CustomAvatar(
+//                       size: const Size(40, 40),
+//                       picture: comment.user!.picture!.medium,
+//                     ),
+//                   ),
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(
+//                         comment.user!.name,
+//                         style: AppTextStyle.body17.copyWith(
+//                           fontWeight: FontWeight.bold,
+//                         ),
+//                       ),
+//                       Text(
+//                         '2 hour ago',
+//                         style: AppTextStyle.caption13.copyWith(
+//                           color: AppTextColor.grey,
+//                         ),
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//               InkWell(
+//                 onTap: () {
+//                   debugPrint('Tap to like comment');
+//                 },
+//                 child: const Icon(Icons.favorite),
+//               )
+//             ],
+//           ),
+//           const SizeBox10H(),
+//           Text('${comment.content}'),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class UserCommentWidget extends StatefulWidget {
+  final Comment comment;
+  const UserCommentWidget({Key? key, required this.comment}) : super(key: key);
+
+  @override
+  State<UserCommentWidget> createState() => _UserCommentWidgetState();
+}
+
+class _UserCommentWidgetState extends State<UserCommentWidget> {
+  bool isLikedComment = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: CustomAvatar(
+                          size: const Size(40, 40),
+                          picture: widget.comment.user!.picture!.medium,
+                        ),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.comment.user!.name,
+                            style: AppTextStyle.body17.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '2 hour ago',
+                            style: AppTextStyle.caption13.copyWith(
+                              color: AppTextColor.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizeBox10H(),
+              SizedBox(
+                width: size.width - 100,
+                child: Text('${widget.comment.content}'),
+              )
+            ],
+          ),
+          InkWell(
+            onTap: () {
+              debugPrint('Tap to like comment');
+              setState(() {
+                isLikedComment = !isLikedComment;
+              });
+            },
+            child: Icon(
+              Icons.favorite,
+              // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
+              color: isLikedComment == true ? AppColor.pinkAccent : null,
+            ),
+          )
         ],
       ),
     );

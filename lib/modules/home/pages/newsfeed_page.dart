@@ -49,7 +49,6 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
 
   @override
   Widget build(BuildContext context) {
-    final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
