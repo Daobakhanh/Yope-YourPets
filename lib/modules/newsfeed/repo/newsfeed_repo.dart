@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 
-Future<Users> readJsonFromUserById() async {
+Future<Users> readJsonFromUsersStory() async {
   const assetKey = 'assets/data/mock/users.json';
   final json = await rootBundle.loadString(assetKey); // load json from assets
   //Parses the string and returns the resulting Json object.

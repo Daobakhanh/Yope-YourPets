@@ -19,6 +19,8 @@ class AppColor {
   static const Color keyboardGray = Color(0xffD2D5DB);
   static const Color pinkAccent = Color(0xffF54B64);
   static const Color inputTextDarkMode = Color(0xff2d2b2e);
+  static const Color pinkGradientBegin = Color(0xfff0a284);
+  static const Color pinkGradientStop = Color(0xffF54B64);
 }
 
 class AppTextColor {

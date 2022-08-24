@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
+import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -16,6 +21,7 @@ class NewsFeedPage extends StatefulWidget {
 
 class _NewsFeedPageState extends State<NewsFeedPage> {
   late Future<Posts> posts;
+  late Future<Users> users;
 
   //logic scroll to top
   late ScrollController _scrollController;
@@ -24,6 +30,7 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
   void initState() {
     super.initState();
     posts = readJsonFromAssetPost();
+    users = readJsonFromUsersStory();
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -84,32 +91,48 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
           style: AppTextStyle.appName.copyWith(fontSize: 35),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: FutureBuilder(
-          future: Future.wait([posts]),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.hasData) {
-              final dataPosts = snapshot.data![0];
-              final List<Post> posts = dataPosts.results;
+      body: FutureBuilder(
+        future: Future.wait([posts, users]),
+        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+          if (snapshot.hasData) {
+            final dataPosts = snapshot.data[0];
+            final dataUsersStory = snapshot.data[1];
+            final List<Post> posts = dataPosts.results;
+            final List<User> usersStory = dataUsersStory.results;
 
-              return ListView.builder(
-                controller: _scrollController,
-                itemCount: posts.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return PostWidget(
-                    post: posts[index],
-                  );
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            return Container(
-                alignment: Alignment.center,
-                child: const CircularProgressIndicator());
-          },
-        ),
+            // return ListView.builder(
+            //   controller: _scrollController,
+            //   itemCount: posts.length,
+            //   itemBuilder: (BuildContext context, int index) {
+            //     return PostWidget(
+            //       post: posts[index],
+            //     );
+            //   },
+            // );
+            return ListView(
+              controller: _scrollController,
+              children: [
+                StoryBar(users: usersStory),
+                const Divider(
+                  height: 1,
+                ),
+                const SizeBox10H(),
+                Column(
+                  children: List<Widget>.generate(posts.length, (index) {
+                    return PostWidget(
+                      post: posts[index],
+                    );
+                  }),
+                )
+              ],
+            );
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return Container(
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator());
+        },
       ),
       floatingActionButton: _showBackToTopButton == false
           ? null

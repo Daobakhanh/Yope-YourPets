@@ -70,7 +70,7 @@ class _MessagePageState extends State<MessagePage> {
 
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: HorizontalListActiveUser(dataUsers: dataUsers),
+                  child: ListActiveUserHorizontalScroll(dataUsers: dataUsers),
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
