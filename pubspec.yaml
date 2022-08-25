@@ -38,6 +38,7 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   carousel_slider: ^4.1.1
   firebase_core: ^1.21.0
+  firebase_auth: ^3.6.4
 
 dev_dependencies:
   flutter_test:
