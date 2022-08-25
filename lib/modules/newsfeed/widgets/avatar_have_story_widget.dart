@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
@@ -131,6 +130,5 @@ class PersonalCreateStory extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }
