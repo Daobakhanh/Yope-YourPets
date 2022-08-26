@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '981373035880',
     projectId: 'yope-your-pet-e4df8',
     storageBucket: 'yope-your-pet-e4df8.appspot.com',
+    androidClientId: '981373035880-fn024rda16ggbnqji9ofbq5nnqhuiltt.apps.googleusercontent.com',
     iosClientId: '981373035880-5085j7lq85k4ds15qrbntlncsp8jorl3.apps.googleusercontent.com',
     iosBundleId: 'com.example.yopeYourpetSocialNetworking',
   );

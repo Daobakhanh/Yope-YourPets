@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "981373035880-fn024rda16ggbnqji9ofbq5nnqhuiltt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yope_yourpet_social_networking",
+            "certificate_hash": "6fee8af90ee658cb6976249b70ffce4513ae82b6"
+          }
+        },
+        {
+          "client_id": "981373035880-kbt21g6f7615j17hc0i4acd168aekpf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yope_yourpet_social_networking",
+            "certificate_hash": "169bbf9cdfae5824551c67f27126b96d90a5ef80"
+          }
+        },
+        {
           "client_id": "981373035880-p3g9uiis58aeicncboqas69nv2lmd0fk.apps.googleusercontent.com",
           "client_type": 3
         }
