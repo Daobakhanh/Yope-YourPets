@@ -6,7 +6,7 @@ Future<void> showMyDialog(BuildContext context) async {
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text('Future coming soon!'),
+        title: const Text('Feature coming soon!'),
         content: SingleChildScrollView(
           child: ListBody(
             children: const <Widget>[

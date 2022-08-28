@@ -1,6 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_sign_up_page.dart';
@@ -42,14 +40,6 @@ class _AuthPageState extends State<AuthPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Padding(
-                //   padding: const EdgeInsets.only(right: 20),
-                //   child: Text(
-                //     'Yope',
-                //     style: AppTextStyle.appName
-                //         .copyWith(fontStyle: FontStyle.italic),
-                //   ),
-                // ),
                 Image.asset(
                   'assets/images/logo.png',
                   height: 100,
@@ -119,6 +109,7 @@ class _AuthPageState extends State<AuthPage> {
                 icon: UniconsLine.facebook,
                 onTap: () {
                   debugPrint('Press fb');
+                  showMyDialog(context);
                 },
               ),
               IconLoginOptional(
@@ -128,12 +119,12 @@ class _AuthPageState extends State<AuthPage> {
                   showMyDialog(context);
                 },
               ),
-              IconLoginOptional(
+              const IconLoginOptional(
                 icon: UniconsLine.google,
-                // onTap: () => signInWithGoogle(),
-                onTap: () {
-                  debugPrint('Press google');
-                },
+                onTap: signInWithGoogle,
+                // onTap: () {
+                //   debugPrint('Press google');
+                // },
               ),
             ],
           ),
@@ -144,22 +135,4 @@ class _AuthPageState extends State<AuthPage> {
       ),
     );
   }
-}
-
-Future<UserCredential> signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
-
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
-
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
 }

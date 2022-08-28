@@ -6,19 +6,6 @@ import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashb
 import 'package:yope_yourpet_social_networking/modules/firebase/widgets/firebase_initializer.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
-//config using firebase docs
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized(); // Add this
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform,
-//   );
-
-//   // await GoogleSignIn(
-//   //         clientId: DefaultFirebaseOptions.currentPlatform.iosClientId)
-//   //     .signIn();
-//   runApp(const MyApp());
-// }
-
 void main() {
   runApp(
     const FirebaseInitializer(
