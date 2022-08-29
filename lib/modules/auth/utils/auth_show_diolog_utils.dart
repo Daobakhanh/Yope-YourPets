@@ -10,7 +10,7 @@ Future<void> showMyDialog(BuildContext context) async {
         content: SingleChildScrollView(
           child: ListBody(
             children: const <Widget>[
-              Text('Thanks you'),
+              Text('Thank you'),
               // Text('Would you like to approve of this message?'),
             ],
           ),
