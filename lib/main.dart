@@ -1,10 +1,17 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:yope_yourpet_social_networking/firebase_options.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
+import 'package:yope_yourpet_social_networking/modules/firebase/widgets/firebase_initializer.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const FirebaseInitializer(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -19,7 +26,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle();
     return MaterialApp(
-      // routes: Ơ,
       debugShowCheckedModeBanner: false,
       title: 'Yope',
       theme: ThemeData(
@@ -33,7 +39,6 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         fontFamily: "Avenir",
         primarySwatch: Colors.pink,
-        // bottomAppBarColor: Colors.yellow,
       ),
       home: const DashBoardPage(),
     );

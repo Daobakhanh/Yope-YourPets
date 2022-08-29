@@ -34,7 +34,7 @@ class AvatarHaveStory extends StatelessWidget {
               // margin: const EdgeInsets.symmetric(horizontal: 5),
               alignment: Alignment.center,
               child: CircleAvatar(
-                radius: sizeOfAvatar / 2 - 2,
+                radius: (sizeOfAvatar / 2) - 2,
                 backgroundColor: backGroundScaffold,
                 child: CircleAvatar(
                   radius: (sizeOfAvatar / 2) - 6,
@@ -63,6 +63,69 @@ class AvatarHaveStory extends StatelessWidget {
               style: AppTextStyle.caption11,
               // overflow: ,
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PersonalCreateStory extends StatelessWidget {
+  final String? personalAvatar; //personal
+  const PersonalCreateStory(String large, {Key? key, this.personalAvatar})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    const double sizeOfAvatar = 70;
+
+    return InkWell(
+      onTap: () {
+        debugPrint('Tap to see story');
+      },
+      child: SizedBox(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: sizeOfAvatar,
+              width: sizeOfAvatar,
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    radius: sizeOfAvatar / 2 - 8,
+                    backgroundImage: personalAvatar != null
+                        ? NetworkImage(personalAvatar!)
+                        : const AssetImage('assets/images/logo.png')
+                            as ImageProvider,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      height: 28,
+                      width: 28,
+                      decoration: const BoxDecoration(
+                        color: AppColor.light,
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: const Icon(
+                        Icons.add_circle,
+                        size: 24,
+                        color: AppColor.activeStateBlue,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const SizeBox5H(),
+            const Text(
+              'Your story',
+              style: AppTextStyle.caption11,
+            )
           ],
         ),
       ),

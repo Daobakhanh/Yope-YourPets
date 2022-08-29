@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "981373035880",
+    "project_id": "yope-your-pet-e4df8",
+    "storage_bucket": "yope-your-pet-e4df8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981373035880:android:ccf7b0c96c85a14cfa22dd",
+        "android_client_info": {
+          "package_name": "com.example.yope_yourpet_social_networking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981373035880-fn024rda16ggbnqji9ofbq5nnqhuiltt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yope_yourpet_social_networking",
+            "certificate_hash": "6fee8af90ee658cb6976249b70ffce4513ae82b6"
+          }
+        },
+        {
+          "client_id": "981373035880-kbt21g6f7615j17hc0i4acd168aekpf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yope_yourpet_social_networking",
+            "certificate_hash": "169bbf9cdfae5824551c67f27126b96d90a5ef80"
+          }
+        },
+        {
+          "client_id": "981373035880-p3g9uiis58aeicncboqas69nv2lmd0fk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4Cw5Vd1GOsEbQDb85qfdK0Isfkg7u0c0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981373035880-p3g9uiis58aeicncboqas69nv2lmd0fk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981373035880-5085j7lq85k4ds15qrbntlncsp8jorl3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yopeYourpetSocialNetworking"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
