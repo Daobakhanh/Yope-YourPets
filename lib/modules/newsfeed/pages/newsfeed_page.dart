@@ -5,7 +5,7 @@ import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_p
 import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -30,6 +30,8 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
     super.initState();
     posts = readJsonFromAssetPost();
     users = readJsonFromUsersStory();
+
+    //scroll to top handler
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -99,15 +101,6 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
             final List<Post> posts = dataPosts.results;
             final List<User> usersStory = dataUsersStory.results;
 
-            // return ListView.builder(
-            //   controller: _scrollController,
-            //   itemCount: posts.length,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return PostWidget(
-            //       post: posts[index],
-            //     );
-            //   },
-            // );
             return ListView(
               controller: _scrollController,
               children: [

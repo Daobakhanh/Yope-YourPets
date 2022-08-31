@@ -8,6 +8,7 @@ import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 void main() {
   runApp(
+    //config thêm observe
     const FirebaseInitializer(
       child: MyApp(),
     ),
