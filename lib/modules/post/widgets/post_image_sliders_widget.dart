@@ -1,9 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class ImageSlider extends StatefulWidget {
-  final List<String>? pictures;
+  final List<Picture>? pictures;
   const ImageSlider({Key? key, this.pictures}) : super(key: key);
 
   @override
@@ -54,7 +55,7 @@ class _ImageSliderState extends State<ImageSlider> {
   }
 }
 
-List<Widget> imageSliders(List<String> pictures) {
+List<Widget> imageSliders(List<Picture> pictures) {
   late List<Widget> imageSlidesList = pictures
       .map(
         (item) => Container(
@@ -67,7 +68,7 @@ List<Widget> imageSliders(List<String> pictures) {
           //   child: Image.network(item, fit: BoxFit.contain, width: 1000.0),
           // ),
           child: GestureDetector(
-            child: Image.network(item, fit: BoxFit.contain, width: 1000.0),
+            child: Image.network(item.url!, fit: BoxFit.cover),
           ),
         ),
       )

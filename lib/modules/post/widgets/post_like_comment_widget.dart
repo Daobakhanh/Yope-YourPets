@@ -24,8 +24,8 @@ class _InteractivePostInforState extends State<InteractivePostInfor> {
   bool saved = false;
   @override
   Widget build(BuildContext context) {
-    final int likeCounts = widget.post.likeCounts;
-    final int commentCounts = widget.post.commentCounts;
+    final int likeCounts = widget.post.likeCounts!;
+    final int commentCounts = widget.post.commentCounts!;
     return SizedBox(
       // color: AppColor.pinkAccent,
       height: 25,
@@ -41,8 +41,8 @@ class _InteractivePostInforState extends State<InteractivePostInfor> {
                   debugPrint('Tap to Like');
                 },
                 child: Icon(
-                  widget.post.liked ? Icons.favorite : Icons.favorite_border,
-                  color: widget.post.liked ? AppColor.pinkAccent : null,
+                  widget.post.liked! ? Icons.favorite : Icons.favorite_border,
+                  color: widget.post.liked! ? AppColor.pinkAccent : null,
                 ),
               ),
               const SizeBox5W(),
@@ -161,16 +161,17 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 20),
-                        child: CustomAvatar(
-                          size: const Size(40, 40),
-                          picture: widget.comment.user!.picture!.medium,
-                        ),
+                        //comment debug
+                        // child: CustomAvatar(
+                        //   size: const Size(40, 40),
+                        //   picture: widget.comment.user!.avatar!.url!,
+                        // ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.comment.user!.name,
+                            widget.comment.user!.displayName,
                             style: AppTextStyle.body17.copyWith(
                               fontWeight: FontWeight.bold,
                             ),

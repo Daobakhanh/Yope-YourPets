@@ -131,7 +131,7 @@ class _PersonalProfileFutureBuilderState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomAvatar(
-                picture: widget.user.picture!.large,
+                picture: widget.user.avatar!.url!,
                 size: const Size(80, 80),
               ),
               Row(
@@ -151,7 +151,7 @@ class _PersonalProfileFutureBuilderState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.user.name,
+                widget.user.displayName,
                 style: AppTextStyle.body20.copyWith(
                   fontWeight: FontWeight.bold,
                 ),

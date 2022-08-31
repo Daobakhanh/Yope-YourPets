@@ -143,7 +143,12 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
             return ListView(
               controller: _scrollController,
               children: [
-                // StoryBar(users: usersStory),
+                //mock users using user of posts
+                StoryBar(posts: posts),
+                const Divider(
+                  height: 1,
+                ),
+                const SizeBox10H(),
                 const Divider(
                   height: 1,
                 ),

@@ -54,12 +54,12 @@ class _PostDetailPageState extends State<PostDetailPage> {
                             UserPostAndInteractiveWidget(post: widget.post),
                             const SizeBox10H(),
                             Text(
-                              widget.post.title,
+                              widget.post.description!,
                               // style: AppTextStyle.body15,
                             ),
 
                             ImageSlider(
-                              pictures: widget.post.photos,
+                              pictures: widget.post.images,
                             ),
                             // InteractivePostBar(post: widget.post)
                             InteractivePostInfor(

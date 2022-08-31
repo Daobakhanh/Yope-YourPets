@@ -21,12 +21,17 @@ class _PostWidgetState extends State<PostWidget> {
 
   @override
   Widget build(BuildContext context) {
+    int lengthOfDes = 0;
+    if (widget.post.description != null) {
+      lengthOfDes = widget.post.description!.length;
+    }
+
     final themeData = Theme.of(context);
     final scaffoldBackgroundColor = themeData.scaffoldBackgroundColor;
     final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
-        String lengthOfTitle = widget.post.title.length.toString();
+        String lengthOfTitle = widget.post.description!.length.toString();
         debugPrint(lengthOfTitle);
         Navigator.push(
           context,
@@ -61,26 +66,25 @@ class _PostWidgetState extends State<PostWidget> {
             UserPostAndInteractiveWidget(post: widget.post),
             const SizeBox10H(),
             Text(
-              widget.post.title,
+              widget.post.description!,
               // maxLines: hideBio ? 1 : 2,
               maxLines: 2,
 
-              overflow: widget.post.title.length > 75
-                  ? TextOverflow.ellipsis
-                  : TextOverflow.clip,
+              overflow:
+                  lengthOfDes > 75 ? TextOverflow.ellipsis : TextOverflow.clip,
               // style: AppTextStyle.body15,
             ),
             // TextButton(onPressed: () {}, child: Text("more")),
             // const SizedBox(
             //   height: 3,
             // ),
-            widget.post.title.length > 75
+            lengthOfDes > 75
                 ? TapMoreToSeeDetail(
                     post: widget.post,
                   )
                 : const SizeBox5H(),
             ImageSlider(
-              pictures: widget.post.photos,
+              pictures: widget.post.images,
             ),
             // InteractivePostBar(post: widget.post)
             InteractivePostInfor(
@@ -111,14 +115,14 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: CustomAvatar(
-            picture: post.photos[0],
+            picture: post.user!.avatar!.url!,
           ),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post.user.name,
+              post.user!.displayName,
               style: AppTextStyle.body20.copyWith(
                 fontWeight: FontWeight.bold,
               ),

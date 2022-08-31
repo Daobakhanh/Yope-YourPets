@@ -27,11 +27,12 @@ class _ListActiveUserHorizontalScrollState
         itemBuilder: (BuildContext context, index) {
           return Container(
             margin: const EdgeInsets.only(left: 14, right: 5),
-            child: AvatarWithNameAndActiveStatus(
-              picture: users[index].picture!.large,
-              nameOfUser: users[index].name,
-              userStatus: users[index].status,
-            ),
+            //conment fix bug
+            // child: AvatarWithNameAndActiveStatus(
+            //   picture: users[index].picture!.large,
+            //   nameOfUser: users[index].name,
+            //   userStatus: users[index].status,
+            // ),
           );
         },
       ),
@@ -66,12 +67,13 @@ class _VerticalListUserWithLastMessageState
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 14),
                 padding: const EdgeInsets.symmetric(horizontal: 14),
-                child: AvatarWithMessageCard(
-                    lastMessage: userWithLastMessage[index].text,
-                    numOfMessageUnread: userWithLastMessage[index].unreadCount,
-                    nameOfUser: userWithLastMessage[index].user.name,
-                    picture: userWithLastMessage[index].user.picture!.large,
-                    timeOfLastMessage: userWithLastMessage[index].createdAt),
+                // conment fix bug
+                // child: AvatarWithMessageCard(
+                //     lastMessage: userWithLastMessage[index].text,
+                //     numOfMessageUnread: userWithLastMessage[index].unreadCount,
+                //     nameOfUser: userWithLastMessage[index].user.name,
+                //     picture: userWithLastMessage[index].user.picture!.large,
+                //     timeOfLastMessage: userWithLastMessage[index].createdAt),
               ),
               const Divider(
                 height: 1,

@@ -38,7 +38,7 @@ class AvatarHaveStory extends StatelessWidget {
                 backgroundColor: backGroundScaffold,
                 child: CircleAvatar(
                   radius: (sizeOfAvatar / 2) - 6,
-                  backgroundImage: NetworkImage(user!.picture!.medium),
+                  backgroundImage: NetworkImage(user!.avatar!.url!),
                 ),
               ),
 
@@ -57,9 +57,9 @@ class AvatarHaveStory extends StatelessWidget {
             ),
             const SizeBox5H(),
             Text(
-              user!.name.length <= 11
-                  ? user!.name
-                  : '${user!.name.substring(0, 9)}...',
+              user!.displayName.length <= 11
+                  ? user!.displayName
+                  : '${user!.displayName.substring(0, 9)}...',
               style: AppTextStyle.caption11,
               // overflow: ,
             ),
