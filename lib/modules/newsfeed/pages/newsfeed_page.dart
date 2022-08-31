@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/list_post_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -19,17 +21,25 @@ class NewsFeedPage extends StatefulWidget {
 }
 
 class _NewsFeedPageState extends State<NewsFeedPage> {
-  late Future<Posts> posts;
-  late Future<Users> users;
+  // late Future<Posts> posts;
+  // late Future<Users> users;
 
   //logic scroll to top
   late ScrollController _scrollController;
   bool _showBackToTopButton = false;
+
+  final _listPostBloc = ListPostsBloc();
+
   @override
   void initState() {
     super.initState();
-    posts = readJsonFromAssetPost();
-    users = readJsonFromUsersStory();
+    _listPostBloc.add('getPosts');
+
+    // Handle mock api data
+    // posts = readJsonFromAssetPost();
+    // users = readJsonFromUsersStory();
+
+    //scroll to top handler
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -90,28 +100,50 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
           style: AppTextStyle.appName.copyWith(fontSize: 35),
         ),
       ),
-      body: FutureBuilder(
-        future: Future.wait([posts, users]),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.hasData) {
-            final dataPosts = snapshot.data[0];
-            final dataUsersStory = snapshot.data[1];
-            final List<Post> posts = dataPosts.results;
-            final List<User> usersStory = dataUsersStory.results;
+      // body: FutureBuilder(
+      //   future: Future.wait([posts, users]),
+      //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      //     if (snapshot.hasData) {
+      //       final dataPosts = snapshot.data[0];
+      //       final dataUsersStory = snapshot.data[1];
+      //       final List<Post> posts = dataPosts.results;
+      //       final List<User> usersStory = dataUsersStory.results;
 
-            // return ListView.builder(
-            //   controller: _scrollController,
-            //   itemCount: posts.length,
-            //   itemBuilder: (BuildContext context, int index) {
-            //     return PostWidget(
-            //       post: posts[index],
-            //     );
-            //   },
-            // );
+      //       return ListView(
+      //         controller: _scrollController,
+      //         children: [
+      //           StoryBar(users: usersStory),
+      //           const Divider(
+      //             height: 1,
+      //           ),
+      //           const SizeBox10H(),
+      //           Column(
+      //             children: List<Widget>.generate(posts.length, (index) {
+      //               return PostWidget(
+      //                 post: posts[index],
+      //               );
+      //             }),
+      //           )
+      //         ],
+      //       );
+      //     } else if (snapshot.hasError) {
+      //       return Text('${snapshot.error}');
+      //     }
+      //     return Container(
+      //         alignment: Alignment.center,
+      //         child: const CircularProgressIndicator());
+      //   },
+      // ),
+      body: BlocBuilder<ListPostsBloc, ListPostsState>(
+        bloc: _listPostBloc,
+        builder: (context, state) {
+          final posts = state.posts;
+          final error = state.error;
+          if (posts != null) {
             return ListView(
               controller: _scrollController,
               children: [
-                StoryBar(users: usersStory),
+                // StoryBar(users: usersStory),
                 const Divider(
                   height: 1,
                 ),
@@ -125,12 +157,25 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
                 )
               ],
             );
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
           }
-          return Container(
-              alignment: Alignment.center,
-              child: const CircularProgressIndicator());
+          if (error != null) {
+            return Center(
+              child: Text(
+                error.toString(),
+              ),
+            );
+          }
+          if (posts == null || error == null) {
+            return const Center(
+              child: Text(
+                'Don\'t have state',
+              ),
+            );
+          }
+
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
       floatingActionButton: _showBackToTopButton == false
