@@ -1,14 +1,20 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:yope_yourpet_social_networking/firebase_options.dart';
+import 'package:yope_yourpet_social_networking/blocs/chatty_bloc_observer.dart';
 import 'package:yope_yourpet_social_networking/modules/dashboard/pages/app_dashboard_page.dart';
 import 'package:yope_yourpet_social_networking/modules/firebase/widgets/firebase_initializer.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
-void main() {
+void main() async {
+  // runApp(
+  //   //config thêm observe
+  //   const FirebaseInitializer(
+  //     child: MyApp(),
+  //   ),
+  // );
+  Bloc.observer = ChattyBlocObserver();
+
   runApp(
-    //config thêm observe
     const FirebaseInitializer(
       child: MyApp(),
     ),

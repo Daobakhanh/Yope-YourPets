@@ -24,7 +24,7 @@ Future<Comments> readJsonFromAssetComment() async {
   return results;
 }
 
-class PostDetaikRepo {
+class PostDetailRepo {
   Future<List<Post>?> getPosts() async {
     try {
       final res =

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 
 class ListPostsBloc extends Bloc<String, ListPostsState> {
   //String: event nhận vào
@@ -15,14 +15,14 @@ class ListPostsBloc extends Bloc<String, ListPostsState> {
       switch (event) {
         case 'getPosts':
           try {
-            final res = await PostDetaikRepo().getPosts();
+            final res = await ListPostsRepo().getPosts();
             // print(res);
             if (res != null) {
               emit(ListPostsState(posts: res));
             }
           } catch (e) {
             // ignore: avoid_print
-            debugPrint(e.toString());
+            debugPrint('Error when call repo: $e');
             emit(ListPostsState(error: e));
           }
           break;
