@@ -26,7 +26,7 @@ class LongStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColor.light,
+          backgroundColor: color ?? AppColor.light,
           fixedSize: const Size(350, 44),
         ),
       ),
@@ -58,7 +58,7 @@ class ShortStadiumButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           shape: const StadiumBorder(),
-          primary: color ?? AppColor.light,
+          backgroundColor: color ?? AppColor.light,
           fixedSize: const Size(116, 32),
         ),
       ),
@@ -85,7 +85,7 @@ class CircleButton extends StatelessWidget {
       onPressed: onTap,
       child: icon,
       style: ElevatedButton.styleFrom(
-          primary: buttonColor,
+          backgroundColor: buttonColor,
           shape: const CircleBorder(),
           fixedSize: size ?? const Size(45, 45)),
     );
@@ -118,7 +118,7 @@ class LongRectangleButton extends StatelessWidget {
         ),
         style: ElevatedButton.styleFrom(
           // shape: const StadiumBorder(),
-          primary:
+          backgroundColor:
               themeData == Brightness.dark ? AppColor.grey : AppColor.lightGray,
           fixedSize: const Size(350, 32),
         ),

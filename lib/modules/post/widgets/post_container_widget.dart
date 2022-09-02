@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
-import 'package:yope_yourpet_social_networking/modules/post/pages/post_like_detail_page.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
@@ -38,7 +37,7 @@ class _PostWidgetState extends State<PostWidget> {
           context,
           MaterialPageRoute(
             builder: (context) => PostDetailPage(
-              post: widget.post,
+              postId: widget.post.id,
             ),
           ),
         );
@@ -140,49 +139,8 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
   }
 }
 
-class LikeCountWidget extends StatefulWidget {
-  final Post post;
-
-  const LikeCountWidget({Key? key, required this.post}) : super(key: key);
-
-  @override
-  State<LikeCountWidget> createState() => _LikeCountWidgetState();
-}
-
-class _LikeCountWidgetState extends State<LikeCountWidget> {
-  int likeCount = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    likeCount = widget.post.likeCounts ?? 0;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return widget.post.likeCounts != 0
-        ? GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => PostLikeDetailPage(
-                          postId: widget.post.id,
-                        )),
-              );
-            },
-            child: Text(
-              '${widget.post.likeCounts} likes',
-              style:
-                  AppTextStyle.caption13.copyWith(fontWeight: FontWeight.bold),
-            ),
-          )
-        : const SizeBox5H();
-  }
-}
-
 class TapToSeeAllCommentWidget extends StatelessWidget {
-  final Post post;
+  final Post? post;
   const TapToSeeAllCommentWidget({Key? key, required this.post})
       : super(key: key);
 
@@ -197,7 +155,7 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetailPage(
-                      post: post,
+                      postId: post!.id,
                     )),
           );
         },
@@ -211,7 +169,7 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
 }
 
 class TapMoreToSeeDetail extends StatelessWidget {
-  final Post post;
+  final Post? post;
   const TapMoreToSeeDetail({Key? key, required this.post}) : super(key: key);
 
   @override
@@ -227,7 +185,7 @@ class TapMoreToSeeDetail extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => PostDetailPage(
-              post: post,
+              postId: post!.id,
             ),
           ),
         );

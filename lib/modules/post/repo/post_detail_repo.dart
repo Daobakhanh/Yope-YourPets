@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
-import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
@@ -26,12 +25,12 @@ Future<Comments> readJsonFromAssetComment() async {
 }
 
 class PostDetailRepo {
-  Future<List<Post>?> getPosts() async {
+  Future<Post?> getPostDetail({String? postId}) async {
+    final String url = "/v1/posts/$postId";
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
-        "/v1/posts",
-        queryParameters: {'tags': "portrait"}, //su dung filter feature
+        url,
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken,
           "Content-Type": "application/json"
@@ -42,9 +41,9 @@ class PostDetailRepo {
         return null;
       }
       // print('Dio: $res');
-      List data = res.data['data'];
+      dynamic data = res.data['data'];
 
-      return data.map((json) => Post.fromJson(json)).toList();
+      return Post.fromJson(data);
     } catch (e) {
       rethrow;
     }

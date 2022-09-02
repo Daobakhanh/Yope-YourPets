@@ -18,7 +18,7 @@ class _ListActiveUserHorizontalScrollState
     extends State<ListActiveUserHorizontalScroll> {
   @override
   Widget build(BuildContext context) {
-    final List<User> users = widget.dataUsers.results;
+    // final List<User> users = widget.dataUsers.results;
     return SizedBox(
       height: 82,
       child: ListView.builder(
@@ -55,7 +55,7 @@ class _VerticalListUserWithLastMessageState
     extends State<VerticalListUserWithLastMessage> {
   @override
   Widget build(BuildContext context) {
-    final List<Chat> userWithLastMessage = widget.dataUserWithLastChat.results;
+    // final List<Chat> userWithLastMessage = widget.dataUserWithLastChat.results;
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,

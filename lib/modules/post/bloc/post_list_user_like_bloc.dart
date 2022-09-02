@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_list_user_like_repo.dart';
 
 class ListUserLikePostBloc extends Bloc<String, ListUserLikePostState> {

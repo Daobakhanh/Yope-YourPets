@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/avatar_have_story_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 

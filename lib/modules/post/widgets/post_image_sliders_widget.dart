@@ -17,6 +17,7 @@ class _ImageSliderState extends State<ImageSlider> {
   int lengthOfPictures = 0;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     lengthOfPictures = widget.pictures!.length;

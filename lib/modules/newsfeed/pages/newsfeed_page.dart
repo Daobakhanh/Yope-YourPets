@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/list_posts_bloc.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/list_posts_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -134,7 +130,7 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
       //         child: const CircularProgressIndicator());
       //   },
       // ),
-      body: BlocBuilder<ListPostsBloc, ListPostsState>(
+      body: BlocBuilder<ListPostsBloc, ListPostsBlocState>(
         bloc: _listPostBloc,
         builder: (context, state) {
           final posts = state.posts;

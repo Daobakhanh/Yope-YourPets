@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_detail_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/common/post_detail_event.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 
 class PostDetailPage extends StatefulWidget {
-  final Post post;
+  final String? postId;
   //get id of post to fetch comment API
   // final Comments comments;
-  const PostDetailPage({Key? key, required this.post}) : super(key: key);
+  const PostDetailPage({Key? key, required this.postId}) : super(key: key);
 
   @override
   State<PostDetailPage> createState() => _PostDetailPageState();
 }
 
 class _PostDetailPageState extends State<PostDetailPage> {
-  late Future<Comments> comments;
+  String get postId => widget.postId!;
+  PostDetailBloc _postDetailBloc = PostDetailBloc();
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    comments = readJsonFromAssetComment();
+    _postDetailBloc = PostDetailBloc(postId: postId);
+    _postDetailBloc.add(PostDetailEvent.getPostDetail);
   }
 
   @override
@@ -35,13 +38,12 @@ class _PostDetailPageState extends State<PostDetailPage> {
         appBar: AppBar(
           title: const Text('Post detail'),
         ),
-        body: FutureBuilder(
-          future: Future.wait([comments]),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.hasData) {
-              debugPrint('has data');
-              final dataComments = snapshot.data![0];
-              final List<Comment> comments = dataComments.results;
+        body: BlocBuilder<PostDetailBloc, PostDetailBlocState>(
+          bloc: _postDetailBloc,
+          builder: ((context, state) {
+            final post = state.post;
+            final comments = state.comments;
+            if (post != null && comments != null) {
               return Stack(
                 children: [
                   ListView(
@@ -51,20 +53,20 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UserPostAndInteractiveWidget(post: widget.post),
+                            UserPostAndInteractiveWidget(post: post),
                             const SizeBox10H(),
                             Text(
-                              widget.post.description!,
+                              post.description!,
                               // style: AppTextStyle.body15,
                             ),
 
                             ImageSlider(
-                              pictures: widget.post.images,
+                              pictures: post.images,
                             ),
                             // InteractivePostBar(post: widget.post)
                             InteractivePostInfor(
                               isInPostDetail: false,
-                              post: widget.post,
+                              post: post,
                             ),
                             const SizeBox5H(),
                             // LikeCountWidget(
@@ -82,7 +84,10 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           children:
                               List<Widget>.generate(comments.length, (index) {
-                            return UserCommentWidget(comment: comments[index]);
+                            return UserCommentWidget(
+                              comment: comments[index],
+                              postId: postId,
+                            );
                           }),
                         ),
                       ),
@@ -97,13 +102,11 @@ class _PostDetailPageState extends State<PostDetailPage> {
                   ),
                 ],
               );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
             }
-            return Container(
-                alignment: Alignment.center,
-                child: const CircularProgressIndicator());
-          },
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }),
         ),
       ),
     );

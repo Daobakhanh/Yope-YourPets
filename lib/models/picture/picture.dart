@@ -28,7 +28,6 @@
 // }
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:yope_yourpet_social_networking/utils/photo_utils.dart';
 
 part 'picture.g.dart';
 
