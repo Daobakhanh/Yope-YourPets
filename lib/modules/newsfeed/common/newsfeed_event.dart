@@ -1,0 +1,1 @@
+enum NewsFeedEvent { getPosts, likePost }

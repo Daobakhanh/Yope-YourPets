@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_like_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
@@ -91,7 +92,6 @@ class _PostWidgetState extends State<PostWidget> {
               post: widget.post,
             ),
             const SizeBox5H(),
-            const LikedInforGeneralWidget(),
             const SizeBox5H(),
             TapToSeeAllCommentWidget(
               post: widget.post,
@@ -140,32 +140,44 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
   }
 }
 
-class LikedInforGeneralWidget extends StatelessWidget {
-  const LikedInforGeneralWidget({Key? key}) : super(key: key);
+class LikeCountWidget extends StatefulWidget {
+  final Post post;
+
+  const LikeCountWidget({Key? key, required this.post}) : super(key: key);
+
+  @override
+  State<LikeCountWidget> createState() => _LikeCountWidgetState();
+}
+
+class _LikeCountWidgetState extends State<LikeCountWidget> {
+  int likeCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    likeCount = widget.post.likeCounts ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        style: DefaultTextStyle.of(context).style,
-        children: const [
-          TextSpan(text: 'Liked by '),
-          TextSpan(
-            text: 'day.21',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextSpan(text: ' and '),
-          TextSpan(
-            text: '23 others',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
+    return widget.post.likeCounts != 0
+        ? GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PostLikeDetailPage(
+                          postId: widget.post.id,
+                        )),
+              );
+            },
+            child: Text(
+              '${widget.post.likeCounts} likes',
+              style:
+                  AppTextStyle.caption13.copyWith(fontWeight: FontWeight.bold),
             ),
           )
-        ],
-      ),
-    );
+        : const SizeBox5H();
   }
 }
 

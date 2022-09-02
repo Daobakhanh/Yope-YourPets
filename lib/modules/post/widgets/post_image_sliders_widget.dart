@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
+import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class ImageSlider extends StatefulWidget {
@@ -13,6 +14,14 @@ class ImageSlider extends StatefulWidget {
 
 class _ImageSliderState extends State<ImageSlider> {
   int _current = 0;
+  int lengthOfPictures = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    lengthOfPictures = widget.pictures!.length;
+  }
+
   final CarouselController _controller = CarouselController();
   @override
   Widget build(BuildContext context) {
@@ -46,10 +55,12 @@ class _ImageSliderState extends State<ImageSlider> {
           height: 3,
         ),
         //indicator
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: indicators(widget.pictures?.length, _current, context),
-        )
+        lengthOfPictures != 1
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: indicators(lengthOfPictures, _current, context),
+              )
+            : const SizeBox10H()
       ],
     );
   }

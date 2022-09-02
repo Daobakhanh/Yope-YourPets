@@ -67,7 +67,9 @@ class _PostDetailPageState extends State<PostDetailPage> {
                               post: widget.post,
                             ),
                             const SizeBox5H(),
-                            const LikedInforGeneralWidget(),
+                            // LikeCountWidget(
+                            //   post: widget.post,
+                            // ),
                             const SizeBox20H(),
                             const Divider(
                               height: 1,

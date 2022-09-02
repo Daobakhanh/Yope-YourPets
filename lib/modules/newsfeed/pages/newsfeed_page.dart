@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/list_post_bloc.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/list_posts_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/list_posts_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
@@ -170,13 +170,13 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
               ),
             );
           }
-          if (posts == null || error == null) {
-            return const Center(
-              child: Text(
-                'Don\'t have state',
-              ),
-            );
-          }
+          // if (posts == null || error == null) {
+          //   return const Center(
+          //     child: Text(
+          //       'Don\'t have state',
+          //     ),
+          //   );
+          // }
 
           return const Center(
             child: CircularProgressIndicator(),

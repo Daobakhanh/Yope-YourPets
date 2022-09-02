@@ -7,23 +7,36 @@ part 'comment.g.dart';
 class Comment {
   /// The generated code assumes these values exist in JSON.
   // final String id;
+  @JsonKey(name: 'id', includeIfNull: false)
   final String? id;
+
+  @JsonKey(name: 'status', includeIfNull: false)
   final int? status;
+
+  @JsonKey(name: 'created_at', includeIfNull: false)
   final DateTime? createdAt;
+
+  @JsonKey(name: 'updated_at', includeIfNull: false)
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'content', includeIfNull: false)
   final String? content;
+
+  @JsonKey(name: 'user', includeIfNull: false)
+  final User? user;
+
+  @JsonKey(name: 'liked', includeIfNull: false)
   final bool? liked;
-  final int? likeCounts;
-  final User? user; //user create post
 
   /// The generated code below handles if the corresponding JSON value doesn't
   /// exist or is empty.
 
   Comment({
+    this.updatedAt,
     this.createdAt,
     this.content,
     this.id,
     this.status,
-    this.likeCounts,
     this.liked,
     this.user,
   });

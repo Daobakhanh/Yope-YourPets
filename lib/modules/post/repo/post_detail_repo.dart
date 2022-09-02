@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
@@ -28,7 +29,7 @@ class PostDetailRepo {
   Future<List<Post>?> getPosts() async {
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
+          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
         "/v1/posts",
         queryParameters: {'tags': "portrait"}, //su dung filter feature
         options: Options(method: 'get', headers: {
