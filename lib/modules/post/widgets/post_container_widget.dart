@@ -7,6 +7,7 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
+import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
 class PostWidget extends StatefulWidget {
   final Post post;
@@ -127,7 +128,7 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
               ),
             ),
             Text(
-              '2 hour ago',
+              dateTimeDetect(post.createdAt.toString()),
               style: AppTextStyle.caption13.copyWith(
                 color: AppTextColor.grey,
               ),

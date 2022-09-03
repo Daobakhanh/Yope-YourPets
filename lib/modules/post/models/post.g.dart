@@ -7,6 +7,9 @@ part of 'post.dart';
 // **************************************************************************
 
 Post _$PostFromJson(Map<String, dynamic> json) => Post(
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
       id: json['id'] as String?,
       status: json['status'] as int?,
       title: json['title'] as String?,
@@ -44,6 +47,7 @@ Map<String, dynamic> _$PostToJson(Post instance) {
   writeNotNull('like_counts', instance.likeCounts);
   writeNotNull('liked', instance.liked);
   writeNotNull('user', instance.user);
+  writeNotNull('created_at', instance.createdAt?.toIso8601String());
   return val;
 }
 

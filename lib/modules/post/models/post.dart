@@ -51,6 +51,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/photo.dart';
+import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
 part 'post.g.dart';
 
@@ -86,7 +87,11 @@ class Post {
   @JsonKey(name: 'user', includeIfNull: false)
   final User? user;
 
+  @JsonKey(name: 'created_at', includeIfNull: false)
+  final DateTime? createdAt;
+
   Post({
+    this.createdAt,
     this.id,
     this.status,
     this.title,
@@ -102,7 +107,7 @@ class Post {
   // String? get urlUserAvatar => user?.imgUrl;
   //set size with widget
 
-  String get displayName => user?.displayName ?? '';
+  // String get displayName => user?.displayName ?? '';
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 

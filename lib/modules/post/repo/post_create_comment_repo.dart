@@ -10,7 +10,7 @@ class CreateCommentRepo {
     String url = "/v1/posts/$postId/comments";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
+          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).post(
         url,
         data: {
           "content": content,

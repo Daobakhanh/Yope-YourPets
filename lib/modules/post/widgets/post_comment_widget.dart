@@ -133,71 +133,73 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        //comment debug
-                        child: CustomAvatar(
-                          size: const Size(40, 40),
-                          picture: comment.user!.avatar!.url!,
+    return GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          //comment debug
+                          child: CustomAvatar(
+                            size: const Size(40, 40),
+                            picture: comment.user!.avatar!.url!,
+                          ),
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            widget.comment.user!.displayName,
-                            style: AppTextStyle.body17.copyWith(
-                              fontWeight: FontWeight.bold,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.comment.user!.displayName,
+                              style: AppTextStyle.body17.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          Text(
-                            dateTimeDetect(comment.createdAt.toString()),
-                            style: AppTextStyle.caption13.copyWith(
-                              color: AppTextColor.grey,
+                            Text(
+                              dateTimeDetect(comment.createdAt.toString()),
+                              style: AppTextStyle.caption13.copyWith(
+                                color: AppTextColor.grey,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizeBox10H(),
-              SizedBox(
-                width: size.width - 100,
-                child: Text('${widget.comment.content}'),
-              )
-            ],
-          ),
-          InkWell(
-            onTap: () {
-              debugPrint('Tap to React comment');
-              setState(() {
-                isLikedComment = !isLikedComment;
-              });
-              _handleLikeComment(isLikedComment);
-            },
-            child: Icon(
-              isLikedComment ? Icons.favorite : Icons.favorite_border,
-              // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
-              color: isLikedComment == true ? AppColor.pinkAccent : null,
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizeBox10H(),
+                SizedBox(
+                  width: size.width - 100,
+                  child: Text('${widget.comment.content}'),
+                )
+              ],
             ),
-          )
-        ],
+            InkWell(
+              onTap: () {
+                debugPrint('Tap to React comment');
+                setState(() {
+                  isLikedComment = !isLikedComment;
+                });
+                _handleLikeComment(isLikedComment);
+              },
+              child: Icon(
+                isLikedComment ? Icons.favorite : Icons.favorite_border,
+                // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
+                color: isLikedComment == true ? AppColor.pinkAccent : null,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
