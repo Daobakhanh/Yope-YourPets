@@ -39,8 +39,11 @@
 //   Map<String, dynamic> toJson() => _$UsersToJson(this);
 // }
 
+import 'dart:developer';
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
+import 'package:yope_yourpet_social_networking/models/user/counter_infor.dart';
 
 part 'user.g.dart';
 
@@ -61,7 +64,16 @@ class User {
   @JsonKey(name: 'avatar')
   final Picture? avatar;
 
-  User({this.id, this.username, this.firstName, this.lastName, this.avatar});
+  @JsonKey(name: 'counters')
+  final Counters? counters;
+
+  User(
+      {this.counters,
+      this.id,
+      this.username,
+      this.firstName,
+      this.lastName,
+      this.avatar});
 
   String get displayFirstName => firstName ?? '';
 

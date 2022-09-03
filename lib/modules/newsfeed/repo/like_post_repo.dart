@@ -9,7 +9,7 @@ class LikePostRepo {
     debugPrint(url.toString());
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
+          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).post(
         url,
         options: Options(method: 'post', headers: {
           "Authorization": "Bearer " + userToken,

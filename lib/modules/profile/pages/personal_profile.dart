@@ -1,10 +1,15 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/blocs/personal_profile_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/repos/personal_profile_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
@@ -19,17 +24,14 @@ class PersonalProfilePage extends StatefulWidget {
 }
 
 class _PersonalProfilePageState extends State<PersonalProfilePage> {
-  late Future<Users> users;
-  late Future<Posts> posts;
+  final _profileBloc = ProfileBloc();
   String name = 'My Profile';
   late ScrollController _scrollController;
   bool _showBackToTopButton = false;
   @override
   void initState() {
     super.initState();
-    posts = readJsonFromAssetPost();
-    users = readJsonFromUserById(); //get user by id when call real API
-
+    _profileBloc.add(ProfileEvent.getPersonalProfile);
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -75,28 +77,37 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
               onPressed: _scrollToTop,
               child: const Icon(Icons.arrow_upward, color: AppColor.light),
             ),
-      body: FutureBuilder(
-        future: Future.wait([users, posts]),
-        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          if (snapshot.hasData) {
-            final dataUsers = snapshot.data![0];
-            final dataPosts = snapshot.data![1];
-            final List<User> users = dataUsers.results;
-            final List<Post> posts = dataPosts.results;
+      // body: FutureBuilder(
+      //   future: Future.wait([users, posts]),
+      //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+      //     if (snapshot.hasData) {
+      //       final dataUsers = snapshot.data![0];
+      //       final dataPosts = snapshot.data![1];
+      //       final List<User> users = dataUsers.results;
+      //       final List<Post> posts = dataPosts.results;
 
-            return PersonalProfileFutureBuilder(
-              posts: posts,
-              user: users[0],
-              controller: _scrollController,
-            );
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
-          return Container(
-              alignment: Alignment.center,
-              child: const CircularProgressIndicator());
-        },
-      ),
+      //       return PersonalProfileFutureBuilder(
+      //         posts: posts,
+      //         user: users[0],
+      //         controller: _scrollController,
+      //       );
+      //     } else if (snapshot.hasError) {
+      //       return Text('${snapshot.error}');
+      //     }
+      //     return Container(
+      //         alignment: Alignment.center,
+      //         child: const CircularProgressIndicator());
+      //   },
+      // ),
+      body: BlocBuilder<ProfileBloc, ProfileBlocState>(
+          builder: ((context, state) {
+        final user = state.user;
+        final error = state.error;
+        if (user != null) {}
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      })),
     );
   }
 }
