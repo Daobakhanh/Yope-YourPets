@@ -25,15 +25,18 @@ class LikePostRepo {
   }
 
   static Future<bool> unlike(String? id) async {
+    String url = "/v1/posts/$id/unlike";
+    debugPrint(url.toString());
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
-        "/v1/posts/$id/unlike",
+        url,
         options: Options(method: 'post', headers: {
           "Authorization": "Bearer " + userToken,
           // "Content-Type": "application/json"
         }),
       );
+      debugPrint(res.statusCode.toString());
       return res.statusCode == 200;
     } catch (e) {
       rethrow;

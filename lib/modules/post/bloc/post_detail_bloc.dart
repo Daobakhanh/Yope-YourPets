@@ -9,9 +9,9 @@ import 'package:yope_yourpet_social_networking/modules/post/repo/post_list_comme
 class PostDetailBloc extends Bloc<PostDetailEvent, PostDetailBlocState> {
   //String: event nhận vào
   //ListPostsState : state để cập nhật UI
-  final String? postId;
+  final String postId;
   //mac dinh khoi tao ban dau la null
-  PostDetailBloc({this.postId}) : super(PostDetailBlocState()) {
+  PostDetailBloc({required this.postId}) : super(PostDetailBlocState()) {
     //event: gia tri truyen vao
     //emit: callback emit
     on((event, emit) async {

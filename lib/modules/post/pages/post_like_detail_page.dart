@@ -22,6 +22,7 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
     // TODO: implement initState
     super.initState();
     _listUserLikePostBloc = ListUserLikePostBloc(postId: postId);
+    // Future.delayed(const Duration(milliseconds: 2000));
     _listUserLikePostBloc.add('getListUserLikePost');
   }
 
@@ -33,31 +34,39 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
       ),
       // body: Center(child: Text(widget.postId!)),
       body: BlocBuilder<ListUserLikePostBloc, ListUserLikePostState>(
-          bloc: _listUserLikePostBloc,
-          builder: (context, state) {
-            final users = state.users;
-            // final error = state.error;
-            if (users != null) {
-              return ListView.builder(
-                padding: const EdgeInsets.all(8),
-                itemCount: users.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: 50,
-                    // color: Colors.amber[colorCodes[index]],
-                    child: Center(
-                      child: UserLikePostWidget(
-                        user: users[index],
-                      ),
+        bloc: _listUserLikePostBloc,
+        builder: (context, state) {
+          final users = state.users;
+          final error = state.error;
+          if (users != null) {
+            return ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: users.length,
+              itemBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: 50,
+                  // color: Colors.amber[colorCodes[index]],
+                  child: Center(
+                    child: UserLikePostWidget(
+                      user: users[index],
                     ),
-                  );
-                },
-              );
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
+                  ),
+                );
+              },
             );
-          }),
+          }
+          // if (users == null) {
+          //   return Center(
+          //     child: Text(
+          //       error.toString(),
+          //     ),
+          //   );
+          // }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }

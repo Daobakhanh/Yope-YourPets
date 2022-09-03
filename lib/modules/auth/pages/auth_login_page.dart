@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
             ),
-            const TextInput(
+            const TextInputCustom(
               icon: Icon(Icons.person),
               label: 'Username',
             ),

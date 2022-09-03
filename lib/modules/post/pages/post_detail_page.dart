@@ -20,7 +20,7 @@ class PostDetailPage extends StatefulWidget {
 
 class _PostDetailPageState extends State<PostDetailPage> {
   String get postId => widget.postId!;
-  PostDetailBloc _postDetailBloc = PostDetailBloc();
+  late PostDetailBloc _postDetailBloc;
   @override
   void initState() {
     // ignore: todo
@@ -96,8 +96,11 @@ class _PostDetailPageState extends State<PostDetailPage> {
                       )
                     ],
                   ),
-                  const Positioned(
-                    child: CommentBar(),
+                  Positioned(
+                    child: CommentBar(
+                      callback: handleCallCreateCommentCallBack,
+                      postId: postId,
+                    ),
                     bottom: 10,
                   ),
                 ],
@@ -110,5 +113,9 @@ class _PostDetailPageState extends State<PostDetailPage> {
         ),
       ),
     );
+  }
+
+  void handleCallCreateCommentCallBack() {
+    _postDetailBloc.add(PostDetailEvent.getPostDetail);
   }
 }
