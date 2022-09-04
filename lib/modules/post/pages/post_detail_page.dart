@@ -7,6 +7,7 @@ import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
@@ -22,17 +23,20 @@ class PostDetailPage extends StatefulWidget {
 
 class _PostDetailPageState extends State<PostDetailPage> {
   String get postId => widget.postId!;
+  // final PostDetailEventMap postDetailEvent = PostDetailEventMap(postId: postId, event: event);
   late TextEditingController _controller;
   String content = '';
-  late PostDetailBloc _postDetailBloc;
+  final _postDetailBloc = PostDetailBloc();
+
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
     _controller = TextEditingController();
-    _postDetailBloc = PostDetailBloc(postId: postId);
-    _postDetailBloc.add(PostDetailEvent.getPostDetail);
+    // _postDetailBloc = PostDetailBloc(postId: postId);
+    _postDetailBloc.add(PostDetailEventClass(
+        event: PostDetailEvent.getPostDetail, postId: postId));
   }
 
   @override
@@ -159,8 +163,9 @@ class _PostDetailPageState extends State<PostDetailPage> {
                               debugPrint('Tap send comment');
                               FocusScope.of(context).unfocus();
                               _handleCreateComment(content);
-                              _postDetailBloc
-                                  .add(PostDetailEvent.getPostDetail);
+                              _postDetailBloc.add(PostDetailEventClass(
+                                  postId: postId,
+                                  event: PostDetailEvent.getPostDetail));
                               _controller.clear();
                             },
                             child: const Icon(Icons.send),

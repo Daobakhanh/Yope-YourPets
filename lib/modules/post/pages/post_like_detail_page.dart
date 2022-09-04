@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_list_user_like_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/common/post_list_user_like_event.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_list_user_like_widget.dart';
 
 class PostLikeDetailPage extends StatefulWidget {
@@ -14,16 +15,16 @@ class PostLikeDetailPage extends StatefulWidget {
 class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
   String get postId => widget.postId!;
 
-  ListUserLikePostBloc _listUserLikePostBloc = ListUserLikePostBloc();
+  final _listUserLikePostBloc = ListUserLikePostBloc();
 
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    _listUserLikePostBloc = ListUserLikePostBloc(postId: postId);
     // Future.delayed(const Duration(milliseconds: 2000));
-    _listUserLikePostBloc.add('getListUserLikePost');
+    _listUserLikePostBloc.add(ListUserLikePostEvent(
+        postId: postId, event: ListUserLikePostEnum.getListUserLikePost));
   }
 
   @override

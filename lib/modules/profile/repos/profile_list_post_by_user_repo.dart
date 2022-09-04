@@ -3,7 +3,7 @@ import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
 class ListPostsByUserIdRepo {
-  Future<List<Post>?> getPosts(String userId) async {
+  Future<List<Post>?> getPostsOfUserId(String userId) async {
     String url = '/v1/users/$userId/posts';
     try {
       final res =
