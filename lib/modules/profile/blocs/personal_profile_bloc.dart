@@ -10,18 +10,18 @@ import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_lis
 class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
   //String: event nhận vào
   //ListPostsState : state để cập nhật UI
-  final String userId;
   //mac dinh khoi tao ban dau la null
-  ProfileBloc({required this.userId}) : super(ProfileBlocState()) {
+  ProfileBloc() : super(ProfileBlocState()) {
     //event: gia tri truyen vao
     //emit: callback emit
-    on((event, emit) async {
-      switch (event) {
-        case ProfileEvent.getPersonalProfile:
+    on<ProfileEvent>((event, emit) async {
+      switch (event.getProfileEvent) {
+        case ProfileEventEnum.getPersonalProfile:
           try {
             final resPersonalProfile =
                 await PersonalProfileRepo().getPersonalProfile();
-            final resListPost = await ListPostsByUserIdRepo().getPosts(userId);
+            final resListPost =
+                await ListPostsByUserIdRepo().getPostsOfUserId(event.getUserId);
             // print(res);
             if (resPersonalProfile != null && resListPost != null) {
               emit(
@@ -34,10 +34,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
             emit(ProfileBlocState(error: e));
           }
           break;
-        case ProfileEvent.getUserDetailById:
+        case ProfileEventEnum.getUserDetailById:
           try {
-            final res = await PersonalProfileRepo().getUserDetailById(userId);
-            final resListPost = await ListPostsByUserIdRepo().getPosts(userId);
+            final res =
+                await PersonalProfileRepo().getUserDetailById(event.getUserId);
+            final resListPost =
+                await ListPostsByUserIdRepo().getPostsOfUserId(event.getUserId);
 
             // print(res);
             if (res != null) {

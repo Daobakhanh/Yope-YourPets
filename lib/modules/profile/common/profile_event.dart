@@ -1,7 +1,16 @@
-enum ProfileEvent { getPersonalProfile, getUserDetailById }
+enum ProfileEventEnum { getPersonalProfile, getUserDetailById }
 
-class ProfileEventMap {
+class ProfileEvent {
   final String userId;
-  final ProfileEvent event;
-  ProfileEventMap({required this.userId, required this.event});
+  final ProfileEventEnum event;
+
+  String get getUserId {
+    return userId;
+  }
+
+  ProfileEventEnum get getProfileEvent {
+    return event;
+  }
+
+  ProfileEvent({required this.userId, required this.event});
 }
