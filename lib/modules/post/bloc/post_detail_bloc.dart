@@ -5,30 +5,28 @@ import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart'
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_list_comment_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 
-class PostDetailBloc extends Bloc<PostDetailEvent, PostDetailBlocState> {
+class PostDetailBloc extends Bloc<PostDetailEventClass, PostDetailBlocState> {
   //String: event nhận vào
   //ListPostsState : state để cập nhật UI
-  final String? postId;
   //mac dinh khoi tao ban dau la null
-  PostDetailBloc({required this.postId}) : super(PostDetailBlocState()) {
+  PostDetailBloc() : super(PostDetailBlocState()) {
     //event: gia tri truyen vao
     //emit: callback emit
-    on((event, emit) async {
-      switch (event) {
+    on<PostDetailEventClass>((event, emit) async {
+      switch (event.postDetailEvent) {
         case PostDetailEvent.getPostDetail:
           try {
             final resPostDetail =
-                await PostDetailRepo().getPostDetail(postId: postId);
+                await PostDetailRepo().getPostDetail(postId: event.getPostID);
             final resPostListComment = await ListUserCommentRepo()
-                .getListUserCommentPost(postId: postId);
-            // print(res);
+                .getListUserCommentPost(postId: event.getPostID);
             if (resPostDetail != null) {
               emit(PostDetailBlocState(
                   post: resPostDetail, comments: resPostListComment));
             }
           } catch (e) {
-            // ignore: avoid_print
             debugPrint('Error when call repo: $e');
             emit(PostDetailBlocState(error: e));
           }

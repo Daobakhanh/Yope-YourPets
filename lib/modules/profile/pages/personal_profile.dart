@@ -22,6 +22,7 @@ class PersonalProfilePage extends StatefulWidget {
 
 class _PersonalProfilePageState extends State<PersonalProfilePage> {
   late ProfileBloc _profileBloc;
+
   String name = 'My Profile';
   late ScrollController _scrollController;
   bool _showBackToTopButton = false;
@@ -196,7 +197,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                     height: 1,
                   ),
                   Column(
-                    children: List<Widget>.generate(posts!.length, (index) {
+                    children: List<Widget>.generate(posts.length, (index) {
                       return PostWidget(
                         post: posts[index],
                       );
