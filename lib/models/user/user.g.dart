@@ -10,6 +10,9 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       counters: json['counters'] == null
           ? null
           : Counters.fromJson(json['counters'] as Map<String, dynamic>),
+      profile: json['profile'] == null
+          ? null
+          : Profile.fromJson(json['profile'] as Map<String, dynamic>),
       id: json['id'] as String?,
       username: json['username'] as String?,
       firstName: json['first_name'] as String?,
@@ -26,6 +29,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'last_name': instance.lastName,
       'avatar': instance.avatar,
       'counters': instance.counters,
+      'profile': instance.profile,
     };
 
 Users _$UsersFromJson(Map<String, dynamic> json) => Users(

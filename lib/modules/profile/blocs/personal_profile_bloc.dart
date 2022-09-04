@@ -5,23 +5,28 @@ import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/list_posts_
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/personal_profile_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_post_by_user_repo.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
   //String: event nhận vào
   //ListPostsState : state để cập nhật UI
-  final String? userId;
+  final String userId;
   //mac dinh khoi tao ban dau la null
-  ProfileBloc({this.userId}) : super(ProfileBlocState()) {
+  ProfileBloc({required this.userId}) : super(ProfileBlocState()) {
     //event: gia tri truyen vao
     //emit: callback emit
     on((event, emit) async {
       switch (event) {
         case ProfileEvent.getPersonalProfile:
           try {
-            final res = await PersonalProfileRepo().getPersonalProfile();
+            final resPersonalProfile =
+                await PersonalProfileRepo().getPersonalProfile();
+            final resListPost = await ListPostsByUserIdRepo().getPosts(userId);
             // print(res);
-            if (res != null) {
-              emit(ProfileBlocState(user: res));
+            if (resPersonalProfile != null && resListPost != null) {
+              emit(
+                ProfileBlocState(user: resPersonalProfile, posts: resListPost),
+              );
             }
           } catch (e) {
             // ignore: avoid_print
@@ -31,10 +36,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
           break;
         case ProfileEvent.getUserDetailById:
           try {
-            final res = await PersonalProfileRepo().getUserDetailById(userId!);
+            final res = await PersonalProfileRepo().getUserDetailById(userId);
+            final resListPost = await ListPostsByUserIdRepo().getPosts(userId);
+
             // print(res);
             if (res != null) {
-              emit(ProfileBlocState(user: res));
+              emit(ProfileBlocState(user: res, posts: resListPost));
             }
           } catch (e) {
             // ignore: avoid_print
@@ -51,6 +58,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
 class ProfileBlocState {
   final Object? error;
   final User? user;
+  final List<Post>? posts;
 
-  ProfileBlocState({this.error, this.user});
+  ProfileBlocState({this.error, this.user, this.posts});
 }
