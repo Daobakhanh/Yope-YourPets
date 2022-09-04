@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
+import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
 class PostWidget extends StatefulWidget {
   final Post post;
@@ -21,18 +22,23 @@ class _PostWidgetState extends State<PostWidget> {
 
   @override
   Widget build(BuildContext context) {
+    int lengthOfDes = 0;
+    if (widget.post.description != null) {
+      lengthOfDes = widget.post.description!.length;
+    }
+
     final themeData = Theme.of(context);
     final scaffoldBackgroundColor = themeData.scaffoldBackgroundColor;
     final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
-        String lengthOfTitle = widget.post.title.length.toString();
+        String lengthOfTitle = widget.post.description!.length.toString();
         debugPrint(lengthOfTitle);
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => PostDetailPage(
-              post: widget.post,
+              postId: widget.post.id,
             ),
           ),
         );
@@ -61,33 +67,31 @@ class _PostWidgetState extends State<PostWidget> {
             UserPostAndInteractiveWidget(post: widget.post),
             const SizeBox10H(),
             Text(
-              widget.post.title,
+              widget.post.description!,
               // maxLines: hideBio ? 1 : 2,
               maxLines: 2,
 
-              overflow: widget.post.title.length > 75
-                  ? TextOverflow.ellipsis
-                  : TextOverflow.clip,
+              overflow:
+                  lengthOfDes > 75 ? TextOverflow.ellipsis : TextOverflow.clip,
               // style: AppTextStyle.body15,
             ),
             // TextButton(onPressed: () {}, child: Text("more")),
             // const SizedBox(
             //   height: 3,
             // ),
-            widget.post.title.length > 75
+            lengthOfDes > 75
                 ? TapMoreToSeeDetail(
                     post: widget.post,
                   )
                 : const SizeBox5H(),
             ImageSlider(
-              pictures: widget.post.photos,
+              pictures: widget.post.images,
             ),
             // InteractivePostBar(post: widget.post)
             InteractivePostInfor(
               post: widget.post,
             ),
             const SizeBox5H(),
-            const LikedInforGeneralWidget(),
             const SizeBox5H(),
             TapToSeeAllCommentWidget(
               post: widget.post,
@@ -111,20 +115,20 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: CustomAvatar(
-            picture: post.photos[0],
+            picture: post.user!.avatar!.url!,
           ),
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              post.user.name,
+              post.user!.displayName,
               style: AppTextStyle.body20.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              '2 hour ago',
+              dateTimeDetect(post.createdAt.toString()),
               style: AppTextStyle.caption13.copyWith(
                 color: AppTextColor.grey,
               ),
@@ -136,37 +140,8 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
   }
 }
 
-class LikedInforGeneralWidget extends StatelessWidget {
-  const LikedInforGeneralWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        style: DefaultTextStyle.of(context).style,
-        children: const [
-          TextSpan(text: 'Liked by '),
-          TextSpan(
-            text: 'day.21',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          TextSpan(text: ' and '),
-          TextSpan(
-            text: '23 others',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class TapToSeeAllCommentWidget extends StatelessWidget {
-  final Post post;
+  final Post? post;
   const TapToSeeAllCommentWidget({Key? key, required this.post})
       : super(key: key);
 
@@ -181,7 +156,7 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
                 builder: (context) => PostDetailPage(
-                      post: post,
+                      postId: post!.id,
                     )),
           );
         },
@@ -195,7 +170,7 @@ class TapToSeeAllCommentWidget extends StatelessWidget {
 }
 
 class TapMoreToSeeDetail extends StatelessWidget {
-  final Post post;
+  final Post? post;
   const TapMoreToSeeDetail({Key? key, required this.post}) : super(key: key);
 
   @override
@@ -211,7 +186,7 @@ class TapMoreToSeeDetail extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) => PostDetailPage(
-              post: post,
+              postId: post!.id,
             ),
           ),
         );

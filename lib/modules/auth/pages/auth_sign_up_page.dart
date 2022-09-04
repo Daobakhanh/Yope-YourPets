@@ -32,19 +32,19 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: AppTextStyle.largeTitle,
                 ),
               ),
-              const TextInput(
+              const TextInputCustom(
                 icon: Icon(Icons.person),
                 label: 'Username',
               ),
-              const TextInput(
+              const TextInputCustom(
                 icon: Icon(Icons.email),
                 label: 'Email',
               ),
-              const TextInput(
+              const TextInputCustom(
                 icon: Icon(Icons.phone),
                 label: 'Phone',
               ),
-              const TextInput(
+              const TextInputCustom(
                 icon: Icon(Icons.calendar_month),
                 label: 'Date of birth',
               ),

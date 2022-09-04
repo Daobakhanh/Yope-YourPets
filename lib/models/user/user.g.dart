@@ -7,40 +7,30 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
-      json['email'] as String?,
-      json['dob'] == null ? null : DateTime.parse(json['dob'] as String),
-      json['phone'] as String?,
-      json['picture'] == null
+      counters: json['counters'] == null
           ? null
-          : Picture.fromJson(json['picture'] as Map<String, dynamic>),
-      name: json['name'] as String,
-      gender: $enumDecode(_$GenderEnumMap, json['gender']),
-      registered: DateTime.parse(json['registered'] as String),
-      status: $enumDecode(_$UserStatusEnumMap, json['status']),
+          : Counters.fromJson(json['counters'] as Map<String, dynamic>),
+      profile: json['profile'] == null
+          ? null
+          : Profile.fromJson(json['profile'] as Map<String, dynamic>),
+      id: json['id'] as String?,
+      username: json['username'] as String?,
+      firstName: json['first_name'] as String?,
+      lastName: json['last_name'] as String?,
+      avatar: json['avatar'] == null
+          ? null
+          : Picture.fromJson(json['avatar'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
-      'name': instance.name,
-      'gender': _$GenderEnumMap[instance.gender]!,
-      'email': instance.email,
-      'dob': instance.dob?.toIso8601String(),
-      'registered': instance.registered.toIso8601String(),
-      'phone': instance.phone,
-      'status': _$UserStatusEnumMap[instance.status]!,
-      'picture': instance.picture,
+      'id': instance.id,
+      'username': instance.username,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
+      'avatar': instance.avatar,
+      'counters': instance.counters,
+      'profile': instance.profile,
     };
-
-const _$GenderEnumMap = {
-  Gender.male: 'male',
-  Gender.female: 'female',
-  Gender.other: 'other',
-};
-
-const _$UserStatusEnumMap = {
-  UserStatus.offline: 'offline',
-  UserStatus.online: 'online',
-  UserStatus.private: 'private',
-};
 
 Users _$UsersFromJson(Map<String, dynamic> json) => Users(
       results: (json['results'] as List<dynamic>)

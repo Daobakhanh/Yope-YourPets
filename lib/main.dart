@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
           color: AppColor.grey,
           centerTitle: true,
         ),
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         fontFamily: "Avenir",
         primarySwatch: Colors.pink,
       ),

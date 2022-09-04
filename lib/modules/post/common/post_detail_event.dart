@@ -1,0 +1,1 @@
+enum PostDetailEvent { getPostDetail, sendComment }

@@ -25,12 +25,12 @@ Future<Comments> readJsonFromAssetComment() async {
 }
 
 class PostDetailRepo {
-  Future<List<Post>?> getPosts() async {
+  Future<Post?> getPostDetail({String? postId}) async {
+    final String url = "/v1/posts/$postId";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
-        "/v1/posts",
-        queryParameters: {'tags': "portrait"}, //su dung filter feature
+          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
+        url,
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken,
           "Content-Type": "application/json"
@@ -41,9 +41,9 @@ class PostDetailRepo {
         return null;
       }
       // print('Dio: $res');
-      List data = res.data['data'];
+      dynamic data = res.data['data'];
 
-      return data.map((json) => Post.fromJson(json)).toList();
+      return Post.fromJson(data);
     } catch (e) {
       rethrow;
     }

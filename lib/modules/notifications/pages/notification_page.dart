@@ -14,7 +14,7 @@ class _NotificationPageState extends State<NotificationPage> {
       appBar: AppBar(
         title: const Text('Notification'),
       ),
-      body: const Text('Notification Coming soon'),
+      body: const Center(child: Text('Feature coming soon')),
     );
   }
 }

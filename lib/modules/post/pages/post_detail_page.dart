@@ -1,47 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_detail_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/common/post_detail_event.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_comment_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
+import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class PostDetailPage extends StatefulWidget {
-  final Post post;
+  final String? postId;
   //get id of post to fetch comment API
   // final Comments comments;
-  const PostDetailPage({Key? key, required this.post}) : super(key: key);
+  const PostDetailPage({Key? key, required this.postId}) : super(key: key);
 
   @override
   State<PostDetailPage> createState() => _PostDetailPageState();
 }
 
 class _PostDetailPageState extends State<PostDetailPage> {
-  late Future<Comments> comments;
+  String get postId => widget.postId!;
+  late TextEditingController _controller;
+  String content = '';
+  late PostDetailBloc _postDetailBloc;
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
-    comments = readJsonFromAssetComment();
+    _controller = TextEditingController();
+    _postDetailBloc = PostDetailBloc(postId: postId);
+    _postDetailBloc.add(PostDetailEvent.getPostDetail);
   }
 
   @override
   Widget build(BuildContext context) {
+    final scaffoldBackgroundColor = Theme.of(context).scaffoldBackgroundColor;
+    final Size size = MediaQuery.of(context).size;
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Post detail'),
         ),
-        body: FutureBuilder(
-          future: Future.wait([comments]),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.hasData) {
-              debugPrint('has data');
-              final dataComments = snapshot.data![0];
-              final List<Comment> comments = dataComments.results;
+        body: BlocBuilder<PostDetailBloc, PostDetailBlocState>(
+          bloc: _postDetailBloc,
+          builder: ((context, state) {
+            final post = state.post;
+            final comments = state.comments;
+            if (post != null && comments != null) {
               return Stack(
                 children: [
                   ListView(
@@ -51,23 +61,25 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UserPostAndInteractiveWidget(post: widget.post),
+                            UserPostAndInteractiveWidget(post: post),
                             const SizeBox10H(),
                             Text(
-                              widget.post.title,
+                              post.description!,
                               // style: AppTextStyle.body15,
                             ),
 
                             ImageSlider(
-                              pictures: widget.post.photos,
+                              pictures: post.images,
                             ),
                             // InteractivePostBar(post: widget.post)
                             InteractivePostInfor(
                               isInPostDetail: false,
-                              post: widget.post,
+                              post: post,
                             ),
                             const SizeBox5H(),
-                            const LikedInforGeneralWidget(),
+                            // LikeCountWidget(
+                            //   post: widget.post,
+                            // ),
                             const SizeBox20H(),
                             const Divider(
                               height: 1,
@@ -80,7 +92,10 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           children:
                               List<Widget>.generate(comments.length, (index) {
-                            return UserCommentWidget(comment: comments[index]);
+                            return UserCommentWidget(
+                              comment: comments[index],
+                              postId: postId,
+                            );
                           }),
                         ),
                       ),
@@ -89,21 +104,88 @@ class _PostDetailPageState extends State<PostDetailPage> {
                       )
                     ],
                   ),
-                  const Positioned(
-                    child: CommentBar(),
+                  Positioned(
+                    // child: CommentBar(
+                    //   callback: handleCallCreateCommentCallBack,
+                    //   postId: postId,
+                    // ),
                     bottom: 10,
+                    child: Container(
+                      color: scaffoldBackgroundColor,
+                      // color: AppColor.pinkAccent,
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      width: size.width,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            height: 70,
+                            width: size.width - 80,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: SizedBox(
+                                // ignore: unnecessary_null_in_if_null_operators
+                                height: 50,
+                                child: TextField(
+                                  controller: _controller,
+                                  onChanged: (String contentValue) {
+                                    content = contentValue;
+                                    // debugPrint(content);
+                                  },
+                                  decoration: InputDecoration(
+                                    border: const OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(10.0),
+                                      ),
+                                    ),
+                                    // prefixIcon: widget.icon,
+                                    labelText: 'Comment...',
+                                    hintText: 'Enter Comment',
+                                    hintStyle: const TextStyle(
+                                        color: AppTextColor.grey),
+                                    suffixIcon: IconButton(
+                                      onPressed: _controller.clear,
+                                      icon: const Icon(Icons.clear),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizeBox10W(),
+                          InkWell(
+                            onTap: () {
+                              debugPrint('Tap send comment');
+                              FocusScope.of(context).unfocus();
+                              _handleCreateComment(content);
+                              _postDetailBloc
+                                  .add(PostDetailEvent.getPostDetail);
+                              _controller.clear();
+                            },
+                            child: const Icon(Icons.send),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
             }
-            return Container(
-                alignment: Alignment.center,
-                child: const CircularProgressIndicator());
-          },
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }),
         ),
       ),
     );
   }
+
+  Future<void> _handleCreateComment(String content) async {
+    debugPrint('Content: $content');
+    await CreateCommentBloc.createCommentEvent(content, postId);
+  }
+  // Future<void> handleCallCreateCommentCallBack() async {
+  //   _postDetailBloc.add(PostDetailEvent.getPostDetail);
+  // }
 }

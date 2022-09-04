@@ -86,22 +86,24 @@ class _PasswordInputState extends State<PasswordInput> {
   }
 }
 
-class TextInput extends StatefulWidget {
+class TextInputCustom extends StatefulWidget {
   final String? label;
   final double? height;
   final Icon? icon;
-  const TextInput({
+  final void Function(String content)? onSubmitContent;
+  const TextInputCustom({
     Key? key,
     required this.label,
     this.icon,
     this.height,
+    this.onSubmitContent,
   }) : super(key: key);
 
   @override
-  State<TextInput> createState() => _TextInputState();
+  State<TextInputCustom> createState() => _TextInputCustomState();
 }
 
-class _TextInputState extends State<TextInput> {
+class _TextInputCustomState extends State<TextInputCustom> {
   late TextEditingController _controller;
 
   @override
@@ -126,11 +128,10 @@ class _TextInputState extends State<TextInput> {
         height: widget.height ?? null,
         child: TextField(
           controller: _controller,
+          onSubmitted: (String value) {
+            widget.onSubmitContent!(value);
+          },
           decoration: InputDecoration(
-            // filled: true,
-            // fillColor: thememode == ThemeMode.dark
-            //     ? AppColors.inputTextDarkMode
-            //     : AppColors.keyboardLightGray,
             border: const OutlineInputBorder(
               borderRadius: BorderRadius.all(
                 Radius.circular(10.0),
