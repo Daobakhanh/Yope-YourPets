@@ -51,7 +51,6 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/photo.dart';
-import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
 part 'post.g.dart';
 

@@ -5,7 +5,6 @@ import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart'
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_detail_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/repo/post_list_comment_repo.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 
 class PostDetailBloc extends Bloc<PostDetailEventClass, PostDetailBlocState> {
   //String: event nhận vào

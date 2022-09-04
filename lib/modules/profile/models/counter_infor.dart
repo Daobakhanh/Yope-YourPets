@@ -1,6 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
-
 part 'counter_infor.g.dart';
 
 @JsonSerializable()

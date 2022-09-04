@@ -38,7 +38,7 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
         bloc: _listUserLikePostBloc,
         builder: (context, state) {
           final users = state.users;
-          final error = state.error;
+          // final error = state.error;
           if (users != null) {
             return ListView.builder(
               padding: const EdgeInsets.all(8),

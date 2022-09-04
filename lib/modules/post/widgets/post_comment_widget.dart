@@ -22,6 +22,7 @@ class _CommentBarState extends State<CommentBar> {
   late TextEditingController _controller;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     _controller = TextEditingController();
@@ -125,6 +126,7 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
   String get postId => widget.postId;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     isLikedComment = comment.liked!;
