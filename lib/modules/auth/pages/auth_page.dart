@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_sign_up_page.dart';
@@ -17,6 +18,8 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
+  final storage = const FlutterSecureStorage();
+
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
@@ -122,9 +125,6 @@ class _AuthPageState extends State<AuthPage> {
               const IconLoginOptional(
                 icon: UniconsLine.google,
                 onTap: signInWithGoogle,
-                // onTap: () {
-                //   debugPrint('Press google');
-                // },
               ),
             ],
           ),

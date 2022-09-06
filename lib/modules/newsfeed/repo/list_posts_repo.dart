@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
@@ -17,6 +18,8 @@ Future<Users> readJsonFromUsersStory() async {
 
 class ListPostsRepo {
   Future<List<Post>?> getPosts() async {
+    // String userTokenRead = await getUserTokenKeyFromStorage();
+    // debugPrint('userToken: $userTokenRead');
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
