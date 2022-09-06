@@ -3,6 +3,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_login_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_sign_up_page.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/service/auth_login_with_%20dofhuntAPI.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_login_with_google_utils.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_show_diolog_utils.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
@@ -124,7 +125,7 @@ class _AuthPageState extends State<AuthPage> {
               ),
               const IconLoginOptional(
                 icon: UniconsLine.google,
-                onTap: signInWithGoogle,
+                onTap: loginWithDofhuntAPi,
               ),
             ],
           ),
