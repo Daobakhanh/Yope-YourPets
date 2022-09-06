@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/list_posts_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_list_posts_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
 class ListPostsBloc extends Bloc<String, ListPostsBlocState> {

@@ -38,28 +38,32 @@ class TextIconButton extends StatelessWidget {
 class InforNumberProfile extends StatelessWidget {
   final int number;
   final String title;
+  final VoidCallback? onTap;
   const InforNumberProfile(
-      {Key? key, required this.number, required this.title})
+      {Key? key, required this.number, required this.title, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            '$number',
-            style: AppTextStyle.body17.copyWith(
-              fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              '$number',
+              style: AppTextStyle.body17.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(
-            title,
-            style: AppTextStyle.body15,
-          ),
-        ],
+            Text(
+              title,
+              style: AppTextStyle.body15,
+            ),
+          ],
+        ),
       ),
     );
   }

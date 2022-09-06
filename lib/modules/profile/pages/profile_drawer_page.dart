@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/blocs/app_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_show_diolog_utils.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';
 import 'package:yope_yourpet_social_networking/providers/bloc_provider.dart';
 
 class PersonalProfileDrawerPage extends StatefulWidget {

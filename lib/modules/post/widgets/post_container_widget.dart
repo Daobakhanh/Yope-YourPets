@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -110,32 +111,44 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20),
-          child: CustomAvatar(
-            picture: post.user!.avatar!.url!,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfileUserDetailPage(
+              user: post.user!,
+            ),
           ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              post.user!.displayName,
-              style: AppTextStyle.body20.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+        );
+      },
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: CustomAvatar(
+              picture: post.user!.avatar!.url!,
             ),
-            Text(
-              dateTimeDetect(post.createdAt.toString()),
-              style: AppTextStyle.caption13.copyWith(
-                color: AppTextColor.grey,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                post.user!.displayName,
+                style: AppTextStyle.body20.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+              Text(
+                dateTimeDetect(post.createdAt.toString()),
+                style: AppTextStyle.caption13.copyWith(
+                  color: AppTextColor.grey,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

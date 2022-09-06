@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/like_post_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/newsfeed_like_post_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_like_detail_page.dart';
@@ -135,10 +135,5 @@ class _InteractivePostInforState extends State<InteractivePostInfor> {
 
   Future<void> _handleLikePost(bool isLiked) async {
     !isLiked ? await LikeBloc.unlike(post.id!) : await LikeBloc.like(post.id!);
-
-    // final event =
-    //     !isLiked ? EventName.unLikePostDetail : EventName.likePostDetail;
-
-    // AppEventBloc().emitEvent(BlocEvent(event, post.id));
   }
 }
