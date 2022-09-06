@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/list_posts_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/personal_profile_repo.dart';

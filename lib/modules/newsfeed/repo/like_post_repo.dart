@@ -6,13 +6,15 @@ class LikePostRepo {
   // String url =
   static Future<bool> like(String? id) async {
     final String url = '/v1/posts/$id/like';
+    String? userToken = await getUserTokenFromLocalStorage();
+
     debugPrint(url.toString());
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).post(
         url,
         options: Options(method: 'post', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           // "Content-Type": "application/json"
         }),
       );
@@ -25,14 +27,15 @@ class LikePostRepo {
   }
 
   static Future<bool> unlike(String? id) async {
+    String? userToken = await getUserTokenFromLocalStorage();
     String url = "/v1/posts/$id/unlike";
-    debugPrint(url.toString());
+    // debugPrint(url.toString());
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
         url,
         options: Options(method: 'post', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           // "Content-Type": "application/json"
         }),
       );

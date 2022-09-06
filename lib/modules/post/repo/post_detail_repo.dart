@@ -26,13 +26,15 @@ Future<Comments> readJsonFromAssetComment() async {
 
 class PostDetailRepo {
   Future<Post?> getPostDetail({String? postId}) async {
+    String? userToken = await getUserTokenFromLocalStorage();
+
     final String url = "/v1/posts/$postId";
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
         url,
         options: Options(method: 'get', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           "Content-Type": "application/json"
         }),
       );

@@ -6,12 +6,14 @@ class ListUserLikePostRepo {
   // late String? postId;
   Future<List<User>?> getListUserLikePost({String? postId}) async {
     final String url = '/v1/posts/$postId/like/users';
+    String? userToken = await getUserTokenFromLocalStorage();
+
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
         url,
         options: Options(method: 'get', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           "Content-Type": "application/json"
         }),
       );
