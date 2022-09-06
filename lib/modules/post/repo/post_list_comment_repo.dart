@@ -6,12 +6,14 @@ class ListUserCommentRepo {
   // late String? postId;
   Future<List<Comment>?> getListUserCommentPost({String? postId}) async {
     final String url = '/v1/posts/$postId/comments';
+    String? userToken = await getUserTokenFromLocalStorage();
+
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
         url,
         options: Options(method: 'get', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           "Content-Type": "application/json"
         }),
       );

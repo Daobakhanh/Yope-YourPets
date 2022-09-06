@@ -7,6 +7,7 @@ class CreateCommentRepo {
 
   static Future<bool> submitCommentToServer(
       String? content, String? postId) async {
+    String? userToken = await getUserTokenFromLocalStorage();
     String url = "/v1/posts/$postId/comments";
     try {
       final res =
@@ -17,7 +18,7 @@ class CreateCommentRepo {
           // "tagged_user_ids": ["gH9vf7UHjLCW"]
         },
         options: Options(method: 'post', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           // "Content-Type": "application/json"
         }),
       );

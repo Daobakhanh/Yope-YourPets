@@ -4,13 +4,14 @@ import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
 class ListPostsByUserIdRepo {
   Future<List<Post>?> getPostsOfUserId(String userId) async {
+    String? userToken = await getUserTokenFromLocalStorage();
     String url = '/v1/users/$userId/posts';
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
         url,
         options: Options(method: 'get', headers: {
-          "Authorization": "Bearer " + userToken,
+          "Authorization": "Bearer " + userToken!,
           "Content-Type": "application/json"
         }),
       );
