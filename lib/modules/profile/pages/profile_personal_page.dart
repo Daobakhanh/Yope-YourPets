@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
@@ -15,14 +16,14 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class PersonalProfilePage extends StatefulWidget {
-  const PersonalProfilePage({Key? key}) : super(key: key);
+class ProfilePersonalPage extends StatefulWidget {
+  const ProfilePersonalPage({Key? key}) : super(key: key);
 
   @override
-  State<PersonalProfilePage> createState() => _PersonalProfilePageState();
+  State<ProfilePersonalPage> createState() => _ProfilePersonalPageState();
 }
 
-class _PersonalProfilePageState extends State<PersonalProfilePage> {
+class _ProfilePersonalPageState extends State<ProfilePersonalPage> {
   final _profileBloc = ProfileBloc();
 
   String name = 'My Profile';
@@ -35,8 +36,7 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
     super.initState();
     // _profileBloc = ProfileBloc(userId: '56n4ZTFtY4DAFXHtMc');
     _profileBloc.add(ProfileEvent(
-        userId: "56n4ZTFtY4DAFXHtMc",
-        event: ProfileEventEnum.getPersonalProfile));
+        userId: personalId, event: ProfileEventEnum.getPersonalProfile));
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {

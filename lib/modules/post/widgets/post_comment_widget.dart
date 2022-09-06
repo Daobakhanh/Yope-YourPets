@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_like_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -135,17 +138,29 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return GestureDetector(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => comment.user!.id! != personalId
+                          ? ProfileUserDetailPage(
+                              user: comment.user!,
+                            )
+                          : const ProfilePersonalPage(),
+                    ),
+                  );
+                },
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -179,29 +194,29 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
                     ),
                   ],
                 ),
-                const SizeBox10H(),
-                SizedBox(
-                  width: size.width - 100,
-                  child: Text('${widget.comment.content}'),
-                )
-              ],
-            ),
-            InkWell(
-              onTap: () {
-                debugPrint('Tap to React comment');
-                setState(() {
-                  isLikedComment = !isLikedComment;
-                });
-                _handleLikeComment(isLikedComment);
-              },
-              child: Icon(
-                isLikedComment ? Icons.favorite : Icons.favorite_border,
-                // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
-                color: isLikedComment == true ? AppColor.pinkAccent : null,
               ),
-            )
-          ],
-        ),
+              const SizeBox10H(),
+              SizedBox(
+                width: size.width - 100,
+                child: Text('${widget.comment.content}'),
+              )
+            ],
+          ),
+          InkWell(
+            onTap: () {
+              debugPrint('Tap to React comment');
+              setState(() {
+                isLikedComment = !isLikedComment;
+              });
+              _handleLikeComment(isLikedComment);
+            },
+            child: Icon(
+              isLikedComment ? Icons.favorite : Icons.favorite_border,
+              // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
+              color: isLikedComment == true ? AppColor.pinkAccent : null,
+            ),
+          )
+        ],
       ),
     );
   }

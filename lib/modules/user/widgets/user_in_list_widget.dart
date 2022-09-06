@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
 import 'package:yope_yourpet_social_networking/modules/user/repo/user_follow_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -35,14 +38,28 @@ class _UserinListWidgetState extends State<UserinListWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomAvatar(picture: user.avatar!.url!),
-              Text(
-                user.displayName.toString(),
-              )
-            ],
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => user.id != personalId
+                      ? ProfileUserDetailPage(
+                          user: user,
+                        )
+                      : const ProfilePersonalPage(),
+                ),
+              );
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomAvatar(picture: user.avatar!.url!),
+                Text(
+                  user.displayName.toString(),
+                )
+              ],
+            ),
           ),
           SizedBox(
             width: 100,

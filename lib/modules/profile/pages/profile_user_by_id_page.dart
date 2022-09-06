@@ -15,15 +15,15 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class ProfileUserDetail extends StatefulWidget {
+class ProfileUserDetailPage extends StatefulWidget {
   final User user;
-  const ProfileUserDetail({Key? key, required this.user}) : super(key: key);
+  const ProfileUserDetailPage({Key? key, required this.user}) : super(key: key);
 
   @override
-  State<ProfileUserDetail> createState() => _ProfileUserDetailState();
+  State<ProfileUserDetailPage> createState() => _ProfileUserDetailPageState();
 }
 
-class _ProfileUserDetailState extends State<ProfileUserDetail> {
+class _ProfileUserDetailPageState extends State<ProfileUserDetailPage> {
   User get user => widget.user;
   String name = 'User Profile';
 

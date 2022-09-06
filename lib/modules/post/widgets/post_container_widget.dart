@@ -116,7 +116,7 @@ class UserPostAndInteractiveWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProfileUserDetail(
+            builder: (context) => ProfileUserDetailPage(
               user: post.user!,
             ),
           ),

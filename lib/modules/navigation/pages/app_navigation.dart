@@ -74,7 +74,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
             return CupertinoTabView(
               builder: (context) {
                 return const CupertinoPageScaffold(
-                  child: PersonalProfilePage(),
+                  child: ProfilePersonalPage(),
                 );
               },
             );
