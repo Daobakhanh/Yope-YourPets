@@ -1,4 +1,9 @@
-enum ProfileEventEnum { getPersonalProfile, getUserDetailById }
+enum ProfileEventEnum {
+  getPersonalProfile,
+  getUserDetailById,
+  getListFollower,
+  getListFollowing
+}
 
 class ProfileEvent {
   final String userId;

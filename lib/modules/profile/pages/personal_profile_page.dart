@@ -6,6 +6,8 @@ import 'package:yope_yourpet_social_networking/modules/post/widgets/post_contain
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/personal_profile_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_following_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
@@ -80,28 +82,6 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
               onPressed: _scrollToTop,
               child: const Icon(Icons.arrow_upward, color: AppColor.light),
             ),
-      // body: FutureBuilder(
-      //   future: Future.wait([users, posts]),
-      //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-      //     if (snapshot.hasData) {
-      //       final dataUsers = snapshot.data![0];
-      //       final dataPosts = snapshot.data![1];
-      //       final List<User> users = dataUsers.results;
-      //       final List<Post> posts = dataPosts.results;
-
-      //       return PersonalProfileFutureBuilder(
-      //         posts: posts,
-      //         user: users[0],
-      //         controller: _scrollController,
-      //       );
-      //     } else if (snapshot.hasError) {
-      //       return Text('${snapshot.error}');
-      //     }
-      //     return Container(
-      //         alignment: Alignment.center,
-      //         child: const CircularProgressIndicator());
-      //   },
-      // ),
       body: BlocBuilder<ProfileBloc, ProfileBlocState>(
           bloc: _profileBloc,
           builder: ((context, state) {
@@ -128,9 +108,26 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                             InforNumberProfile(
                                 number: posts!.length, title: 'Posts'),
                             InforNumberProfile(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ListFollowerPage(
+                                              userId: user.id!,
+                                            )),
+                                  );
+                                },
                                 number: user.counters!.followers!,
                                 title: 'Followers'),
                             InforNumberProfile(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ListFollowingPage()),
+                                  );
+                                },
                                 number: user.counters!.followings!,
                                 title: 'Following'),
                           ],
