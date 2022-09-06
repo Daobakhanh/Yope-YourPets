@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_list_user_like_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/common/post_list_user_like_event.dart';
-import 'package:yope_yourpet_social_networking/modules/post/widgets/post_list_user_like_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/user/widgets/user_in_list_widget.dart';
 
 class PostLikeDetailPage extends StatefulWidget {
   final String? postId;
@@ -48,7 +48,7 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
                   height: 60,
                   // color: Colors.amber[colorCodes[index]],
                   child: Center(
-                    child: UserLikePostWidget(
+                    child: UserinListWidget(
                       user: users[index],
                     ),
                   ),

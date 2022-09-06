@@ -4,15 +4,15 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class UserFollowWidget extends StatefulWidget {
+class UserinListWidget extends StatefulWidget {
   final User? user;
-  const UserFollowWidget({Key? key, this.user}) : super(key: key);
+  const UserinListWidget({Key? key, this.user}) : super(key: key);
 
   @override
-  State<UserFollowWidget> createState() => _UserFollowWidgetState();
+  State<UserinListWidget> createState() => _UserinListWidgetState();
 }
 
-class _UserFollowWidgetState extends State<UserFollowWidget> {
+class _UserinListWidgetState extends State<UserinListWidget> {
   bool isFollowed = false;
   @override
   Widget build(BuildContext context) {
@@ -62,4 +62,8 @@ class _UserFollowWidgetState extends State<UserFollowWidget> {
       ),
     );
   }
+
+  // Future<void> _handleFollowUser(bool isLiked) async {
+  //   !isLiked ? await LikeBloc.unlike(post.id!) : await LikeBloc.like(post.id!);
+  // }
 }

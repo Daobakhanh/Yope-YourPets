@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/like_post_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_like_post_repo.dart';
 
 class LikeBloc extends BlocBase {
   // final String event;

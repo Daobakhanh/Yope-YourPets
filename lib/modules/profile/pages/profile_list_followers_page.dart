@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_list_follower_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_list_follow_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/user/widgets/user_in_list_widget.dart';
 
 class ListFollowerPage extends StatefulWidget {
   final String userId;
@@ -45,7 +45,7 @@ class _ListFollowerPageState extends State<ListFollowerPage> {
                     height: 60,
                     // color: Colors.amber[colorCodes[index]],
                     child: Center(
-                      child: UserFollowWidget(
+                      child: UserinListWidget(
                         user: users[index],
                       ),
                     ),
