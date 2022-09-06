@@ -8,7 +8,7 @@ import 'package:yope_yourpet_social_networking/modules/profile/common/profile_ev
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_following_page.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/widgets/personal_profile_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
