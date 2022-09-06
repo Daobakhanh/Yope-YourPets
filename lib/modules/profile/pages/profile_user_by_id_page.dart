@@ -15,17 +15,19 @@ import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stat
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
-class PersonalProfilePage extends StatefulWidget {
-  const PersonalProfilePage({Key? key}) : super(key: key);
+class ProfileUserDetail extends StatefulWidget {
+  final User user;
+  const ProfileUserDetail({Key? key, required this.user}) : super(key: key);
 
   @override
-  State<PersonalProfilePage> createState() => _PersonalProfilePageState();
+  State<ProfileUserDetail> createState() => _ProfileUserDetailState();
 }
 
-class _PersonalProfilePageState extends State<PersonalProfilePage> {
-  final _profileBloc = ProfileBloc();
+class _ProfileUserDetailState extends State<ProfileUserDetail> {
+  User get user => widget.user;
+  String name = 'User Profile';
 
-  String name = 'My Profile';
+  final _profileBloc = ProfileBloc();
   late ScrollController _scrollController;
   bool _showBackToTopButton = false;
   bool hideBio = true;
@@ -33,10 +35,11 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
   @override
   void initState() {
     super.initState();
-    // _profileBloc = ProfileBloc(userId: '56n4ZTFtY4DAFXHtMc');
+    name = user.displayName;
+
     _profileBloc.add(ProfileEvent(
-        userId: "56n4ZTFtY4DAFXHtMc",
-        event: ProfileEventEnum.getPersonalProfile));
+        userId: user.id!, event: ProfileEventEnum.getUserDetailById));
+
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -149,9 +152,9 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                           ),
                         ),
                         //username
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 7),
-                          child: Text('@2im.daokhanhBK'),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 7),
+                          child: Text(user.displayUsername),
                         ),
 
                         Text(
@@ -183,10 +186,28 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                         const SizedBox(
                           height: 10,
                         ),
-                        LongRectangleButton(
-                          nameOfButton: 'Edit profile',
-                          onTap: () {},
-                        ),
+                        // LongRectangleButton(
+                        //   nameOfButton: 'Edit profile',
+                        //   onTap: () {},
+                        // ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ShortRectangleCustomFollowButton(
+                              nameOfButton: "Following",
+                              onTap: () {},
+                            ),
+                            ShortRectangleButton(
+                              nameOfButton: "Message",
+                              onTap: () {},
+                            ),
+                            ShortRectangleButton(
+                              nameOfButton: "Email",
+                              onTap: () {},
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),

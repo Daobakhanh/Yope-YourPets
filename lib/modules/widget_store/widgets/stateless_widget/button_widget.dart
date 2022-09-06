@@ -126,3 +126,91 @@ class LongRectangleButton extends StatelessWidget {
     );
   }
 }
+
+class ShortRectangleButton extends StatelessWidget {
+  final Color? color;
+  final String? nameOfButton;
+  final VoidCallback onTap;
+  const ShortRectangleButton(
+      {Key? key, required this.nameOfButton, required this.onTap, this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context).brightness;
+    return Container(
+      // color: AppColors.activeStateGreen,
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: onTap,
+        child: Text(
+          nameOfButton!,
+          style: AppTextStyle.body15.copyWith(
+            color: themeData == Brightness.dark
+                ? AppTextColor.light
+                : AppTextColor.dark,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          // shape: const StadiumBorder(),
+          backgroundColor:
+              themeData == Brightness.dark ? AppColor.grey : AppColor.lightGray,
+          fixedSize: const Size(110, 32),
+        ),
+      ),
+    );
+  }
+}
+
+class ShortRectangleCustomFollowButton extends StatefulWidget {
+  final Color? color;
+  final String? nameOfButton;
+  final VoidCallback onTap;
+  const ShortRectangleCustomFollowButton(
+      {Key? key, required this.nameOfButton, required this.onTap, this.color})
+      : super(key: key);
+
+  @override
+  State<ShortRectangleCustomFollowButton> createState() =>
+      _ShortRectangleCustomFollowButtonState();
+}
+
+class _ShortRectangleCustomFollowButtonState
+    extends State<ShortRectangleCustomFollowButton> {
+  bool isFollow = true;
+  @override
+  Widget build(BuildContext context) {
+    final themeData = Theme.of(context).brightness;
+    return Container(
+      // color: AppColors.activeStateGreen,
+      alignment: Alignment.center,
+      child: ElevatedButton(
+        onPressed: () {
+          widget.onTap;
+          setState(() {
+            isFollow = !isFollow;
+          });
+        },
+        child: Text(
+          widget.nameOfButton!,
+          style: AppTextStyle.body15.copyWith(
+            color: isFollow
+                ? (themeData == Brightness.dark
+                    ? AppTextColor.light
+                    : AppTextColor.dark)
+                : AppTextColor.light,
+          ),
+        ),
+        style: ElevatedButton.styleFrom(
+          // shape: const StadiumBorder(),
+          backgroundColor: isFollow
+              ? (themeData == Brightness.dark
+                  ? AppColor.grey
+                  : AppColor.lightGray)
+              : AppColor.activeStateBlue,
+          fixedSize: const Size(110, 32),
+        ),
+      ),
+    );
+  }
+}

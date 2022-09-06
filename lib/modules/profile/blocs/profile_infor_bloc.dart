@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_personal_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_infor_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_post_by_user_repo.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileBlocState> {
