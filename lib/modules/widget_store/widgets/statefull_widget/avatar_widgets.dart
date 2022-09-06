@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:yope_yourpet_social_networking/common/data_type/userStatus.dart';
+import 'package:yope_yourpet_social_networking/common/data_type/user_status.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -109,5 +109,3 @@ class ActiveStatusGreen extends StatelessWidget {
     );
   }
 }
-
-
