@@ -17,8 +17,8 @@ class _UserLikePostWidgetState extends State<UserLikePostWidget> {
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

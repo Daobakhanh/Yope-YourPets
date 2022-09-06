@@ -45,7 +45,7 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
               itemCount: users.length,
               itemBuilder: (BuildContext context, int index) {
                 return SizedBox(
-                  height: 50,
+                  height: 60,
                   // color: Colors.amber[colorCodes[index]],
                   child: Center(
                     child: UserLikePostWidget(

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/blocs/personal_profile_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_personal_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
@@ -124,8 +124,9 @@ class _PersonalProfilePageState extends State<PersonalProfilePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ListFollowingPage()),
+                                        builder: (context) => ListFollowingPage(
+                                              userId: user.id!,
+                                            )),
                                   );
                                 },
                                 number: user.counters!.followings!,

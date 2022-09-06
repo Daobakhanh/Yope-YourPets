@@ -1,11 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/personal_profile_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_follower_repo.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_post_by_user_repo.dart';
 
 class ProfileListFollowerBloc
     extends Bloc<ProfileEvent, ProfileListFollowerBlocState> {

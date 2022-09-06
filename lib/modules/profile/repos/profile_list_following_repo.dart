@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 
-class ProfileListFollowerRepo {
-  Future<List<User>?> getListFollower(String userId) async {
+class ProfileListFollowingRepo {
+  Future<List<User>?> getListFollowing(String userId) async {
     String? userToken = await getUserTokenFromLocalStorage();
-    String url = '/v1/users/$userId/followers';
+    String url = '/v1/users/$userId/followings';
     try {
       final res =
           await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/pages/newsfeed_page.dart';
 import 'package:yope_yourpet_social_networking/modules/notifications/pages/notification_page.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/pages/personal_profile_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
 import 'package:yope_yourpet_social_networking/modules/search/pages/search_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 

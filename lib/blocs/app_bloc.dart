@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/personal_profile_repo.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_personal_repo.dart';
 import 'package:yope_yourpet_social_networking/providers/bloc_provider.dart';
 
 enum AppState { loading, unAuthorized, authorized }
