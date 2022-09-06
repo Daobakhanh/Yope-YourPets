@@ -45,6 +45,7 @@ class _ListFollowingPageState extends State<ListFollowingPage> {
                     height: 60,
                     child: Center(
                       child: UserinListWidget(
+                        isFollowing: true,
                         user: users[index],
                       ),
                     ),

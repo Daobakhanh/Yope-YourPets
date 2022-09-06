@@ -49,6 +49,7 @@ class _PostLikeDetailPageState extends State<PostLikeDetailPage> {
                   // color: Colors.amber[colorCodes[index]],
                   child: Center(
                     child: UserinListWidget(
+                      isFollowing: false,
                       user: users[index],
                     ),
                   ),

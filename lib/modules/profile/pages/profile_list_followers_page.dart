@@ -46,6 +46,7 @@ class _ListFollowerPageState extends State<ListFollowerPage> {
                     // color: Colors.amber[colorCodes[index]],
                     child: Center(
                       child: UserinListWidget(
+                        isFollowing: false,
                         user: users[index],
                       ),
                     ),
