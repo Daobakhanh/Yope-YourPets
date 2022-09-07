@@ -6,6 +6,7 @@ import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
+import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
 class ListActiveUserHorizontalScroll extends StatefulWidget {
   final List<User> users;
@@ -60,12 +61,12 @@ class _VerticalListUserWithLastMessageState
     extends State<VerticalListUserWithLastMessage> {
   @override
   Widget build(BuildContext context) {
-    final List<Chat> userWithLastMessage = widget.dataUserWithLastChat.results;
+    final List<Chat> chats = widget.dataUserWithLastChat.results;
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: widget.dataUserWithLastChat.results.length,
+        itemCount: chats.length,
         itemBuilder: (BuildContext context, index) {
           return Column(
             children: [
@@ -74,11 +75,12 @@ class _VerticalListUserWithLastMessageState
                 padding: const EdgeInsets.symmetric(horizontal: 14),
                 // conment fix bug
                 child: AvatarWithMessageCard(
-                    lastMessage: userWithLastMessage[index].text!,
-                    numOfMessageUnread: userWithLastMessage[index].unreadCount!,
-                    nameOfUser: userWithLastMessage[index].user!.displayName,
-                    picture: userWithLastMessage[index].user!.avatar!.url!,
-                    timeOfLastMessage: userWithLastMessage[index].createdAt!),
+                  lastMessage: chats[index].text!,
+                  numOfMessageUnread: chats[index].unreadCount!,
+                  nameOfUser: chats[index].user!.displayName,
+                  picture: chats[index].user!.avatar!.url!,
+                  timeOfLastMessage: chats[index].createdAt!,
+                ),
               ),
               const Divider(
                 height: 1,
@@ -145,8 +147,9 @@ class _AvatarWithMessageCardState extends State<AvatarWithMessageCard> {
                         ),
                       ),
                       SizedBox(
-                        width: 60,
-                        child: Text(widget.timeOfLastMessage.substring(11, 16),
+                        // width: 60,
+                        child: Text(
+                            dateTimeDetect(widget.timeOfLastMessage).toString(),
                             style: AppTextStyle.caption13
                                 .copyWith(color: AppTextColor.grey)),
                       )
