@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_forgot_password_page.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_show_diolog_utils.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/widgets/auth_common_widgets.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 

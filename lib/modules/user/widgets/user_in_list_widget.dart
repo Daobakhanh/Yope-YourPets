@@ -3,8 +3,7 @@ import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
-import 'package:yope_yourpet_social_networking/modules/user/repo/user_follow_repo.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -94,9 +93,9 @@ class _UserinListWidgetState extends State<UserinListWidget> {
     );
   }
 
-  Future<void> _handleFollowUser(bool isFollow) async {
-    !isFollow
-        ? await FollowUserRepo.followUser(user.id)
-        : await FollowUserRepo.unFollowUser(user.id);
-  }
+  // Future<void> _handleFollowUser(bool isFollow) async {
+  //   !isFollow
+  //       ? await FollowUserRepo.followUser(user.id)
+  //       : await FollowUserRepo.unFollowUser(user.id);
+  // }
 }

@@ -6,27 +6,27 @@ part 'chat.g.dart';
 @JsonSerializable()
 class Chat {
   /// The generated code assumes these values exist in JSON.
-  final String id;
-  final String text;
-  final User user;
+  final String? id;
+  final String? text;
+  final User? user;
 
   @JsonKey(name: "reply_count")
-  final int replyCount;
+  final int? replyCount;
   @JsonKey(name: "unread_count")
-  final int unreadCount;
+  final int? unreadCount;
   @JsonKey(name: "created_at")
-  final String createdAt;
+  final String? createdAt;
 
   /// The generated code below handles if the corresponding JSON value doesn't
   /// exist or is empty.
 
   Chat(
-      {required this.id,
-      required this.text,
-      required this.user,
-      required this.replyCount,
-      required this.unreadCount,
-      required this.createdAt});
+      {this.id,
+      this.text,
+      this.user,
+      this.replyCount,
+      this.unreadCount,
+      this.createdAt});
 
   /// factory.
   factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);

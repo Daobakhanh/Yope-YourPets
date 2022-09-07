@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unicons/unicons.dart';
-import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_page.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_home_page.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/newsfeed_list_posts_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -134,13 +134,14 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
         bloc: _listPostBloc,
         builder: (context, state) {
           final posts = state.posts;
+          final users = state.users;
           final error = state.error;
           if (posts != null) {
             return ListView(
               controller: _scrollController,
               children: [
                 //mock users using user of posts
-                StoryBar(posts: posts),
+                StoryBar(users: users),
                 const Divider(
                   height: 1,
                 ),

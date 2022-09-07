@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/card_screen.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/card_screen.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 

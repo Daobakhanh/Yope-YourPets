@@ -1,22 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/newsfeed/pages/story_detail_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class AvatarHaveStory extends StatelessWidget {
-  final User? user;
-  // final
+  final User user;
 
-  const AvatarHaveStory({Key? key, this.user}) : super(key: key);
+  const AvatarHaveStory({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final backGroundScaffold = Theme.of(context).scaffoldBackgroundColor;
     const double sizeOfAvatar =
         70; //container flexible depends on size of Avatar
-    return InkWell(
+    return GestureDetector(
       onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StoryDetailPage(
+              user: user,
+            ),
+          ),
+        );
         debugPrint('Tap to see story');
       },
       child: Container(
@@ -38,7 +52,9 @@ class AvatarHaveStory extends StatelessWidget {
                 backgroundColor: backGroundScaffold,
                 child: CircleAvatar(
                   radius: (sizeOfAvatar / 2) - 6,
-                  backgroundImage: NetworkImage(user!.avatar!.url!),
+                  backgroundImage: NetworkImage(
+                    user.avatar!.url!,
+                  ),
                 ),
               ),
 
@@ -57,9 +73,9 @@ class AvatarHaveStory extends StatelessWidget {
             ),
             const SizeBox5H(),
             Text(
-              user!.displayName.length <= 11
-                  ? user!.displayName
-                  : '${user!.displayName.substring(0, 9)}...',
+              user.displayName.length <= 11
+                  ? user.displayName
+                  : '${user.displayName.substring(0, 9)}...',
               style: AppTextStyle.caption11,
               // overflow: ,
             ),
@@ -126,6 +142,56 @@ class PersonalCreateStory extends StatelessWidget {
               'Your story',
               style: AppTextStyle.caption11,
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StoryUserInfor extends StatelessWidget {
+  final User user;
+  const StoryUserInfor({Key? key, required this.user}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => ProfileUserDetailPage(
+                          user: user,
+                        )),
+                  ),
+                );
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CustomAvatar(
+                    // radius: 1,
+                    picture: user.avatar!.url!,
+                    size: const Size(30, 30),
+                  ),
+                  const SizeBox15W(),
+                  Text(user.displayName),
+                ],
+              ),
+            ),
+            InkWell(
+              child: const Icon(Icons.close),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
           ],
         ),
       ),
