@@ -22,6 +22,8 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
   AppThemeBloc? get appThemeBloc => BlocProvider.of<AppThemeBloc>(context);
   @override
   void initState() {
+    super.initState();
+    // ignore: todo
     // TODO: implement initState
 
     asyncMethod();

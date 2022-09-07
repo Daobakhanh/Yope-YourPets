@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/repo/newsfeed_list_posts_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_follower_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_following_repo.dart';
 
 class ListPostsBloc extends Bloc<String, ListPostsBlocState> {
