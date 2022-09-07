@@ -67,14 +67,8 @@ class _ProfileUserDetailPageState extends State<ProfileUserDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const Drawer(child: PersonalProfileDrawerPage()),
+      // endDrawer: const Drawer(child: PersonalProfileDrawerPage()),
       appBar: AppBar(
-        // leading: InkWell(
-        //   child: const Icon(Icons.arrow_back),
-        //   onTap: () {
-        //     Navigator.pop(context);
-        //   },
-        // ),
         title: Text(
           name,
         ),

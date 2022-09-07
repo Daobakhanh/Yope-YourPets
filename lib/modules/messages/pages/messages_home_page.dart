@@ -48,19 +48,6 @@ class _MessagePageState extends State<MessagePage> {
       ),
       body: Column(
         children: [
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: const [
-          //     Padding(
-          //       padding: EdgeInsets.only(left: 15, top: 15, bottom: 10),
-          //       child: Text(
-          //         'Messages',
-          //         textAlign: TextAlign.start,
-          //         style: AppTextStyle.largeTitle,
-          //       ),
-          //     ),
-          //   ],
-          // ),
           FutureBuilder(
             future: Future.wait([users]),
             builder:
@@ -71,7 +58,7 @@ class _MessagePageState extends State<MessagePage> {
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child:
-                      ListActiveUserHorizontalScroll(users: dataUsers.results),
+                      HorizontalListActiveUserScroll(users: dataUsers.results),
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
@@ -90,8 +77,7 @@ class _MessagePageState extends State<MessagePage> {
                 (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
               if (snapshot.hasData) {
                 final dataChats = snapshot.data![0];
-                return VerticalListUserWithLastMessage(
-                    dataUserWithLastChat: dataChats);
+                return VerticalListUserWithLastMessage(chats: dataChats);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }

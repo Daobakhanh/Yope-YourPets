@@ -4,6 +4,7 @@ import 'package:yope_yourpet_social_networking/modules/app_theme/bloc/app_theme_
 import 'package:yope_yourpet_social_networking/modules/app_theme/enum/app_theme_state_enum.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_show_diolog_utils.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/page/widget_store_page.dart';
 import 'package:yope_yourpet_social_networking/providers/bloc_provider.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
@@ -79,6 +80,20 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
             ),
             TextIconButton(
               onTap: () {
+                debugPrint('Drawer ontap widget store');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) => const WidgetStorePage()),
+                  ),
+                );
+                // showMyDialog(context);
+              },
+              title: 'Widget store',
+              icon: Icons.store,
+            ),
+            TextIconButton(
+              onTap: () {
                 debugPrint('Drawer ontap Settings');
                 showMyDialog(context);
               },
@@ -87,7 +102,7 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
             ),
             TextIconButton(
               onTap: () {
-                debugPrint('Drawer ontap Settings');
+                debugPrint('Drawer ontap save');
                 showMyDialog(context);
               },
               title: 'Saved',
@@ -120,6 +135,7 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
             TextIconButton(
               onTap: () {
                 debugPrint('Drawer ontap Logout');
+
                 // showMyDialog(context);
                 appStateBloc.logout();
                 logOutShowMyDialog(context);

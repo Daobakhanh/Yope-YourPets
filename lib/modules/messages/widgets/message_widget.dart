@@ -8,17 +8,17 @@ import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 import 'package:yope_yourpet_social_networking/utils/date_time_parse.dart';
 
-class ListActiveUserHorizontalScroll extends StatefulWidget {
+class HorizontalListActiveUserScroll extends StatefulWidget {
   final List<User> users;
-  const ListActiveUserHorizontalScroll({Key? key, required this.users})
+  const HorizontalListActiveUserScroll({Key? key, required this.users})
       : super(key: key);
   @override
-  State<ListActiveUserHorizontalScroll> createState() =>
-      _ListActiveUserHorizontalScrollState();
+  State<HorizontalListActiveUserScroll> createState() =>
+      _HorizontalListActiveUserScrollState();
 }
 
-class _ListActiveUserHorizontalScrollState
-    extends State<ListActiveUserHorizontalScroll> {
+class _HorizontalListActiveUserScrollState
+    extends State<HorizontalListActiveUserScroll> {
   List<User> get users => widget.users;
   @override
   Widget build(BuildContext context) {
@@ -48,10 +48,9 @@ class _ListActiveUserHorizontalScrollState
 
 //vertial list user with message
 class VerticalListUserWithLastMessage extends StatefulWidget {
-  const VerticalListUserWithLastMessage(
-      {Key? key, required this.dataUserWithLastChat})
+  const VerticalListUserWithLastMessage({Key? key, required this.chats})
       : super(key: key);
-  final Chats dataUserWithLastChat;
+  final Chats chats;
   @override
   State<VerticalListUserWithLastMessage> createState() =>
       _VerticalListUserWithLastMessageState();
@@ -61,7 +60,7 @@ class _VerticalListUserWithLastMessageState
     extends State<VerticalListUserWithLastMessage> {
   @override
   Widget build(BuildContext context) {
-    final List<Chat> chats = widget.dataUserWithLastChat.results;
+    final List<Chat> chats = widget.chats.results;
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
