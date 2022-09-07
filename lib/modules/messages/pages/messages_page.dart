@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/models/chat/chat.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/models/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/repos/message_repo.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/widgets/message_widget.dart';
@@ -70,7 +70,8 @@ class _MessagePageState extends State<MessagePage> {
 
                 return Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
-                  child: ListActiveUserHorizontalScroll(dataUsers: dataUsers),
+                  child:
+                      ListActiveUserHorizontalScroll(users: dataUsers.results),
                 );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');

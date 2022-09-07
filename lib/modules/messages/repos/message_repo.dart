@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:yope_yourpet_social_networking/models/chat/chat.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/models/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 
 Future<Users> readJsonFromAssetUser() async {

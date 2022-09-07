@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/models/chat/chat.dart';
+import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/data_type/user_status.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/models/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 class ListActiveUserHorizontalScroll extends StatefulWidget {
-  const ListActiveUserHorizontalScroll({Key? key, required this.dataUsers})
+  final List<User> users;
+  const ListActiveUserHorizontalScroll({Key? key, required this.users})
       : super(key: key);
-  final Users dataUsers;
   @override
   State<ListActiveUserHorizontalScroll> createState() =>
       _ListActiveUserHorizontalScrollState();
@@ -16,6 +18,7 @@ class ListActiveUserHorizontalScroll extends StatefulWidget {
 
 class _ListActiveUserHorizontalScrollState
     extends State<ListActiveUserHorizontalScroll> {
+  List<User> get users => widget.users;
   @override
   Widget build(BuildContext context) {
     // final List<User> users = widget.dataUsers.results;
@@ -23,16 +26,18 @@ class _ListActiveUserHorizontalScrollState
       height: 82,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: widget.dataUsers.results.length,
+        itemCount: users.length,
         itemBuilder: (BuildContext context, index) {
           return Container(
             margin: const EdgeInsets.only(left: 14, right: 5),
             //conment fix bug
-            // child: AvatarWithNameAndActiveStatus(
-            //   picture: users[index].picture!.large,
-            //   nameOfUser: users[index].name,
-            //   userStatus: users[index].status,
-            // ),
+            child: AvatarWithNameAndActiveStatus(
+              picture: users[index].avatar != null
+                  ? users[index].avatar!.url!
+                  : avtBlank,
+              nameOfUser: users[index].displayName,
+              userStatus: UserStatus.online,
+            ),
           );
         },
       ),
@@ -55,7 +60,7 @@ class _VerticalListUserWithLastMessageState
     extends State<VerticalListUserWithLastMessage> {
   @override
   Widget build(BuildContext context) {
-    // final List<Chat> userWithLastMessage = widget.dataUserWithLastChat.results;
+    final List<Chat> userWithLastMessage = widget.dataUserWithLastChat.results;
     return Expanded(
       child: ListView.builder(
         shrinkWrap: true,
@@ -68,12 +73,12 @@ class _VerticalListUserWithLastMessageState
                 margin: const EdgeInsets.symmetric(vertical: 14),
                 padding: const EdgeInsets.symmetric(horizontal: 14),
                 // conment fix bug
-                // child: AvatarWithMessageCard(
-                //     lastMessage: userWithLastMessage[index].text,
-                //     numOfMessageUnread: userWithLastMessage[index].unreadCount,
-                //     nameOfUser: userWithLastMessage[index].user.name,
-                //     picture: userWithLastMessage[index].user.picture!.large,
-                //     timeOfLastMessage: userWithLastMessage[index].createdAt),
+                child: AvatarWithMessageCard(
+                    lastMessage: userWithLastMessage[index].text!,
+                    numOfMessageUnread: userWithLastMessage[index].unreadCount!,
+                    nameOfUser: userWithLastMessage[index].user!.displayName,
+                    picture: userWithLastMessage[index].user!.avatar!.url!,
+                    timeOfLastMessage: userWithLastMessage[index].createdAt!),
               ),
               const Divider(
                 height: 1,
