@@ -46,61 +46,55 @@ class _SearchPageState extends State<SearchPage> {
           if (usersRecent != null && userSuggest != null) {
             return Stack(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: size.height - 187,
-                      child: ListView(
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 90,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text('RECENT SEARCHES',
+                            style: AppTextStyle.caption13.copyWith(
+                                color: AppTextColor.grey,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                      const SizeBox15H(),
+                      HorizontalListActiveUserScroll(users: usersRecent),
+                      const SizeBox20H(),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text('SUGGESTED',
+                            style: AppTextStyle.caption13.copyWith(
+                                color: AppTextColor.grey,
+                                fontWeight: FontWeight.bold)),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            height: 90,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text('RECENT SEARCHES',
-                                style: AppTextStyle.caption13.copyWith(
-                                    color: AppTextColor.grey,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          const SizeBox15H(),
-                          HorizontalListActiveUserScroll(users: usersRecent),
-                          const SizeBox20H(),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text('SUGGESTED',
-                                style: AppTextStyle.caption13.copyWith(
-                                    color: AppTextColor.grey,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListView.builder(
-                                shrinkWrap: true,
-                                physics: const ClampingScrollPhysics(),
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
-                                itemCount: userSuggest.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return SizedBox(
-                                    height: 60,
-                                    // color: Colors.amber[colorCodes[index]],
-                                    child: Center(
-                                      child: UserinListWidget(
-                                        isFollowing: false,
-                                        user: userSuggest[index],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const ClampingScrollPhysics(),
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            itemCount: userSuggest.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return SizedBox(
+                                height: 60,
+                                // color: Colors.amber[colorCodes[index]],
+                                child: Center(
+                                  child: UserinListWidget(
+                                    isFollowing: false,
+                                    user: userSuggest[index],
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const Positioned(top: 10, child: SearchTextInputBar())
               ],
