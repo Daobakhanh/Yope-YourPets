@@ -108,10 +108,6 @@ class _PostDetailPageState extends State<PostDetailPage> {
                     ],
                   ),
                   Positioned(
-                    // child: CommentBar(
-                    //   callback: handleCallCreateCommentCallBack,
-                    //   postId: postId,
-                    // ),
                     bottom: 10,
                     child: Container(
                       color: scaffoldBackgroundColor,
