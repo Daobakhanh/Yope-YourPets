@@ -15,10 +15,10 @@ class StoryBar extends StatelessWidget {
       //to have height, bcuz Horizontal viewport was given unbounded height.
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: posts!.length,
+        itemCount: users!.length,
         itemBuilder: (BuildContext context, int index) {
           return AvatarHaveStory(
-            user: posts![index].user,
+            user: users![index],
           );
         },
       ),

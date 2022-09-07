@@ -134,13 +134,14 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
         bloc: _listPostBloc,
         builder: (context, state) {
           final posts = state.posts;
+          final users = state.users;
           final error = state.error;
           if (posts != null) {
             return ListView(
               controller: _scrollController,
               children: [
                 //mock users using user of posts
-                StoryBar(posts: posts),
+                StoryBar(users: users),
                 const Divider(
                   height: 1,
                 ),
