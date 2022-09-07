@@ -19,34 +19,39 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
     final heightOfScreen = size.height;
     return SafeArea(
       child: Scaffold(
-        body: SizedBox(
-          height: heightOfScreen,
-          width: widthOfScreen,
-          child: Stack(
-            children: [
-              SizedBox(
-                // height: heightOfScreen,
-                // width: widthOfScreen,
-                child: Image.network(
-                  user.avatar!.url!,
-                  fit: BoxFit.cover,
-                  height: heightOfScreen,
-                  width: widthOfScreen,
-                  alignment: Alignment.center,
-                ),
-              ),
-              Positioned(
-                top: 0,
-                left: 0,
-                child: SizedBox(
-                  width: widthOfScreen,
-                  // color: Colors.green,
-                  child: StoryUserInfor(
-                    user: user,
+        body: GestureDetector(
+          // onVerticalDragDown: (details) {
+          //   Navigator.pop(context);
+          // },
+          child: SizedBox(
+            height: heightOfScreen,
+            width: widthOfScreen,
+            child: Stack(
+              children: [
+                SizedBox(
+                  // height: heightOfScreen,
+                  // width: widthOfScreen,
+                  child: Image.network(
+                    user.avatar!.url!,
+                    fit: BoxFit.cover,
+                    height: heightOfScreen,
+                    width: widthOfScreen,
+                    alignment: Alignment.center,
                   ),
                 ),
-              ),
-            ],
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  child: SizedBox(
+                    width: widthOfScreen,
+                    // color: Colors.green,
+                    child: StoryUserInfor(
+                      user: user,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

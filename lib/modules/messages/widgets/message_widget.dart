@@ -3,6 +3,7 @@ import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/common/data_type/user_status.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/models/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/pages/message_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
@@ -33,10 +34,7 @@ class _HorizontalListActiveUserScrollState
             margin: const EdgeInsets.only(left: 14, right: 5),
             //conment fix bug
             child: AvatarWithNameAndActiveStatus(
-              picture: users[index].avatar != null
-                  ? users[index].avatar!.url!
-                  : avtBlank,
-              nameOfUser: users[index].displayName,
+              user: users[index],
               userStatus: UserStatus.online,
             ),
           );
@@ -72,13 +70,8 @@ class _VerticalListUserWithLastMessageState
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 14),
                 padding: const EdgeInsets.symmetric(horizontal: 14),
-                // conment fix bug
-                child: AvatarWithMessageCard(
-                  lastMessage: chats[index].text!,
-                  numOfMessageUnread: chats[index].unreadCount!,
-                  nameOfUser: chats[index].user!.displayName,
-                  picture: chats[index].user!.avatar!.url!,
-                  timeOfLastMessage: chats[index].createdAt!,
+                child: LastMessageUserWidget(
+                  chat: chats[index],
                 ),
               ),
               const Divider(
@@ -93,84 +86,89 @@ class _VerticalListUserWithLastMessageState
   }
 }
 
-class AvatarWithMessageCard extends StatefulWidget {
-  const AvatarWithMessageCard(
-      {Key? key,
-      required this.lastMessage,
-      required this.numOfMessageUnread,
-      required this.nameOfUser,
-      required this.timeOfLastMessage,
-      required this.picture})
-      : super(key: key);
-  final String picture;
-  final String nameOfUser;
-  final String lastMessage;
-  final int numOfMessageUnread;
-  final String timeOfLastMessage;
+class LastMessageUserWidget extends StatefulWidget {
+  final Chat chat;
+
+  const LastMessageUserWidget({
+    Key? key,
+    required this.chat,
+  }) : super(key: key);
+
   @override
-  State<AvatarWithMessageCard> createState() => _AvatarWithMessageCardState();
+  State<LastMessageUserWidget> createState() => _LastMessageUserWidgetState();
 }
 
-class _AvatarWithMessageCardState extends State<AvatarWithMessageCard> {
+class _LastMessageUserWidgetState extends State<LastMessageUserWidget> {
+  Chat get chat => widget.chat;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // color: AppColors.activeStateGreen,
-      height: 60,
-      // width: 344,
-      child: Row(
-        children: [
-          CustomAvatar(picture: widget.picture),
-          const SizedBox(
-            width: 20,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: ((context) => MessageDetailPage(
+                  user: chat.user!,
+                )),
           ),
-          Expanded(
-            flex: 1,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  // color: AppColors.activeStatePurple,
-                  height: 22,
-                  child: Row(
-                    // mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          widget.nameOfUser,
-                          style: AppTextStyle.body17
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(
-                        // width: 60,
-                        child: Text(
-                            dateTimeDetect(widget.timeOfLastMessage).toString(),
-                            style: AppTextStyle.caption13
-                                .copyWith(color: AppTextColor.grey)),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                SizedBox(
-                  // color: AppColors.activeStateOrange,
-                  height: 22,
-                  child: Text(
-                    widget.lastMessage,
-                    style: AppTextStyle.body17,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                )
-              ],
+        );
+      },
+      child: SizedBox(
+        height: 60,
+        child: Row(
+          children: [
+            CustomAvatar(picture: chat.user!.avatar!.url!),
+            const SizedBox(
+              width: 20,
             ),
-          )
-        ],
+            Expanded(
+              flex: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    // color: AppColors.activeStatePurple,
+                    height: 22,
+                    child: Row(
+                      // mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Text(
+                            chat.user!.displayName,
+                            style: AppTextStyle.body17
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          // width: 60,
+                          child: Text(
+                              dateTimeDetect(chat.createdAt!).toString(),
+                              style: AppTextStyle.caption13
+                                  .copyWith(color: AppTextColor.grey)),
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  SizedBox(
+                    // color: AppColors.activeStateOrange,
+                    height: 22,
+                    child: Text(
+                      chat.text!,
+                      style: AppTextStyle.body17,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

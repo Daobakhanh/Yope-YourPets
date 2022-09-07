@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
 import 'package:yope_yourpet_social_networking/common/data_type/user_status.dart';
+import 'package:yope_yourpet_social_networking/models/user/user.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/pages/message_detail_page.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
 //avatar with active status and name
 
 class AvatarWithNameAndActiveStatus extends StatefulWidget {
-  const AvatarWithNameAndActiveStatus(
-      {Key? key,
-      required this.picture,
-      required this.nameOfUser,
-      this.userStatus})
-      : super(key: key);
-  final String picture;
-  final String nameOfUser;
+  final User user;
   final UserStatus? userStatus;
+  const AvatarWithNameAndActiveStatus(
+      {Key? key, this.userStatus, required this.user})
+      : super(key: key);
+
   @override
   State<AvatarWithNameAndActiveStatus> createState() =>
       _AvatarWithNameAndActiveStatusState();
@@ -23,24 +22,38 @@ class AvatarWithNameAndActiveStatus extends StatefulWidget {
 
 class _AvatarWithNameAndActiveStatusState
     extends State<AvatarWithNameAndActiveStatus> {
+  User get user => widget.user;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 82,
-      width: 70,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          widget.userStatus == UserStatus.online
-              ? AvatarWithActiveStatus(picture: widget.picture)
-              : CustomAvatar(picture: widget.picture),
-          Text(
-            widget.nameOfUser,
-            style: AppTextStyle.caption11.copyWith(fontWeight: FontWeight.bold),
-            overflow: TextOverflow.ellipsis,
-          )
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MessageDetailPage(
+              user: user,
+            ),
+          ),
+        );
+      },
+      child: SizedBox(
+        height: 82,
+        width: 70,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            widget.userStatus == UserStatus.online
+                ? AvatarWithActiveStatus(picture: user.avatar!.url!)
+                : CustomAvatar(picture: user.avatar!.url!),
+            Text(
+              user.displayName,
+              style:
+                  AppTextStyle.caption11.copyWith(fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -63,7 +76,7 @@ class _AvatarWithActiveStatus extends State<AvatarWithActiveStatus> {
       width: 60,
       child: Stack(children: [
         CustomAvatar(picture: widget.picture),
-        const Positioned(top: 48, left: 43, child: ActiveStatusGreen())
+        const Positioned(top: 48, left: 43, child: ActiveStatusDotGreen())
       ]),
     );
   }
@@ -71,11 +84,10 @@ class _AvatarWithActiveStatus extends State<AvatarWithActiveStatus> {
 
 //avatar just Image
 class CustomAvatar extends StatefulWidget {
-  const CustomAvatar({Key? key, required this.picture, this.size, this.radius})
+  const CustomAvatar({Key? key, required this.picture, this.size})
       : super(key: key);
   final Size? size;
   final String picture;
-  final double? radius;
   @override
   State<CustomAvatar> createState() => _CustomAvatarState();
 }
@@ -94,8 +106,8 @@ class _CustomAvatarState extends State<CustomAvatar> {
   }
 }
 
-class ActiveStatusGreen extends StatelessWidget {
-  const ActiveStatusGreen({Key? key}) : super(key: key);
+class ActiveStatusDotGreen extends StatelessWidget {
+  const ActiveStatusDotGreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
