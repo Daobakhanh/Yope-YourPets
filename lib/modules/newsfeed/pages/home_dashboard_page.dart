@@ -4,7 +4,7 @@ import 'package:yope_yourpet_social_networking/modules/navigation/pages/app_navi
 import 'package:yope_yourpet_social_networking/modules/newsfeed/pages/newsfeed_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
 import 'package:yope_yourpet_social_networking/modules/search/pages/search_page.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/card_screen.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/card_screen.dart';
 
 class DashBoardHomePage extends StatelessWidget {
   const DashBoardHomePage({Key? key}) : super(key: key);

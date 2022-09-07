@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/avatar_have_story_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
 class StoryBar extends StatelessWidget {
-  final List<Post>? posts;
-  const StoryBar({Key? key, this.posts}) : super(key: key);
+  final List<User>? users;
+  const StoryBar({Key? key, this.users}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/blocs/app_bloc.dart';
 import 'package:yope_yourpet_social_networking/blocs/chatty_bloc_observer.dart';
+import 'package:yope_yourpet_social_networking/modules/app_theme/bloc/app_theme_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/app_theme/enum/app_theme_state_enum.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/pages/auth_page.dart';
 import 'package:yope_yourpet_social_networking/modules/firebase/widgets/firebase_initializer.dart';
 import 'package:yope_yourpet_social_networking/modules/navigation/pages/app_navigation.dart';
@@ -32,12 +34,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final appStateBloc = AppStateBloc();
-
-  // Create storage
-
-  // Read value
-
+  final _appStateBloc = AppStateBloc();
+  final _appThemeBloc = AppThemeBloc();
   @override
   void initState() {
     // ignore: todo
@@ -48,39 +46,49 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // SystemChrome.setSystemUIOverlayStyle();
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Yope',
-      theme: ThemeData(
-        textTheme: const TextTheme(
-            // titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15
+    return BlocProvider(
+      bloc: _appThemeBloc,
+      child: StreamBuilder<AppThemeStateEnum>(
+        stream: _appThemeBloc.stream,
+        // initialData: _appThemeBloc.initialThemeState,
+        builder: (context, snapshot) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Yope',
+            theme: ThemeData(
+              textTheme: const TextTheme(
+                  // titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15
+                  ),
+              appBarTheme: const AppBarTheme(
+                color: AppColor.grey,
+                centerTitle: true,
+              ),
+              brightness: snapshot.data == AppThemeStateEnum.dark
+                  ? Brightness.dark
+                  : Brightness.light,
+              fontFamily: "Avenir",
+              primarySwatch: Colors.pink,
             ),
-        appBarTheme: const AppBarTheme(
-          color: AppColor.grey,
-          centerTitle: true,
-        ),
-        brightness: Brightness.dark,
-        fontFamily: "Avenir",
-        primarySwatch: Colors.pink,
-      ),
-      // ignore: unrelated_type_equality_checks
-      // home: const DashBoardPage());
-      home: BlocProvider(
-        bloc: appStateBloc,
-        child: StreamBuilder<AppState>(
-          stream: appStateBloc.appStateStream,
-          initialData: appStateBloc.initState,
-          builder: (context, snapshot) {
-            if (snapshot.data == AppState.authorized) {
-              return const AppNavigationConfig();
-            } else if (snapshot.data == AppState.unAuthorized) {
-              return BlocProvider(child: const AuthPage(), bloc: appStateBloc);
-            }
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          },
-        ),
+            home: BlocProvider(
+              bloc: _appStateBloc,
+              child: StreamBuilder<AppState>(
+                stream: _appStateBloc.appStateStream,
+                initialData: _appStateBloc.initState,
+                builder: (context, snapshot) {
+                  if (snapshot.data == AppState.authorized) {
+                    return const AppNavigationConfig();
+                  } else if (snapshot.data == AppState.unAuthorized) {
+                    return BlocProvider(
+                        child: const AuthPage(), bloc: _appStateBloc);
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                },
+              ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -9,9 +9,11 @@ import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_dra
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_following_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/statefull_widget/avatar_widgets.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/button_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/widget_store/widgets/stateless_widget/space_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/user/widgets/user_in_list_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/follow_button_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
@@ -194,10 +196,15 @@ class _ProfileUserDetailPageState extends State<ProfileUserDetailPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ShortRectangleCustomFollowButton(
-                              nameOfButton: "Following",
+                            // ShortRectangleCustomFollowButton(
+                            //   nameOfButton: "Following",
+                            //   onTap: () {},
+                            // ),
+                            FollowWidgetCustom(
                               onTap: () {},
+                              isFollowing: true,
                             ),
+
                             ShortRectangleButton(
                               nameOfButton: "Message",
                               onTap: () {},

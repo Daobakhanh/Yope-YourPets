@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_infor_repo.dart';
 import 'package:yope_yourpet_social_networking/providers/bloc_provider.dart';
+import 'package:yope_yourpet_social_networking/utils/prefs_key.dart';
 
 enum AppState { loading, unAuthorized, authorized }
 
@@ -25,26 +26,26 @@ class AppStateBloc implements BlocBase {
   }
 
   Future<void> launchApp() async {
-    final resUserTokenActive =
+    final isUserTokenActive =
         await PersonalProfileRepo().getStatusUserTokenUsingPersonalProfileAPi();
-    await changeAppState(resUserTokenActive);
+    await changeAppState(isUserTokenActive);
   }
 
-  Future<void> changeAppState(bool userTokenActive) async {
+  Future<void> changeAppState(bool isUserTokenActive) async {
     // final storePref = await SharedPreferences.getInstance();
 
-    if (userTokenActive) {
+    if (isUserTokenActive) {
       appStateStreamController.sink.add(AppState.authorized);
     } else {
       appStateStreamController.sink.add(AppState.unAuthorized);
     }
-    // storePref.;
   }
 
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
 
-    await prefs.clear();
+    // await prefs.clear();
+    await prefs.remove(PrefsKey.userToken);
 
     await changeAppState(false);
 
