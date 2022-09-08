@@ -5,7 +5,6 @@ import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_infor_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
-import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_following_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';

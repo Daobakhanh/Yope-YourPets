@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/widgets/message_interactive_widget.dart';
-import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/avatar_have_story_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
-import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 
 class MessageDetailPage extends StatefulWidget {
   final User user;
@@ -34,10 +32,10 @@ class _MessageDetailPageState extends State<MessageDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    // final size = MediaQuery.of(context).size;
 
-    final heightOfScreen = size.height;
-    final widthOfScreen = size.width;
+    // final heightOfScreen = size.height;
+    // final widthOfScreen = size.width;
 
     return Scaffold(
       appBar: AppBar(

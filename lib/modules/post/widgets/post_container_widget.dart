@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_delete_post_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
+import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
@@ -20,7 +22,7 @@ class PostWidget extends StatefulWidget {
 
 class _PostWidgetState extends State<PostWidget> {
   bool hideBio = true;
-
+  Post get post => widget.post;
   @override
   Widget build(BuildContext context) {
     int lengthOfDes = 0;
@@ -65,7 +67,12 @@ class _PostWidgetState extends State<PostWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UserPostAndInteractiveWidget(post: widget.post),
+            UserPostInforWidget(
+              post: widget.post,
+              callbackFunt: () {
+                _handleDeletePost(post.id!);
+              },
+            ),
             const SizeBox10H(),
             Text(
               widget.post.description!,
@@ -102,53 +109,73 @@ class _PostWidgetState extends State<PostWidget> {
       ),
     );
   }
+
+  Future<void> _handleDeletePost(String postId) async {
+    debugPrint('Callback function deletePost is Called');
+    await DeletePostBloc.deletePostEvent(postId);
+  }
 }
 
-class UserPostAndInteractiveWidget extends StatelessWidget {
+class UserPostInforWidget extends StatelessWidget {
   final Post post;
-  const UserPostAndInteractiveWidget({Key? key, required this.post})
+  final VoidCallback callbackFunt;
+  const UserPostInforWidget(
+      {Key? key, required this.post, required this.callbackFunt})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProfileUserDetailPage(
-              user: post.user!,
-            ),
-          ),
-        );
-      },
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: CustomAvatar(
-              picture: post.user!.avatar!.url!,
-            ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                post.user!.displayName,
-                style: AppTextStyle.body20.copyWith(
-                  fontWeight: FontWeight.bold,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileUserDetailPage(
+                  user: post.user!,
                 ),
               ),
-              Text(
-                dateTimeDetect(post.createdAt.toString()),
-                style: AppTextStyle.caption13.copyWith(
-                  color: AppTextColor.grey,
+            );
+          },
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: CustomAvatar(
+                  picture: post.user!.avatar!.url!,
                 ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    post.user!.displayName,
+                    style: AppTextStyle.body20.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    dateTimeDetect(post.createdAt.toString()),
+                    style: AppTextStyle.caption13.copyWith(
+                      color: AppTextColor.grey,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        ],
-      ),
+        ),
+        SimpleInkWellButton(
+          onTap: () {
+            debugPrint('Tap to more post ');
+
+            // showMyDialogAlert(context, 'Delete this post', callbackFunt);
+          },
+          iconData: Icons.more_vert,
+        )
+      ],
     );
   }
 }

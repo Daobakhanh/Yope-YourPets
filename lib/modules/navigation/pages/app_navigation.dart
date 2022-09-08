@@ -18,6 +18,7 @@ class _AppNavigationConfigState extends State<AppNavigationConfig> {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context).brightness;
     return CupertinoTabScaffold(
+      // backgroundColor: AppColor.greyBold,
       tabBar: CupertinoTabBar(
         activeColor: AppColor.pinkAccent,
         inactiveColor:

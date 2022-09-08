@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
 
 class LikeCommentRepo {
@@ -18,10 +19,14 @@ class LikeCommentRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint('Res status: ${res.statusCode.toString()}');
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${ActionStatus.likeCommentSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
-      // debugPrint(e.toString());
+      debugPrint(
+        ActionStatus.likeCommentFail,
+      );
       rethrow;
     }
   }
@@ -41,9 +46,14 @@ class LikeCommentRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint('Res status: ${res.statusCode}');
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${ActionStatus.unlikeCommentSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
+      debugPrint(
+        ActionStatus.unlikeCommentFail,
+      );
       rethrow;
     }
   }

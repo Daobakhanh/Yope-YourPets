@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
                   // titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15
                   ),
               appBarTheme: const AppBarTheme(
-                color: AppColor.grey,
+                color: AppColor.greyBold,
                 centerTitle: true,
               ),
               brightness: snapshot.data == AppThemeStateEnum.dark

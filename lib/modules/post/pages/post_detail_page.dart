@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_delete_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_detail_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/common/post_detail_event.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment_widget.dart';
@@ -24,7 +25,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   String get postId => widget.postId!;
   // final PostDetailEventMap postDetailEvent = PostDetailEventMap(postId: postId, event: event);
   late TextEditingController _controller;
-  String content = '';
+  String contentComment = '';
   final _postDetailBloc = PostDetailBloc();
 
   @override
@@ -64,7 +65,12 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UserPostAndInteractiveWidget(post: post),
+                            UserPostInforWidget(
+                              post: post,
+                              callbackFunt: () {
+                                // _handleDeletePost(postId);
+                              },
+                            ),
                             const SizeBox10H(),
                             Text(
                               post.description!,
@@ -96,6 +102,13 @@ class _PostDetailPageState extends State<PostDetailPage> {
                           children:
                               List<Widget>.generate(comments.length, (index) {
                             return UserCommentWidget(
+                              key: UniqueKey(),
+                              onLongPress: () {
+                                // debugPrint(
+                                //     'Callback function in post detail page');
+                                _handleDeleteComment(
+                                    postId, comments[index].id!);
+                              },
                               comment: comments[index],
                               postId: postId,
                             );
@@ -129,7 +142,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                                 child: TextField(
                                   controller: _controller,
                                   onChanged: (String contentValue) {
-                                    content = contentValue;
+                                    contentComment = contentValue;
                                     // debugPrint(content);
                                   },
                                   decoration: InputDecoration(
@@ -157,7 +170,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                             onTap: () {
                               debugPrint('Tap send comment');
                               FocusScope.of(context).unfocus();
-                              _handleCreateComment(content);
+                              _handleCreateComment(contentComment);
                               _postDetailBloc.add(PostDetailEventClass(
                                   postId: postId,
                                   event: PostDetailEvent.getPostDetail));
@@ -185,7 +198,16 @@ class _PostDetailPageState extends State<PostDetailPage> {
     debugPrint('Content: $content');
     await CreateCommentBloc.createCommentEvent(content, postId);
   }
-  // Future<void> handleCallCreateCommentCallBack() async {
-  //   _postDetailBloc.add(PostDetailEvent.getPostDetail);
+
+  Future<void> _handleDeleteComment(String postId, String commentId) async {
+    debugPrint('Callback function deleteComment is Called');
+    await DeleteCommentBloc.deleteCommentEvent(postId, commentId);
+    _postDetailBloc.add(PostDetailEventClass(
+        postId: postId, event: PostDetailEvent.getPostDetail));
+  }
+
+  // Future<void> _handleDeletePost(String postId) async {
+  //   debugPrint('Callback function deletePost is Called');
+  //   await DeletePostBloc.deletePostEvent(postId);
   // }
 }

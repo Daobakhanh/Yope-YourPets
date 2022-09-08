@@ -214,3 +214,22 @@ class _ShortRectangleCustomFollowButtonState
     );
   }
 }
+
+class SimpleInkWellButton extends StatelessWidget {
+  final IconData? iconData;
+  final double? size;
+  final VoidCallback? onTap;
+  const SimpleInkWellButton({Key? key, this.iconData, this.size, this.onTap})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Icon(
+        iconData,
+        size: size,
+      ),
+    );
+  }
+}

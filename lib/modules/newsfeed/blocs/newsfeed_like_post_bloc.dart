@@ -6,7 +6,7 @@ class LikeBloc extends BlocBase {
 
   LikeBloc(state) : super(state);
 
-  static Future<bool> like(String id) => LikePostRepo.like(id);
+  static Future<bool> likePostEvent(String id) => LikePostRepo.likePost(id);
 
-  static Future<bool> unlike(String id) => LikePostRepo.unlike(id);
+  static Future<bool> unlikePostEvent(String id) => LikePostRepo.unlikePost(id);
 }
