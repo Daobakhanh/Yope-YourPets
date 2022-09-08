@@ -23,6 +23,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     listGetUsersBloc.add(
@@ -40,7 +41,7 @@ class _SearchPageState extends State<SearchPage> {
       body: BlocBuilder<SearchListUserBloc, SearchListBlocState>(
         bloc: listGetUsersBloc,
         builder: (context, state) {
-          final size = MediaQuery.of(context).size;
+          // final size = MediaQuery.of(context).size;
           final usersRecent = state.usersFollowing;
           final userSuggest = state.usersFollower;
           if (usersRecent != null && userSuggest != null) {

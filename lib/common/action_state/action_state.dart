@@ -13,4 +13,8 @@ class ActionStatus {
   static String unlikePostFail = 'UnLike Post successful';
   static String deletePostSuccessful = 'Delete Post successful';
   static String deletePostFail = 'Delete Post successful';
+
+  static String updatePersonalProfileSuccessfull =
+      'Update Personal profile successful';
+  static String updatePersonalProfileFail = 'Update Personal profile fail';
 }

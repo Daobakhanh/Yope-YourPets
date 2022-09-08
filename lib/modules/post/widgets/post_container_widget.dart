@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_delete_post_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/pages/post_detail_page.dart';
-import 'package:yope_yourpet_social_networking/modules/post/utils/post_alert_showdialog.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_like_post_bar_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_image_sliders_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';

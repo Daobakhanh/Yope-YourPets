@@ -9,6 +9,7 @@ import 'package:yope_yourpet_social_networking/modules/profile/common/profile_ev
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_drawer_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_followers_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_list_following_page.dart';
+import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_update_profile_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/widgets/profile_personal_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/button_widget.dart';
@@ -35,8 +36,10 @@ class _ProfilePersonalPageState extends State<ProfilePersonalPage> {
   void initState() {
     super.initState();
     // _profileBloc = ProfileBloc(userId: '56n4ZTFtY4DAFXHtMc');
-    _profileBloc.add(ProfileEvent(
-        userId: personalId, event: ProfileEventEnum.getPersonalProfile));
+    _profileBloc.add(
+      ProfileEvent(
+          userId: personalId, event: ProfileEventEnum.getPersonalProfile),
+    );
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -185,7 +188,15 @@ class _ProfilePersonalPageState extends State<ProfilePersonalPage> {
                         ),
                         LongRectangleButton(
                           nameOfButton: 'Edit profile',
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfilePersonalEditPage(
+                                        user: user,
+                                      )),
+                            );
+                          },
                         ),
                       ],
                     ),

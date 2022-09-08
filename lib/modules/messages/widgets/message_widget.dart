@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/common/data_type/user_status.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/models/chat.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
