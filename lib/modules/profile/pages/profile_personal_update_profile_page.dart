@@ -59,19 +59,13 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
         actions: [
           TextButton(
             onPressed: () {
-              debugPrint('Tap edit "done"');
+              // debugPrint('Tap edit "done"');
               _handleUpdatePersonalProfile(fisrtName, lastName, bio);
-              _profileBloc.add(
-                ProfileEvent(
-                    userId: personalId,
-                    event: ProfileEventEnum.getPersonalProfile),
-              );
               Navigator.push(
                 context,
                 MaterialPageRoute(
                     builder: (context) => const ProfilePersonalPage()),
               );
-              // Navigator.pop(context);
             },
             child: Text(
               'Done',
@@ -102,18 +96,9 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
                     onChanged: (String contentValue) {
                       fisrtName = contentValue;
                       debugPrint(fisrtName);
-                      // widget.onSubmitContent!(value);
                     },
                     decoration: InputDecoration(
-                      // border: const OutlineInputBorder(
-                      //   borderRadius: BorderRadius.all(
-                      //     Radius.circular(10.0),
-                      //   ),
-                      // ),
-                      // prefixIcon: widget.icon,
                       labelText: 'First name',
-                      // hintText: 'Edit Comment',
-                      hintStyle: const TextStyle(color: AppTextColor.grey),
                       suffixIcon: IconButton(
                         onPressed: _controllerTextFisrtname.clear,
                         icon: const Icon(Icons.clear),
@@ -136,19 +121,11 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
                     controller: _controllerTextLastname,
                     onChanged: (String contentValue) {
                       lastName = contentValue;
-                      debugPrint(fisrtName);
+                      debugPrint(lastName);
                       // widget.onSubmitContent!(value);
                     },
                     decoration: InputDecoration(
-                      // border: const OutlineInputBorder(
-                      //   borderRadius: BorderRadius.all(
-                      //     Radius.circular(10.0),
-                      //   ),
-                      // ),
-                      // prefixIcon: widget.icon,
                       labelText: 'Last name',
-                      // hintText: 'Edit Comment',
-                      hintStyle: const TextStyle(color: AppTextColor.grey),
                       suffixIcon: IconButton(
                         onPressed: _controllerTextLastname.clear,
                         icon: const Icon(Icons.clear),
@@ -173,21 +150,10 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
                     controller: _controllerTextBio,
                     onChanged: (String contentValue) {
                       bio = contentValue;
-                      debugPrint(fisrtName);
-                      // widget.onSubmitContent!(value);
+                      debugPrint(bio);
                     },
                     decoration: InputDecoration(
-                      // border: const OutlineInputBorder(
-                      //   borderRadius: BorderRadius.all(
-                      //     Radius.circular(10.0),
-                      //   ),
-                      // ),
-                      // border: const UnderlineInputBorder(),
-
-                      // prefixIcon: widget.icon,
                       labelText: 'Bio',
-                      // hintText: 'Edit Comment',
-                      hintStyle: const TextStyle(color: AppTextColor.grey),
                       suffixIcon: IconButton(
                         onPressed: _controllerTextBio.clear,
                         icon: const Icon(Icons.clear),

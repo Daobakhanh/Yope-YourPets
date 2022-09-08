@@ -72,16 +72,21 @@ List<Widget> imageSliders(List<Picture> pictures) {
       .map(
         (item) => Container(
           margin: const EdgeInsets.all(5.0),
-          // child: ClipRRect(
-          //   borderRadius: const BorderRadius.all(
-          //     Radius.circular(5),
-          //   ),
-          //   // child:
-          //   child: Image.network(item, fit: BoxFit.contain, width: 1000.0),
-          // ),
-          child: GestureDetector(
-            child: Image.network(item.url!, fit: BoxFit.cover),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(5),
+            ),
+            // child:
+            child: Image.network(
+              item.url!,
+              fit: BoxFit.cover,
+              width: 1000.0,
+              height: 1000.0,
+            ),
           ),
+          // child: GestureDetector(
+          //   child: Image.network(item.url!, fit: BoxFit.cover),
+          // ),
         ),
       )
       .toList();

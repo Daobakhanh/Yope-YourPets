@@ -49,8 +49,8 @@ class _PostWidgetState extends State<PostWidget> {
       },
       child: Container(
         // height: 400,
-        padding: const EdgeInsets.all(15),
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         decoration: BoxDecoration(
           color: scaffoldBackgroundColor,
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
