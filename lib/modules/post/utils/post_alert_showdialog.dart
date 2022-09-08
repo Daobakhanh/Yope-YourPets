@@ -23,7 +23,7 @@ Future<void> showMyDialogAlert(
           ),
           TextButton(
             onPressed: () {
-              callbackFunt;
+              callbackFunt();
               Navigator.pop(context, 'OK');
               debugPrint('confirm OK to delete comment');
             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_delete_comment_bloc.dart';
+import 'package:yope_yourpet_social_networking/modules/post/bloc/post_delete_post_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_detail_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/common/post_detail_event.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_comment_widget.dart';
@@ -65,7 +66,12 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UserPostInforWidget(post: post),
+                            UserPostInforWidget(
+                              post: post,
+                              callbackFunt: () {
+                                // _handleDeletePost(postId);
+                              },
+                            ),
                             const SizeBox10H(),
                             Text(
                               post.description!,
@@ -199,5 +205,10 @@ class _PostDetailPageState extends State<PostDetailPage> {
     await DeleteCommentBloc.deleteCommentEvent(postId, commentId);
     _postDetailBloc.add(PostDetailEventClass(
         postId: postId, event: PostDetailEvent.getPostDetail));
+  }
+
+  Future<void> _handleDeletePost(String postId) async {
+    debugPrint('Callback function deletePost is Called');
+    await DeletePostBloc.deletePostEvent(postId);
   }
 }
