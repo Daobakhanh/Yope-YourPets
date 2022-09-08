@@ -96,40 +96,6 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
           style: AppTextStyle.appName.copyWith(fontSize: 35),
         ),
       ),
-      // body: FutureBuilder(
-      //   future: Future.wait([posts, users]),
-      //   builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-      //     if (snapshot.hasData) {
-      //       final dataPosts = snapshot.data[0];
-      //       final dataUsersStory = snapshot.data[1];
-      //       final List<Post> posts = dataPosts.results;
-      //       final List<User> usersStory = dataUsersStory.results;
-
-      //       return ListView(
-      //         controller: _scrollController,
-      //         children: [
-      //           StoryBar(users: usersStory),
-      //           const Divider(
-      //             height: 1,
-      //           ),
-      //           const SizeBox10H(),
-      //           Column(
-      //             children: List<Widget>.generate(posts.length, (index) {
-      //               return PostWidget(
-      //                 post: posts[index],
-      //               );
-      //             }),
-      //           )
-      //         ],
-      //       );
-      //     } else if (snapshot.hasError) {
-      //       return Text('${snapshot.error}');
-      //     }
-      //     return Container(
-      //         alignment: Alignment.center,
-      //         child: const CircularProgressIndicator());
-      //   },
-      // ),
       body: BlocBuilder<ListPostsBloc, ListPostsBlocState>(
         bloc: _listPostBloc,
         builder: (context, state) {
@@ -142,10 +108,8 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
               children: [
                 //mock users using user of posts
                 StoryBar(users: users),
-                const Divider(
-                  height: 1,
-                ),
-                const SizeBox10H(),
+
+                // const SizeBox10H(),
                 const Divider(
                   height: 1,
                 ),
