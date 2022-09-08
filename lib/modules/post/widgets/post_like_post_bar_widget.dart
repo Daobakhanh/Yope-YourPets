@@ -134,6 +134,8 @@ class _InteractivePostInforState extends State<InteractivePostInfor> {
   }
 
   Future<void> _handleLikePost(bool isLiked) async {
-    !isLiked ? await LikeBloc.unlike(post.id!) : await LikeBloc.like(post.id!);
+    !isLiked
+        ? await LikeBloc.unlikePostEvent(post.id!)
+        : await LikeBloc.likePostEvent(post.id!);
   }
 }

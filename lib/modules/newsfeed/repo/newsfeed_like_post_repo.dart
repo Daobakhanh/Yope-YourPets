@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
 
 class LikePostRepo {
   // String url =
-  static Future<bool> like(String? id) async {
+  static Future<bool> likePost(String? id) async {
     final String url = '/v1/posts/$id/like';
     String? userToken = await getUserTokenFromLocalStorage();
 
@@ -18,15 +19,19 @@ class LikePostRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint(res.statusCode.toString());
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${ActionStatus.likePostSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
-      // debugPrint(e.toString());
+      debugPrint(
+        ActionStatus.likePostSuccessful,
+      );
       rethrow;
     }
   }
 
-  static Future<bool> unlike(String? id) async {
+  static Future<bool> unlikePost(String? id) async {
     String? userToken = await getUserTokenFromLocalStorage();
     String url = "/v1/posts/$id/unlike";
     // debugPrint(url.toString());
@@ -39,9 +44,14 @@ class LikePostRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint(res.statusCode.toString());
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${ActionStatus.unlikePostSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
+      debugPrint(
+        ActionStatus.unlikePostSuccessful,
+      );
       rethrow;
     }
   }

@@ -3,6 +3,7 @@ import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_like_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
+import 'package:yope_yourpet_social_networking/modules/post/utils/post_alert_delete_comment.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_user_by_id_page.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/statefull_widget/avatar_widgets.dart';
@@ -113,10 +114,14 @@ class _CommentBarState extends State<CommentBar> {
 }
 
 class UserCommentWidget extends StatefulWidget {
+  final VoidCallback onLongPress;
   final String postId;
   final Comment comment;
   const UserCommentWidget(
-      {Key? key, required this.comment, required this.postId})
+      {Key? key,
+      required this.comment,
+      required this.postId,
+      required this.onLongPress})
       : super(key: key);
 
   @override
@@ -127,6 +132,7 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
   bool isLikedComment = false;
   Comment get comment => widget.comment;
   String get postId => widget.postId;
+  VoidCallback get onLongPress => widget.onLongPress;
   @override
   void initState() {
     // ignore: todo
@@ -140,27 +146,31 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => comment.user!.id! != personalId
-                          ? ProfileUserDetailPage(
-                              user: comment.user!,
-                            )
-                          : const ProfilePersonalPage(),
-                    ),
-                  );
-                },
-                child: Row(
+      child: GestureDetector(
+        onLongPress: () {
+          debugPrint('onLongPress comment');
+          showDialogAlert(context, 'Delete this comment');
+        },
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => comment.user!.id! != personalId
+                  ? ProfileUserDetailPage(
+                      user: comment.user!,
+                    )
+                  : const ProfilePersonalPage(),
+            ),
+          );
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -194,29 +204,29 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
                     ),
                   ],
                 ),
-              ),
-              const SizeBox10H(),
-              SizedBox(
-                width: size.width - 100,
-                child: Text('${widget.comment.content}'),
-              )
-            ],
-          ),
-          InkWell(
-            onTap: () {
-              debugPrint('Tap to React comment');
-              setState(() {
-                isLikedComment = !isLikedComment;
-              });
-              _handleLikeComment(isLikedComment);
-            },
-            child: Icon(
-              isLikedComment ? Icons.favorite : Icons.favorite_border,
-              // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
-              color: isLikedComment == true ? AppColor.pinkAccent : null,
+                const SizeBox10H(),
+                SizedBox(
+                  width: size.width - 100,
+                  child: Text('${widget.comment.content}'),
+                )
+              ],
             ),
-          )
-        ],
+            InkWell(
+              onTap: () {
+                debugPrint('Tap to React comment');
+                setState(() {
+                  isLikedComment = !isLikedComment;
+                });
+                _handleLikeComment(isLikedComment);
+              },
+              child: Icon(
+                isLikedComment ? Icons.favorite : Icons.favorite_border,
+                // color: widget.comment.liked == true ? AppColor.pinkAccent : null,
+                color: isLikedComment == true ? AppColor.pinkAccent : null,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -225,5 +235,42 @@ class _UserCommentWidgetState extends State<UserCommentWidget> {
     !isLikedComment
         ? await LikeCommentBloc.unlikeCommentEvent(postId, comment.id)
         : await LikeCommentBloc.likeCommentEvent(postId, comment.id);
+  }
+
+  Future<void> showDialogAlert(BuildContext context, String content) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(content),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Confirm !'),
+                // Text('Would you like to approve of this message?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                onLongPress();
+                // setState(() {
+                //   isLikedComment = !isLikedComment;
+                // });
+                Navigator.pop(context, 'OK');
+                debugPrint('confirm OK to delete comment');
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
