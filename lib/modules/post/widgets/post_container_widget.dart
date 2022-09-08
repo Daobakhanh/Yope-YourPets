@@ -65,7 +65,7 @@ class _PostWidgetState extends State<PostWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UserPostAndInteractiveWidget(post: widget.post),
+            UserPostInforWidget(post: widget.post),
             const SizeBox10H(),
             Text(
               widget.post.description!,
@@ -104,10 +104,9 @@ class _PostWidgetState extends State<PostWidget> {
   }
 }
 
-class UserPostAndInteractiveWidget extends StatelessWidget {
+class UserPostInforWidget extends StatelessWidget {
   final Post post;
-  const UserPostAndInteractiveWidget({Key? key, required this.post})
-      : super(key: key);
+  const UserPostInforWidget({Key? key, required this.post}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -65,7 +65,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UserPostAndInteractiveWidget(post: post),
+                            UserPostInforWidget(post: post),
                             const SizeBox10H(),
                             Text(
                               post.description!,
