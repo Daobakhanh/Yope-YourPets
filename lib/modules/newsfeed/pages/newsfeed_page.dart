@@ -4,6 +4,7 @@ import 'package:unicons/unicons.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/pages/messages_home_page.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/blocs/newsfeed_list_posts_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/newsfeed/widgets/story_bar_widget.dart';
+import 'package:yope_yourpet_social_networking/modules/post/pages/post_create_post_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
@@ -72,6 +73,12 @@ class _NewsFeedPageState extends State<NewsFeedPage> {
             ),
             onTap: () {
               debugPrint('Home: Newfeed - press add');
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const PostCreatePage()),
+                ),
+              );
             },
           ),
           Padding(
