@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/common/api/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_infor_bloc.dart';
@@ -7,7 +6,6 @@ import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_upd
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_data_update.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/pages/profile_personal_page.dart';
-import 'package:yope_yourpet_social_networking/modules/widget/widgets/stateless_widget/space_widget.dart';
 import 'package:yope_yourpet_social_networking/themes/app_color.dart';
 import 'package:yope_yourpet_social_networking/themes/app_text_style.dart';
 
