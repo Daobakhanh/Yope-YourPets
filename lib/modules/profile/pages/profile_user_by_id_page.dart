@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
+import 'package:yope_yourpet_social_networking/modules/messages/pages/message_detail_page.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 import 'package:yope_yourpet_social_networking/modules/post/widgets/post_container_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_infor_bloc.dart';
@@ -199,7 +200,14 @@ class _ProfileUserDetailPageState extends State<ProfileUserDetailPage> {
 
                             ShortRectangleButton(
                               nameOfButton: "Message",
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          MessageDetailPage(user: user)),
+                                );
+                              },
                             ),
                             ShortRectangleButton(
                               nameOfButton: "Email",
