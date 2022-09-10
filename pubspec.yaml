@@ -35,7 +35,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   json_annotation: ^4.6.0
   unicons: ^2.1.0
-  custom_navigation_bar: ^0.8.2
   carousel_slider: ^4.1.1
   firebase_core: ^1.21.0
   firebase_auth: ^3.6.4
@@ -43,9 +42,8 @@ dependencies:
   dio: ^4.0.6
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
-  flutter_secure_storage: ^6.0.0
   shared_preferences: ^2.0.15
-  shared_preferences_ios: ^2.1.1
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
