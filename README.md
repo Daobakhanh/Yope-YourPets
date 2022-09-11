@@ -9,7 +9,7 @@ Yope (Your pet) is a social networking service for sharing photos and videos of 
 
 The first version of project (v1.0) is just about simple feature of social networking. I applied BloC pattern by using Flutter Bloc to project . I get API support from 200lab.io, so most of the features are interacted with real data returned from the server.
 
-[Check Video Demo](https://youtu.be/cxUiyI4h2Ug)
+[Check Video Demo]()
 
 ## II. Showcase
 
