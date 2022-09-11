@@ -7,6 +7,7 @@ part of 'user.dart';
 // **************************************************************************
 
 User _$UserFromJson(Map<String, dynamic> json) => User(
+      json['followed'] as bool?,
       counters: json['counters'] == null
           ? null
           : Counters.fromJson(json['counters'] as Map<String, dynamic>),
@@ -30,6 +31,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'avatar': instance.avatar,
       'counters': instance.counters,
       'profile': instance.profile,
+      'followed': instance.followed,
     };
 
 Users _$UsersFromJson(Map<String, dynamic> json) => Users(

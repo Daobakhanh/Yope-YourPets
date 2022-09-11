@@ -28,7 +28,10 @@ class User {
   @JsonKey(name: 'profile')
   final Profile? profile;
 
-  User(
+  @JsonKey(name: 'followed')
+  final bool? followed;
+
+  User(this.followed,
       {this.counters,
       this.profile,
       this.id,
