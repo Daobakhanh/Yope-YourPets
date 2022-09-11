@@ -22,8 +22,8 @@ https://api.dofhunt.200lab.io
 
 ## IV. Plugins
 
-| Plugin                                                                   | Usage                                                                                    |
-| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------- |
+| Plugin | Usage|
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | [json_serializable](https://pub.dev/packages/json_serializable)          | To generate to/from JSON code for a class (API JSON response)                            | [json_annotation](https://pub.dev/packages/json_annotation#-readme-tab-) | Same as above (SAA) |
 | [build_runner](http://build_runner)                                      | SAA                                                                                      |
 | [dio](https://pub.dev/packages/dio)                                      | Method working with API                                                                  |
