@@ -90,13 +90,13 @@ class TextInputCustom extends StatefulWidget {
   final String? label;
   final double? height;
   final Icon? icon;
-  final void Function(String content)? onSubmitContent;
+  // final void Function(String content)? onSubmitContent;
   const TextInputCustom({
     Key? key,
     required this.label,
     this.icon,
     this.height,
-    this.onSubmitContent,
+    // this.onSubmitContent,
   }) : super(key: key);
 
   @override
@@ -129,7 +129,7 @@ class _TextInputCustomState extends State<TextInputCustom> {
         child: TextField(
           controller: _controller,
           onSubmitted: (String value) {
-            widget.onSubmitContent!(value);
+            // widget.onSubmitContent!(value);
           },
           decoration: InputDecoration(
             border: const OutlineInputBorder(
