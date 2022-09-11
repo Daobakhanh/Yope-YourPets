@@ -17,8 +17,7 @@ Content coming soon
 
 ## III. API
 
-Use APIs supported by 200lab.io , dofhunt:
-https://api.dofhunt.200lab.io
+Use APIs supported by 200lab.io , dofhunt
 
 ## IV. Plugins
 
