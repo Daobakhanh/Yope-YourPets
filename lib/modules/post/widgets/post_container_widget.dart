@@ -48,61 +48,74 @@ class _PostWidgetState extends State<PostWidget> {
         // Navigator.of(context, rootNavigator: true).pushNamed('/postDetail');
       },
       child: Container(
-        // height: 400,
-        padding: const EdgeInsets.all(10),
-        margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
           color: scaffoldBackgroundColor,
-          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-          boxShadow: [
-            BoxShadow(
-              color:
-                  brightness == Brightness.dark ? AppColor.dark : AppColor.grey,
-              offset: const Offset(0, 3),
-              blurRadius: 10.0,
-              // spreadRadius: 0.0,
-            ), //BoxShadow
-          ],
+          // borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color:
+          //         brightness == Brightness.dark ? AppColor.dark : AppColor.grey,
+          //     offset: const Offset(0, 3),
+          //     blurRadius: 10.0,
+          //     // spreadRadius: 0.0,
+          //   ), //BoxShadow
+          // ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UserPostInforWidget(
-              post: widget.post,
-              callbackFunt: () {
-                _handleDeletePost(post.id!);
-              },
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: UserPostInforWidget(
+                post: widget.post,
+                callbackFunt: () {
+                  _handleDeletePost(post.id!);
+                },
+              ),
             ),
-            const SizeBox10H(),
-            Text(
-              widget.post.description!,
-              // maxLines: hideBio ? 1 : 2,
-              maxLines: 2,
+            const SizeBox15H(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Text(
+                widget.post.description!,
+                // maxLines: hideBio ? 1 : 2,
+                maxLines: 2,
 
-              overflow:
-                  lengthOfDes > 75 ? TextOverflow.ellipsis : TextOverflow.clip,
-              // style: AppTextStyle.body15,
+                overflow: lengthOfDes > 75
+                    ? TextOverflow.ellipsis
+                    : TextOverflow.clip,
+                // style: AppTextStyle.body15,
+              ),
             ),
-            // TextButton(onPressed: () {}, child: Text("more")),
-            // const SizedBox(
-            //   height: 3,
-            // ),
+
             lengthOfDes > 75
-                ? TapMoreToSeeDetail(
-                    post: widget.post,
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: TapMoreToSeeDetail(
+                      post: widget.post,
+                    ),
                   )
-                : const SizeBox5H(),
+                : const SizeBox0H(),
+            const SizeBox15H(),
             ImageSlider(
               pictures: widget.post.images,
             ),
             // InteractivePostBar(post: widget.post)
-            InteractivePostInfor(
-              post: widget.post,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InteractivePostInfor(
+                post: widget.post,
+              ),
             ),
             const SizeBox5H(),
             const SizeBox5H(),
-            TapToSeeAllCommentWidget(
-              post: widget.post,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: TapToSeeAllCommentWidget(
+                post: widget.post,
+              ),
             )
           ],
         ),
@@ -126,6 +139,7 @@ class UserPostInforWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
@@ -144,6 +158,7 @@ class UserPostInforWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 20),
                 child: CustomAvatar(
+                  size: const Size(40, 40),
                   picture: post.user!.avatar!.url!,
                 ),
               ),
@@ -152,10 +167,11 @@ class UserPostInforWidget extends StatelessWidget {
                 children: [
                   Text(
                     post.user!.displayName,
-                    style: AppTextStyle.body20.copyWith(
-                      fontWeight: FontWeight.bold,
+                    style: AppTextStyle.body17.copyWith(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                  const SizeBox5H(),
                   Text(
                     dateTimeDetect(post.createdAt.toString()),
                     style: AppTextStyle.caption13.copyWith(

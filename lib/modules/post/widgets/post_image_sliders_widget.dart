@@ -33,13 +33,14 @@ class _ImageSliderState extends State<ImageSlider> {
           children: [
             Expanded(
               child: CarouselSlider(
-                items: imageSliders(widget.pictures!),
+                items: imageSliders(widget.pictures!, context),
                 carouselController: _controller,
                 options: CarouselOptions(
-                  enableInfiniteScroll: false,
+                  height: 400,
+                  disableCenter: true,
+                  viewportFraction: 1.0,
                   autoPlay: true,
                   enlargeCenterPage: true,
-                  aspectRatio: 1.0,
                   onPageChanged: (index, reason) {
                     setState(
                       () {
@@ -67,26 +68,19 @@ class _ImageSliderState extends State<ImageSlider> {
   }
 }
 
-List<Widget> imageSliders(List<Picture> pictures) {
+List<Widget> imageSliders(List<Picture> pictures, BuildContext context) {
   late List<Widget> imageSlidesList = pictures
       .map(
-        (item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(5),
-            ),
-            // child:
-            child: Image.network(
-              item.url!,
-              fit: BoxFit.cover,
-              width: 1000.0,
-              height: 1000.0,
-            ),
-          ),
-          // child: GestureDetector(
-          //   child: Image.network(item.url!, fit: BoxFit.cover),
+        (item) => ClipRRect(
+          // borderRadius: const BorderRadius.all(
+          //   // Radius.circular(5),
           // ),
+          // child:
+          child: Image.network(
+            item.url!,
+            fit: BoxFit.cover,
+            height: 400,
+          ),
         ),
       )
       .toList();
