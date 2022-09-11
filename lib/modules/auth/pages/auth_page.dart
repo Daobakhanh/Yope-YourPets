@@ -36,109 +36,112 @@ class _AuthPageState extends State<AuthPage> {
               .copyWith(fontStyle: FontStyle.italic, fontSize: 30),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 60, top: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/logo.png',
-                  height: 100,
-                  width: 100,
-                )
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 60, top: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 100,
+                    width: 100,
+                  )
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Text(
-              'Find new friends nearby',
-              style: AppTextStyle.h2.copyWith(fontSize: 40),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Text(
+                'Find new friends nearby',
+                style: AppTextStyle.h2.copyWith(fontSize: 40),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-            child: Text(
-              'With milions of users all over the world, we gives you the ability to connect with people no matter where you are.',
-              style: AppTextStyle.body17.copyWith(fontWeight: FontWeight.w300),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+              child: Text(
+                'With milions of users all over the world, we gives you the ability to connect with people no matter where you are.',
+                style:
+                    AppTextStyle.body17.copyWith(fontWeight: FontWeight.w300),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20, bottom: 5),
-            child: LongStadiumButton(
-              nameOfButton: 'Log In',
+            Padding(
+              padding: const EdgeInsets.only(top: 20, bottom: 5),
+              child: LongStadiumButton(
+                nameOfButton: 'Log In',
+                onTap: () {
+                  // ignore: avoid_print
+                  print('press log in');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                  );
+                },
+              ),
+            ),
+            LongStadiumButton(
+              color: AppColor.pinkAccent,
+              nameOfButton: 'Sign Up',
               onTap: () {
                 // ignore: avoid_print
-                print('press log in');
+                print('Press sign up');
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                  MaterialPageRoute(
+                    builder: ((context) => const SignUpPage()),
+                  ),
                 );
               },
             ),
-          ),
-          LongStadiumButton(
-            color: AppColor.pinkAccent,
-            nameOfButton: 'Sign Up',
-            onTap: () {
-              // ignore: avoid_print
-              print('Press sign up');
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: ((context) => const SignUpPage()),
-                ),
-              );
-            },
-          ),
-          const SizedBox(
-            height: 48,
-          ),
-          Text(
-            'Or log in with',
-            style: AppTextStyle.caption13.copyWith(
-              color: AppTextColor.grey,
+            const SizedBox(
+              height: 48,
             ),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconLoginOptional(
-                icon: UniconsLine.facebook,
-                onTap: () {
-                  debugPrint('Press fb');
-                  showMyDialog(context);
-                },
+            Text(
+              'Or log in with',
+              style: AppTextStyle.caption13.copyWith(
+                color: AppTextColor.grey,
               ),
-              IconLoginOptional(
-                icon: UniconsLine.twitter,
-                onTap: () {
-                  debugPrint('Press twitter');
-                  showMyDialog(context);
-                },
-              ),
-              IconLoginOptional(
-                  icon: UniconsLine.google,
-                  onTap: () async {
-                    bool loginStatus =
-                        await LoginWithDofhuntAPI.loginWithDofhuntAPi();
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconLoginOptional(
+                  icon: UniconsLine.facebook,
+                  onTap: () {
+                    debugPrint('Press fb');
+                    showMyDialog(context);
+                  },
+                ),
+                IconLoginOptional(
+                  icon: UniconsLine.twitter,
+                  onTap: () {
+                    debugPrint('Press twitter');
+                    showMyDialog(context);
+                  },
+                ),
+                IconLoginOptional(
+                    icon: UniconsLine.google,
+                    onTap: () async {
+                      bool loginStatus =
+                          await LoginWithDofhuntAPI.loginWithDofhuntAPi();
 
-                    if (loginStatus) {
-                      _changeAppState();
-                    }
-                  }),
-            ],
-          ),
-          const SizedBox(
-            height: 60,
-          )
-        ],
+                      if (loginStatus) {
+                        _changeAppState();
+                      }
+                    }),
+              ],
+            ),
+            const SizedBox(
+              height: 60,
+            )
+          ],
+        ),
       ),
     );
   }

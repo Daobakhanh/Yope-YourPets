@@ -23,9 +23,8 @@ https://api.dofhunt.200lab.io
 ## IV. Plugins
 
 | Plugin                                                                   | Usage                                                                                    |
-| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | --- |
-| [json_serializable](https://pub.dev/packages/json_serializable)          | To generate to/from JSON code for a class (API JSON response)                            |
-| [json_annotation](https://pub.dev/packages/json_annotation#-readme-tab-) | Same as above (SAA)                                                                      |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ------------------- |
+| [json_serializable](https://pub.dev/packages/json_serializable)          | To generate to/from JSON code for a class (API JSON response)                            | [json_annotation](https://pub.dev/packages/json_annotation#-readme-tab-) | Same as above (SAA) |
 | [build_runner](http://build_runner)                                      | SAA                                                                                      |
 | [dio](https://pub.dev/packages/dio)                                      | Method working with API                                                                  |
 | [flutter_bloc](https://pub.dev/packages/flutter_bloc)                    | Build app architecture, to implement the BLoC (Business Logic Component) design pattern. |
@@ -34,7 +33,7 @@ https://api.dofhunt.200lab.io
 | [image_picker](https://pub.dev/packages/image_picker)                    | Get photo to create new post feature                                                     |
 | [firebase_core](https://pub.dev/packages/firebase_core)                  | Register account (google account) and login using Firebase                               |
 | [google_sign_in](https://pub.dev/packages/google_sign_in)                | SAA                                                                                      |
-| [firebase_auth](https://pub.dev/packages/firebase_auth)                  | SAA                                                                                      |     |
+| [firebase_auth](https://pub.dev/packages/firebase_auth)                  | SAA                                                                                      |
 
 ## Development Environment
 
