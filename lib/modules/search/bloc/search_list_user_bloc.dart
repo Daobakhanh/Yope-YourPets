@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_list_follower_repo.dart';
@@ -18,7 +18,7 @@ class SearchListUserBloc extends Bloc<ProfileEvent, SearchListBlocState> {
         case ProfileEventEnum.getListFollowing:
           try {
             final resListFollowing =
-                await ProfileListFollowingRepo().getListFollowing(personalId);
+                await ProfileListFollowingRepo().getListFollowing(personalId!);
 
             final resListFollower = await ProfileListFollowerRepo()
                 .getListFollower(event.getUserId);

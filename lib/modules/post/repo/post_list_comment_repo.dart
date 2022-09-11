@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 
 class ListUserCommentRepo {
@@ -7,10 +7,11 @@ class ListUserCommentRepo {
   Future<List<Comment>?> getListUserCommentPost({String? postId}) async {
     final String url = '/v1/posts/$postId/comments';
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 6000)).get(
         url,
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken!,

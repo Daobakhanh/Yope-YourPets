@@ -32,7 +32,7 @@ class _PostWidgetState extends State<PostWidget> {
 
     final themeData = Theme.of(context);
     final scaffoldBackgroundColor = themeData.scaffoldBackgroundColor;
-    final brightness = themeData.brightness;
+    // final brightness = themeData.brightness;
     return InkWell(
       onTap: () {
         String lengthOfTitle = widget.post.description!.length.toString();

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 
 class LikeCommentRepo {
   // String url =
@@ -9,10 +9,11 @@ class LikeCommentRepo {
     final String url = '/v1/posts/$postId/comments/$commentId/like';
     // debugPrint(url.toString());
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).post(
         url,
         options: Options(method: 'post', headers: {
           "Authorization": "Bearer " + userToken!,
@@ -33,13 +34,14 @@ class LikeCommentRepo {
 
   static Future<bool> unlikeComment(String? postId, String? commentId) async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final String url = '/v1/posts/$postId/comments/$commentId/unlike';
       debugPrint(url.toString());
 
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).post(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).post(
         url,
         options: Options(method: 'post', headers: {
           "Authorization": "Bearer " + userToken!,

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 
 class CreateCommentRepo {
   // CreateCommentRepo();
@@ -8,10 +8,12 @@ class CreateCommentRepo {
   static Future<bool> submitCommentToServer(
       String? content, String? postId) async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
+
     String url = "/v1/posts/$postId/comments";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).post(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 6000)).post(
         url,
         data: {
           "content": content,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_create_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/bloc/post_like_comment_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';

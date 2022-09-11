@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_infor_bloc.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/blocs/profile_update_bloc.dart';
@@ -46,7 +46,7 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
 
     _profileBloc.add(
       ProfileEvent(
-          userId: personalId, event: ProfileEventEnum.getPersonalProfile),
+          userId: personalId!, event: ProfileEventEnum.getPersonalProfile),
     );
   }
 

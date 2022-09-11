@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/comment.dart';
 import 'package:yope_yourpet_social_networking/modules/post/models/post.dart';
 
@@ -27,11 +27,12 @@ Future<Comments> readJsonFromAssetComment() async {
 class PostDetailRepo {
   Future<Post?> getPostDetail({String? postId}) async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     final String url = "/v1/posts/$postId";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).get(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 6000)).get(
         url,
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken!,

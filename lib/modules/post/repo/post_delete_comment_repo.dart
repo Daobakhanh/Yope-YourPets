@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 
 class DeleteCommentRepo {
   // String url =
@@ -9,10 +9,11 @@ class DeleteCommentRepo {
     final String url = '/v1/posts/$postId/comments/$commentId';
     // debugPrint(url.toString());
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).delete(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).delete(
         url,
         options: Options(method: 'delete', headers: {
           "Authorization": "Bearer " + userToken!,

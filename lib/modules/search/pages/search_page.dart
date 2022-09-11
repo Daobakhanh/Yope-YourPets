@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/messages/widgets/message_widget.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_event.dart';
 import 'package:yope_yourpet_social_networking/modules/search/bloc/search_list_user_bloc.dart';
@@ -20,15 +20,23 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   SearchListUserBloc listGetUsersBloc = SearchListUserBloc();
-
   @override
   void initState() {
     // ignore: todo
     // TODO: implement initState
     super.initState();
+    getDofhuntUserID();
+  }
+
+  getDofhuntUserID() async {
+    String? dofhuntUserIdRes = await getDofhuntUserId();
+    debugPrint(dofhuntUserIdRes);
+    // setState(() {
+    //   dofhuntUserId = dofhuntUserIdRes ?? '';
+    // });
     listGetUsersBloc.add(
       ProfileEvent(
-          userId: dofhuntUserId, event: ProfileEventEnum.getListFollowing),
+          userId: dofhuntUserIdRes!, event: ProfileEventEnum.getListFollowing),
     );
   }
 

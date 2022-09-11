@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/profile/common/profile_data_update.dart';
 
 class ProfileUpdateRepo {
@@ -10,10 +10,12 @@ class ProfileUpdateRepo {
   static Future<bool> submitProfileDataUpdate(
       DataUpdateProfile? dataUserUpdate) async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
+
     String url = "/v1/profile";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).put(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 6000)).put(
         url,
         data: {
           "first_name": dataUserUpdate!.firstName,
