@@ -21,12 +21,12 @@ class LikePostRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.likePostSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.likePostSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       debugPrint(
-        ActionStatus.likePostSuccessful,
+        CallAPIActionStatus.likePostSuccessful,
       );
       rethrow;
     }
@@ -48,12 +48,12 @@ class LikePostRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.unlikePostSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.unlikePostSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       debugPrint(
-        ActionStatus.unlikePostSuccessful,
+        CallAPIActionStatus.unlikePostSuccessful,
       );
       rethrow;
     }

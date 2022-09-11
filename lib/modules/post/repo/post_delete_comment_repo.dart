@@ -21,13 +21,13 @@ class DeleteCommentRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.deleteCommentSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.deleteCommentSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       // debugPrint(e.toString());
       debugPrint(
-        ActionStatus.deleteCommentFail,
+        CallAPIActionStatus.deleteCommentFail,
       );
       rethrow;
     }

@@ -21,13 +21,13 @@ class DeletePostRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.deletePostSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.deletePostSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       // debugPrint(e.toString());
       debugPrint(
-        ActionStatus.deletePostFail,
+        CallAPIActionStatus.deletePostFail,
       );
       rethrow;
     }

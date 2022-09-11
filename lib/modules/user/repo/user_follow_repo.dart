@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:yope_yourpet_social_networking/common/action_state/action_state.dart';
 import 'package:yope_yourpet_social_networking/common/public/public.dart';
 
 class FollowUserRepo {
@@ -17,10 +18,14 @@ class FollowUserRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint('Res status: ${res.statusCode.toString()}');
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.followUserSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
-      // debugPrint(e.toString());
+      debugPrint(
+        'Res status: ${CallAPIActionStatus.followUserFail}',
+      );
       rethrow;
     }
   }
@@ -42,9 +47,14 @@ class FollowUserRepo {
           // "Content-Type": "application/json"
         }),
       );
-      debugPrint('Res status: ${res.statusCode}');
+      debugPrint(
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.unfollowUserSuccessful}',
+      );
       return res.statusCode == 200;
     } catch (e) {
+      debugPrint(
+        'Res status:, ${CallAPIActionStatus.unfollowUserFail}',
+      );
       rethrow;
     }
   }

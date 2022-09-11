@@ -7,7 +7,7 @@ class UserFollowBloc extends BlocBase {
   static Future<bool> followUserEvent(String? userId) =>
       FollowUserRepo.followUser(userId);
 
-  static Future<bool> unlikeCommentEvent(String? userId) =>
+  static Future<bool> unfollowUserEvent(String? userId) =>
       FollowUserRepo.unFollowUser(
         userId,
       );

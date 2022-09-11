@@ -21,12 +21,12 @@ class LikeCommentRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.likeCommentSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.likeCommentSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       debugPrint(
-        ActionStatus.likeCommentFail,
+        CallAPIActionStatus.likeCommentFail,
       );
       rethrow;
     }
@@ -49,12 +49,12 @@ class LikeCommentRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.unlikeCommentSuccessful}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.unlikeCommentSuccessful}',
       );
       return res.statusCode == 200;
     } catch (e) {
       debugPrint(
-        ActionStatus.unlikeCommentFail,
+        CallAPIActionStatus.unlikeCommentFail,
       );
       rethrow;
     }

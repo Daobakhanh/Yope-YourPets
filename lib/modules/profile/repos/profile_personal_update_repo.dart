@@ -29,12 +29,12 @@ class ProfileUpdateRepo {
         }),
       );
       debugPrint(
-        'Res status: ${res.statusCode.toString()}, ${ActionStatus.updatePersonalProfileSuccessfull}',
+        'Res status: ${res.statusCode.toString()}, ${CallAPIActionStatus.updatePersonalProfileSuccessfull}',
       );
 
       return res.statusCode == 200;
     } catch (e) {
-      debugPrint(ActionStatus.updatePersonalProfileFail);
+      debugPrint(CallAPIActionStatus.updatePersonalProfileFail);
       rethrow;
     }
   }
