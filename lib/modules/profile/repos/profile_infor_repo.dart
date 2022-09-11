@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/models/user/user.dart';
 
 Future<Users> readJsonFromUserById() async {
@@ -16,10 +16,11 @@ Future<Users> readJsonFromUserById() async {
 class PersonalProfileRepo {
   Future<bool> getStatusUserTokenUsingPersonalProfileAPi() async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).get(
         "/v1/profile",
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken!,
@@ -40,10 +41,11 @@ class PersonalProfileRepo {
 
   Future<User?> getPersonalProfile() async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).get(
         "/v1/profile",
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken!,
@@ -65,11 +67,12 @@ class PersonalProfileRepo {
 
   Future<User?> getUserDetailById(String userId) async {
     String? userToken = await getUserTokenFromLocalStorage();
+    String? api = await getAPI();
 
     String url = "/v1/users/$userId";
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 3000)).get(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 3000)).get(
         url,
         options: Options(method: 'get', headers: {
           "Authorization": "Bearer " + userToken!,

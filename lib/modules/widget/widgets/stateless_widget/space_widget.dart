@@ -44,6 +44,17 @@ class SizeBox20H extends StatelessWidget {
   }
 }
 
+class SizeBox0H extends StatelessWidget {
+  const SizeBox0H({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: 0,
+    );
+  }
+}
+
 class SizeBox5W extends StatelessWidget {
   const SizeBox5W({Key? key}) : super(key: key);
 

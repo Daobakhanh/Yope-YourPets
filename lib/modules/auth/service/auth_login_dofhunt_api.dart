@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:yope_yourpet_social_networking/common/api/public.dart';
+import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/models/auth_login_data_model.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_login_with_google_utils.dart';
 import 'package:yope_yourpet_social_networking/utils/prefs_key.dart';
@@ -9,9 +9,11 @@ import 'package:yope_yourpet_social_networking/utils/prefs_key.dart';
 class LoginWithDofhuntAPI {
   Future<LoginData?> loginWithDofhuntAPIRepo(String? googleAccessToken) async {
     String url = "/v1/auth/gmail";
+    String? api = await getAPI();
+
     try {
       final res =
-          await Dio(BaseOptions(baseUrl: api, connectTimeout: 6000)).post(
+          await Dio(BaseOptions(baseUrl: api!, connectTimeout: 6000)).post(
         url,
         data: {
           "gmail_token": googleAccessToken,
