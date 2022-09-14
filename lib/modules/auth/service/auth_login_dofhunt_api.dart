@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yope_yourpet_social_networking/common/public/public.dart';
 import 'package:yope_yourpet_social_networking/modules/auth/models/auth_login_data_model.dart';
-import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_login_with_google_utils.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/utils/auth_signin_with_google_utils.dart';
 import 'package:yope_yourpet_social_networking/utils/prefs_key.dart';
 
 class LoginWithDofhuntAPI {
@@ -33,7 +33,7 @@ class LoginWithDofhuntAPI {
     }
   }
 
-  static Future<bool> loginWithDofhuntAPi() async {
+  static Future<bool> loginWithDofhuntAPI() async {
     LoginWithDofhuntAPI loginWithDofhuntRepo = LoginWithDofhuntAPI();
 
     //get google user token
@@ -43,6 +43,8 @@ class LoginWithDofhuntAPI {
         .loginWithDofhuntAPIRepo(userGoogleAccessToken);
     String userToken = loginData!.getAccessToken;
     debugPrint('User token when call dofhunt API: $userToken');
+
+    //handle story user token to local storage
     await saveUserTokenToLocalStorage(userToken);
     await readUserTokenToLocalStorage();
     if (userToken == '') {
