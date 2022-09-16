@@ -129,7 +129,7 @@ class _AuthPageState extends State<AuthPage> {
                     icon: UniconsLine.google,
                     onTap: () async {
                       bool loginStatus =
-                          await LoginWithDofhuntAPI.loginWithDofhuntAPi();
+                          await LoginWithDofhuntAPI.loginWithDofhuntAPI();
 
                       if (loginStatus) {
                         _changeAppState();
