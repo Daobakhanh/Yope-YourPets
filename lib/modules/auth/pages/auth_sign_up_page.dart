@@ -56,7 +56,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: AppColor.pinkAccent,
                   nameOfButton: 'SIGN UP',
                   onTap: () {
-                    showMyDialog(context);
+                    showMyDialogAuth(context);
                     debugPrint('Auth: Sign up Page - press SIGN UP Btn');
                   })
             ],

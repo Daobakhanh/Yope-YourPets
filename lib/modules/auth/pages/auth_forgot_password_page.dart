@@ -41,7 +41,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 color: AppColor.pinkAccent,
                 nameOfButton: 'SEND',
                 onTap: () {
-                  showMyDialog(context);
+                  showMyDialogAuth(context);
                   debugPrint('Forgot password page: press SEND');
                 })
           ],

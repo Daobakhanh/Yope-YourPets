@@ -115,14 +115,14 @@ class _AuthPageState extends State<AuthPage> {
                   icon: UniconsLine.facebook,
                   onTap: () {
                     debugPrint('Press fb');
-                    showMyDialog(context);
+                    showMyDialogAuth(context);
                   },
                 ),
                 IconLoginOptional(
                   icon: UniconsLine.twitter,
                   onTap: () {
                     debugPrint('Press twitter');
-                    showMyDialog(context);
+                    showMyDialogAuth(context);
                   },
                 ),
                 IconLoginOptional(

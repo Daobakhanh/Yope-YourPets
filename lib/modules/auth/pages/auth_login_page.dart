@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               nameOfButton: "LOGIN",
               onTap: () {
                 debugPrint('press login');
-                showMyDialog(context);
+                showMyDialogAuth(context);
               },
             )
           ],
