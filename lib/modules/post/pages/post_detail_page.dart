@@ -60,41 +60,51 @@ class _PostDetailPageState extends State<PostDetailPage> {
                 children: [
                   ListView(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            UserPostInforWidget(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizeBox20H(),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: UserPostInforWidget(
                               post: post,
                               callbackFunt: () {
                                 // _handleDeletePost(postId);
                               },
                             ),
-                            const SizeBox10H(),
-                            Text(
+                          ),
+                          const SizeBox10H(),
+
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Text(
                               post.description!,
                               // style: AppTextStyle.body15,
                             ),
+                          ),
+                          const SizeBox10H(),
 
-                            ImageSlider(
-                              pictures: post.images,
-                            ),
-                            // InteractivePostBar(post: widget.post)
-                            InteractivePostInfor(
+                          ImageSlider(
+                            pictures: post.images,
+                          ),
+                          // InteractivePostBar(post: widget.post)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: InteractivePostInfor(
                               isInPostDetail: false,
                               post: post,
                             ),
-                            const SizeBox5H(),
-                            // LikeCountWidget(
-                            //   post: widget.post,
-                            // ),
-                            const SizeBox20H(),
-                            const Divider(
-                              height: 1,
-                            )
-                          ],
-                        ),
+                          ),
+                          const SizeBox5H(),
+                          // LikeCountWidget(
+                          //   post: widget.post,
+                          // ),
+                          const SizeBox20H(),
+                          const Divider(
+                            height: 1,
+                          )
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),

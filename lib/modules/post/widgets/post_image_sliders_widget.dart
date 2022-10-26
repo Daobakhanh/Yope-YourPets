@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:yope_yourpet_social_networking/models/picture/picture.dart';
@@ -39,7 +40,9 @@ class _ImageSliderState extends State<ImageSlider> {
                   height: 400,
                   disableCenter: true,
                   viewportFraction: 1.0,
-                  autoPlay: true,
+                  enableInfiniteScroll:
+                      widget.pictures!.length > 1 ? true : false,
+                  autoPlay: widget.pictures!.length > 1 ? true : false,
                   enlargeCenterPage: true,
                   onPageChanged: (index, reason) {
                     setState(
@@ -76,10 +79,17 @@ List<Widget> imageSliders(List<Picture> pictures, BuildContext context) {
           //   // Radius.circular(5),
           // ),
           // child:
-          child: Image.network(
-            item.url!,
-            fit: BoxFit.cover,
+          // child: Image.network(
+          //   item.url!,
+          //   fit: BoxFit.cover,
+          //   height: 400,
+          // ),
+          child: CachedNetworkImage(
+            imageUrl: item.url!,
             height: 400,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),
       )
