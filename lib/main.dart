@@ -54,8 +54,9 @@ class _MyAppState extends State<MyApp> {
         builder: (context, snapshot) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            title: 'Yope',
+            // showPerformanceOverlay: true,
             theme: ThemeData(
+              fontFamily: "Avenir",
               textTheme: const TextTheme(
                   // titleMedium: AppTextStyle.body15, bodyMedium: AppTextStyle.body15
                   ),
@@ -66,7 +67,6 @@ class _MyAppState extends State<MyApp> {
               brightness: snapshot.data == AppThemeStateEnum.dark
                   ? Brightness.dark
                   : Brightness.light,
-              fontFamily: "Avenir",
               primarySwatch: Colors.pink,
             ),
             home: BlocProvider(

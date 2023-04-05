@@ -1,4 +1,4 @@
-import 'package:yope_yourpet_social_networking/modules/auth/service/auth_login_dofhunt_api.dart';
+import 'package:yope_yourpet_social_networking/modules/auth/repo/auth_login_dofhunt_api.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 final personalId = dotenv.env["PERSONALID"];

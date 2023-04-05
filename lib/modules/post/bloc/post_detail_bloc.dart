@@ -8,7 +8,7 @@ import 'package:yope_yourpet_social_networking/modules/post/repo/post_list_comme
 
 class PostDetailBloc extends Bloc<PostDetailEventClass, PostDetailBlocState> {
   //String: event nhận vào
-  //ListPostsState : state để cập nhật UI
+  //PostDetailBlocState : state để cập nhật UI
   //mac dinh khoi tao ban dau la null
   PostDetailBloc() : super(PostDetailBlocState()) {
     //event: gia tri truyen vao
@@ -41,6 +41,5 @@ class PostDetailBlocState {
   final Object? error;
   final List<Comment>? comments;
   final Post? post;
-
   PostDetailBlocState({this.comments, this.post, this.error});
 }

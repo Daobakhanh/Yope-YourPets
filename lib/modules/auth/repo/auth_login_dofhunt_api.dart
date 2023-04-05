@@ -39,6 +39,8 @@ class LoginWithDofhuntAPI {
     //get google user token
     String userGoogleAccessToken = await signInWithGoogle();
 
+    // print(object)
+
     LoginData? loginData = await loginWithDofhuntRepo
         .loginWithDofhuntAPIRepo(userGoogleAccessToken);
     String userToken = loginData!.getAccessToken;

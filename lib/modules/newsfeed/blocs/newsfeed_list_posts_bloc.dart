@@ -8,7 +8,6 @@ import 'package:yope_yourpet_social_networking/modules/profile/repos/profile_lis
 class ListPostsBloc extends Bloc<String, ListPostsBlocState> {
   //String: event nhận vào
   //ListPostsState : state để cập nhật UI
-
   //mac dinh khoi tao ban dau la null
   ListPostsBloc() : super(ListPostsBlocState()) {
     //event: gia tri truyen vao
@@ -36,6 +35,7 @@ class ListPostsBloc extends Bloc<String, ListPostsBlocState> {
   }
 }
 
+//create class state for emit
 class ListPostsBlocState {
   final Object? error;
   final List<Post>? posts;

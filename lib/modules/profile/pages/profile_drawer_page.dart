@@ -21,8 +21,17 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
   AppStateBloc appStateBloc = AppStateBloc();
   // AppThemeBloc appThemeBloc = AppThemeBloc();
   AppThemeBloc? get appThemeBloc => BlocProvider.of<AppThemeBloc>(context);
+
+  @override
+  void didChangeDependencies() {
+    debugPrint('Call didChangeDependencies PersonalProfileDrawerPage');
+    super.didChangeDependencies();
+  }
+
   @override
   void initState() {
+    debugPrint('Call initState PersonalProfileDrawerPage');
+
     super.initState();
     // ignore: todo
     // TODO: implement initState
@@ -40,6 +49,8 @@ class _PersonalProfileDrawerPageState extends State<PersonalProfileDrawerPage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Call build PersonalProfileDrawerPage');
+
     return BlocProvider(
       bloc: appStateBloc,
       child: Padding(

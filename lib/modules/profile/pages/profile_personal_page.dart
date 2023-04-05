@@ -33,7 +33,15 @@ class _ProfilePersonalPageState extends State<ProfilePersonalPage> {
   bool hideBio = true;
 
   @override
+  void didChangeDependencies() {
+    debugPrint('Call didChangeDependencies ProfilePersonalPage');
+    super.didChangeDependencies();
+  }
+
+  @override
   void initState() {
+    debugPrint('Call initState ProfilePersonalPage');
+
     super.initState();
     // _profileBloc = ProfileBloc(userId: '56n4ZTFtY4DAFXHtMc');
     _profileBloc.add(
@@ -65,6 +73,8 @@ class _ProfilePersonalPageState extends State<ProfilePersonalPage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('Call build ProfilePersonalPage');
+
     return Scaffold(
       endDrawer: const Drawer(child: PersonalProfileDrawerPage()),
       appBar: AppBar(

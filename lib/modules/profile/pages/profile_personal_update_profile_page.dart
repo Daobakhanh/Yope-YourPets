@@ -106,6 +106,7 @@ class _ProfilePersonalEditPageState extends State<ProfilePersonalEditPage> {
                 ),
               ),
             ),
+
             Container(
               margin: const EdgeInsets.only(top: 20, bottom: 10),
               child: Padding(
